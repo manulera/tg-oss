@@ -51,6 +51,16 @@ function getTranslatedSequenceProperties(
     sequenceString = revComp(sequenceString);
   }
 
+  // If a CDS has introns, make a list with the positions of the intron bases
+  if (
+    !isProteinSequence &&
+    optionalSubrangeRange &&
+    optionalSubrangeRange.positions
+  ) {
+    // TODO: Implement intronBases
+    // const intronBases = [];
+  }
+
   return {
     sequenceString,
     translationRange,
@@ -91,7 +101,7 @@ export default function getAminoAcidDataForEachBaseOfDna(
     isProteinSequence
   );
 
-  // Funciton to get the codon range for a given index. The length of the codon
+  // Function to get the codon range for a given index. The length of the codon
   // is normally 3, but in truncated sequences in can be less
   const getCodonRange = (index, size) => {
     let codonRange = translateRange(
@@ -108,20 +118,45 @@ export default function getAminoAcidDataForEachBaseOfDna(
     }
     return codonRange;
   };
-
+  const getNextTriplet = index => {
+    let triplet = "";
+    let internalIndex = index;
+    // Positions of codons relative to the coding sequence
+    // including introns.
+    const codonPositions = [];
+    while (triplet.length < 3) {
+      if (sequenceString[internalIndex]) {
+        triplet += sequenceString[internalIndex];
+        codonPositions.push(internalIndex);
+        internalIndex++;
+      } else {
+        break;
+      }
+    }
+    return { triplet, basesRead: internalIndex - index, codonPositions };
+  };
   const aminoAcidDataForEachBaseOfDNA = [];
   // Iterate over the DNA sequence length in increments of 3
   for (let index = 0; index < sequenceStringLength; index += 3) {
     let aminoAcid;
     const aminoAcidIndex = index / 3;
+    let basesRead = 3;
+    let codonPositions;
 
     if (isProteinSequence) {
+      codonPositions = [0, 1, 2].map(i => index + i);
       aminoAcid = proteinAlphabet[sequenceString[index / 3].toUpperCase()];
     } else {
       // Get the triplet of DNA bases
-      const triplet = sequenceString.slice(index, index + 3);
+      const {
+        triplet,
+        basesRead: _basesRead,
+        codonPositions: _codonPositions
+      } = getNextTriplet(index);
+      basesRead = _basesRead;
+      codonPositions = _codonPositions;
       // If the triplet is not full, we need to add the gap xxx amino acid,
-      // and skip the rest of the loop
+      // and break the loop
       if (triplet.length !== 3) {
         const truncatedCodonRange = getCodonRange(index, triplet.length);
         let sequenceIndexes = [
@@ -143,18 +178,29 @@ export default function getAminoAcidDataForEachBaseOfDna(
           });
         }
         // We skip the rest of the loop and continue with the next iteration
-        continue;
+        break;
       } else {
         aminoAcid = getAA(triplet);
+        index += basesRead - 3;
+        // TODO - add intron bases
+        // if (index === 3) {
+        //   aminoAcidDataForEachBaseOfDNA.push({});
+        // }
       }
     }
-    const codonRange = getCodonRange(index, 3);
+    // TODO: rename getCodonRange
+    const absoluteCodonPositions = codonPositions.map(
+      i => getCodonRange(i, 1).start
+    );
+    const codonRange = forward
+      ? { start: absoluteCodonPositions[0], end: absoluteCodonPositions[2] }
+      : { start: absoluteCodonPositions[2], end: absoluteCodonPositions[0] };
 
     aminoAcidDataForEachBaseOfDNA.push({
       aminoAcid, //gap amino acid
       positionInCodon: 0,
       aminoAcidIndex,
-      sequenceIndex: forward ? codonRange.start : codonRange.end,
+      sequenceIndex: absoluteCodonPositions[0],
       codonRange,
       fullCodon: true
     });
@@ -162,7 +208,7 @@ export default function getAminoAcidDataForEachBaseOfDna(
       aminoAcid, //gap amino acid
       positionInCodon: 1,
       aminoAcidIndex,
-      sequenceIndex: codonRange.start + 1,
+      sequenceIndex: absoluteCodonPositions[1],
       codonRange,
       fullCodon: true
     });
@@ -170,7 +216,7 @@ export default function getAminoAcidDataForEachBaseOfDna(
       aminoAcid, //gap amino acid
       positionInCodon: 2,
       aminoAcidIndex,
-      sequenceIndex: forward ? codonRange.end : codonRange.start,
+      sequenceIndex: absoluteCodonPositions[2],
       codonRange,
       fullCodon: true
     });
