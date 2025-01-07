@@ -1,4 +1,3 @@
-import { default as computePresets } from './computePresets';
 import { defaultParsePaste, getEntityIdToEntity, getFieldPathToIndex, getNumberStrAtEnd, stripNumberAtEnd } from './utils';
 import { formatPasteData } from './formatPasteData';
 import { getAllRows } from './getAllRows';
@@ -14,8 +13,11 @@ import { getSelectedRowsFromEntities } from './selection';
 import { handleCopyColumn } from './handleCopyColumn';
 import { handleCopyHelper } from './handleCopyHelper';
 import { handleCopyRows } from './handleCopyRows';
+import { handleCopyTable } from './handleCopyTable';
 import { isBottomRightCornerOfRectangle } from './isBottomRightCornerOfRectangle';
 import { isEntityClean } from './isEntityClean';
+import { PRIMARY_SELECTED_VAL } from './primarySelectedValue';
 import { removeCleanRows } from './removeCleanRows';
+import { useTableEntities } from './useTableEntities';
 
-export { computePresets, defaultParsePaste, formatPasteData, getAllRows, getCellCopyText, getCellInfo, getEntityIdToEntity, getFieldPathToIndex, getFieldPathToField, getIdOrCodeOrIndex, getLastSelectedEntity, getNewEntToSelect, getNumberStrAtEnd, getRecordsFromIdMap, getRowCopyText, getSelectedRowsFromEntities, handleCopyColumn, handleCopyHelper, handleCopyRows, isBottomRightCornerOfRectangle, isEntityClean, removeCleanRows, stripNumberAtEnd };
+export { defaultParsePaste, formatPasteData, getAllRows, getCellCopyText, getCellInfo, getEntityIdToEntity, getFieldPathToIndex, getFieldPathToField, getIdOrCodeOrIndex, getLastSelectedEntity, getNewEntToSelect, getNumberStrAtEnd, getRecordsFromIdMap, getRowCopyText, getSelectedRowsFromEntities, handleCopyColumn, handleCopyHelper, handleCopyRows, handleCopyTable, isBottomRightCornerOfRectangle, isEntityClean, PRIMARY_SELECTED_VAL, removeCleanRows, stripNumberAtEnd, useTableEntities };

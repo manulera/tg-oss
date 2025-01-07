@@ -1,4 +1,4 @@
-export function ColumnFilterMenu({ addFilters, compact, currentFilter, currentParams, dataType, extraCompact, filterActiveForColumn, FilterMenu, filterOn, removeSingleFilter, schemaForField, setNewParams }: {
+export function ColumnFilterMenu({ addFilters, compact, currentFilter, currentParams, dataType, extraCompact, filterActiveForColumn, FilterMenu, filterOn, removeSingleFilter, schemaForField, setNewParams, formName }: {
     addFilters: any;
     compact: any;
     currentFilter: any;
@@ -11,4 +11,5 @@ export function ColumnFilterMenu({ addFilters, compact, currentFilter, currentPa
     removeSingleFilter: any;
     schemaForField: any;
     setNewParams: any;
+    formName: any;
 }): import("react/jsx-runtime").JSX.Element;
