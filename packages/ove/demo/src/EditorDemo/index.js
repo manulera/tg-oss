@@ -129,9 +129,39 @@ export default class EditorDemo extends React.Component {
     window.ove_getEditorState = () => {
       return store.getState().VectorEditor["DemoEditor"];
     };
+    addAlignment(store, {
+      id: "simpleAlignment",
+      alignmentType: "Simple Sequence Alignment",
+      name: "My Alignment",
+      // set the visibilities of the annotations you'd like to see
+      alignmentAnnotationVisibility: {
+        features: true,
+        parts: true,
+        translations: true
+      },
+      alignmentTracks: [
+        ...Array(20)
+          .fill()
+          .map((v, i) => ({
+            sequenceData: { id: `sequence-${i}`, sequence: "AAAAAAAAAAA" },
+            alignmentData: { sequence: "AAAAAAAAAAA" }
+          }))
+      ]
+    });
     updateEditor(store, "DemoEditor", {
       readOnly: false,
-      sequenceData: exampleSequenceData
+      sequenceData: exampleSequenceData,
+      panelsShown: [
+        [
+          {
+            id: "simpleAlignment",
+            type: "alignment",
+            name: "Alignments",
+            active: true,
+            isFullscreen: false
+          }
+        ]
+      ]
     });
   }
   componentDidUpdate() {
