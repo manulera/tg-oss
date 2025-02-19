@@ -143,8 +143,13 @@ export default class EditorDemo extends React.Component {
         ...Array(20)
           .fill()
           .map((v, i) => ({
-            sequenceData: { id: `sequence-${i}`, sequence: "AAAAAAAAAAA" },
-            alignmentData: { sequence: "AAAAAAAAAAA" }
+            sequenceData: {
+              id: `sequence-${i}`,
+              sequence: i % 2 === 0 ? "AAAAAAAAAAA" : "TTTTTTTTTTT"
+            },
+            alignmentData: {
+              sequence: i % 2 === 0 ? "AAAAAAAAAAA" : "TTTTTTTTTTT"
+            }
           }))
       ]
     });
