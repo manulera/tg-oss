@@ -136,6 +136,7 @@ function convertBasePosTraceToPerBpTrace(chromData) {
     } else {
       endPos = traceLength;
     }
+    // console.log('positions', startPos, endPos);
   }
   setEndPos();
   const baseTraces = [];
