@@ -239,7 +239,7 @@ function drawTrace({
       const gapsBefore = getGaps(baseIndex - 1).gapsBefore || 0;
       const gapsAt = getGaps(baseIndex).gapsBefore;
       const startXPosition =
-        (baseIndex + gapsAt - startBp - gapsBeforeRow) * charWidth;
+        (baseIndex + gapsAt - startBp - gapsBeforeRow - 0.5) * charWidth;
       const hasGaps = gapsBefore !== gapsAt;
       const traceLength = traceForIndex.length;
       const tracePointSpacing = charWidth / traceLength;
