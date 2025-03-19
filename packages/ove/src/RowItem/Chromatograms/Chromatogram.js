@@ -232,17 +232,37 @@ function drawTrace({
     //loop through base positions [ 43, 53, 70, 77, ...]
     // looping through the entire sequence length
     for (let baseIndex = startBp; baseIndex <= endBp; baseIndex++) {
-      // each base's beginning and end of its peak
-      // grab the start and end (43, 53) , (53, 70) ...
-      // looping through each base's peak
+      // The values of baseTrace represent the heights of the trace
+      // from the point after the previous peak to the point of the current peak,
+      // Let's image a trace [0, 0, 1, 0, 0, 1, 0]
+      // The first trace would be [0, 0, 1], the second one would be [0, 0, 1, 0] (last one gets the rest of the trace)
+      // We want the peak to be centered in the middle of the character, so for that we need to apply
+      // a shift. Take the below example for two consecutive traces [1, 3, 5] and [3, 2, 5]
+      // Where peaks for base 1 and base 2 occur at the 5 value. Plotted without shift, the
+      // trace would look like below (the peak would be skewed towards the right side of the base)
+      //           x              x
+      //           x              x
+      //      x    x    x         x
+      //      x    x    x    x    x
+      // x    x    x    x    x    x
+      // |--------------|--------------|
+      // <    base 1   ><    base 2   >
+      // To fix this, we need to apply a correction to make the peak centered in the middle of the
+      // character, which is traceLength / (traceLength + 1) - 0.5. In this case, traceLength is 3,
+      // and the peak without shift would be at position 0.66 (traceLength / (traceLength + 1)),
+      // we have to shift it so that it is centered at 0.6, so the that's where the formula comes from.
+
       const traceForIndex = traceData.baseTraces[baseIndex][traceType];
+      const traceLength = traceForIndex.length;
+      const shift = traceLength / (traceLength + 1) - 0.5;
+      const tracePointSpacing = charWidth / traceLength;
+
       const gapsBefore = getGaps(baseIndex - 1).gapsBefore || 0;
       const gapsAt = getGaps(baseIndex).gapsBefore;
       const startXPosition =
-        (baseIndex + gapsAt - startBp - gapsBeforeRow - 0.5) * charWidth;
+        (baseIndex + gapsAt - startBp - gapsBeforeRow - shift) * charWidth;
       const hasGaps = gapsBefore !== gapsAt;
-      const traceLength = traceForIndex.length;
-      const tracePointSpacing = charWidth / traceLength;
+
       // eslint-disable-next-line no-loop-func
       traceForIndex.forEach((_tracePoint, tracePointIndex) => {
         const tracePoint = scaledHeight - scalePct * _tracePoint;

@@ -124,28 +124,30 @@ const tagDict = {
 // tnr: this function takes in chromData which has 4 traces and a basePos (which describes where in the trace the base call lands)
 // It "normalizes" that data into a baseTraces array so that each base has its own set of that data (having a per-base trace makes insertion/deletion/copy/paste actions all easier)
 function convertBasePosTraceToPerBpTrace(chromData) {
-  const { basePos, aTrace } = chromData;
-  const traceLength = aTrace.length;
+  const { basePos } = chromData;
   const binEdges = [0];
   basePos.forEach(pos => {
     binEdges.push(pos + 1);
   });
-  binEdges[binEdges.length - 1] = traceLength + 1;
 
-  // Trim first and last binEdges so that they are symmetric around the peak
+  // Trim first binEdge so that it is symmetric around the peak
   const firstBinWidth = binEdges[1] - binEdges[0];
   const secondBinWidth = binEdges[2] - binEdges[1];
   if (firstBinWidth > secondBinWidth) {
     binEdges[0] = binEdges[1] - secondBinWidth;
   }
-  const lastBinWidth =
-    binEdges[binEdges.length - 1] - binEdges[binEdges.length - 2];
-  const secondLastBinWidth =
-    binEdges[binEdges.length - 2] - binEdges[binEdges.length - 3];
-  if (lastBinWidth > secondLastBinWidth) {
-    binEdges[binEdges.length - 1] =
-      binEdges[binEdges.length - 2] + secondLastBinWidth + 1;
-  }
+
+  // Handle edge-case of last position (also trim)
+  const traceLength = chromData.aTrace.length;
+  binEdges[binEdges.length - 1] = traceLength + 1;
+  // const lastBinWidth =
+  //   binEdges[binEdges.length - 1] - binEdges[binEdges.length - 2];
+  // const secondLastBinWidth =
+  //   binEdges[binEdges.length - 2] - binEdges[binEdges.length - 3];
+  // if (lastBinWidth > secondLastBinWidth) {
+  //   binEdges[binEdges.length - 1] =
+  //     binEdges[binEdges.length - 2] + secondLastBinWidth + 1;
+  // }
 
   const baseTraces = [];
   for (let i = 0; i < binEdges.length - 1; i++) {
