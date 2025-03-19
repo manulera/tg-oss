@@ -125,10 +125,6 @@ const tagDict = {
 // It "normalizes" that data into a baseTraces array so that each base has its own set of that data (having a per-base trace makes insertion/deletion/copy/paste actions all easier)
 function convertBasePosTraceToPerBpTrace(chromData) {
   const { basePos } = chromData;
-  const binEdges = [0];
-  basePos.forEach(pos => {
-    binEdges.push(pos + 1);
-  });
 
   const peakEdges = [0];
   for (let i = 0; i < basePos.length - 1; i++) {
@@ -148,18 +144,6 @@ function convertBasePosTraceToPerBpTrace(chromData) {
   if (lastBinWidth > secondLastBinWidth) {
     peakEdges[peakEdges.length - 1] = peakEdges[peakEdges.length - 2] + secondLastBinWidth + 1;
   }
-
-  // // Handle edge-case of last position (also trim)
-  // const traceLength = chromData.aTrace.length;
-  // binEdges[binEdges.length - 1] = traceLength + 1;
-  // const lastBinWidth =
-  //   binEdges[binEdges.length - 1] - binEdges[binEdges.length - 2];
-  // const secondLastBinWidth =
-  //   binEdges[binEdges.length - 2] - binEdges[binEdges.length - 3];
-  // if (lastBinWidth > secondLastBinWidth) {
-  //   binEdges[binEdges.length - 1] =
-  //     binEdges[binEdges.length - 2] + secondLastBinWidth + 1;
-  // }
 
   const baseTraces = [];
   for (let i = 0; i < peakEdges.length - 1; i++) {
