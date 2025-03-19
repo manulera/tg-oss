@@ -130,16 +130,28 @@ function convertBasePosTraceToPerBpTrace(chromData) {
     binEdges.push(pos + 1);
   });
 
-  // Trim first binEdge so that it is symmetric around the peak
-  const firstBinWidth = binEdges[1] - binEdges[0];
-  const secondBinWidth = binEdges[2] - binEdges[1];
+  const peakEdges = [0];
+  for (let i = 0; i < basePos.length - 1; i++) {
+    peakEdges.push(Math.ceil((basePos[i] + basePos[i + 1]) / 2));
+  }
+  peakEdges.push(chromData.aTrace.length);
+
+  // Trim edges so that they are symmetric around the peak
+  const firstBinWidth = peakEdges[1] - peakEdges[0];
+  const secondBinWidth = peakEdges[2] - peakEdges[1];
   if (firstBinWidth > secondBinWidth) {
-    binEdges[0] = binEdges[1] - secondBinWidth;
+    peakEdges[0] = peakEdges[1] - secondBinWidth;
   }
 
-  // Handle edge-case of last position (also trim)
-  const traceLength = chromData.aTrace.length;
-  binEdges[binEdges.length - 1] = traceLength + 1;
+  const lastBinWidth = peakEdges[peakEdges.length - 1] - peakEdges[peakEdges.length - 2];
+  const secondLastBinWidth = peakEdges[peakEdges.length - 2] - peakEdges[peakEdges.length - 3];
+  if (lastBinWidth > secondLastBinWidth) {
+    peakEdges[peakEdges.length - 1] = peakEdges[peakEdges.length - 2] + secondLastBinWidth + 1;
+  }
+
+  // // Handle edge-case of last position (also trim)
+  // const traceLength = chromData.aTrace.length;
+  // binEdges[binEdges.length - 1] = traceLength + 1;
   // const lastBinWidth =
   //   binEdges[binEdges.length - 1] - binEdges[binEdges.length - 2];
   // const secondLastBinWidth =
@@ -150,9 +162,9 @@ function convertBasePosTraceToPerBpTrace(chromData) {
   // }
 
   const baseTraces = [];
-  for (let i = 0; i < binEdges.length - 1; i++) {
-    const start = binEdges[i];
-    const end = binEdges[i + 1];
+  for (let i = 0; i < peakEdges.length - 1; i++) {
+    const start = peakEdges[i];
+    const end = peakEdges[i + 1];
     const tracesForType = {
       aTrace: chromData.aTrace.slice(start, end),
       tTrace: chromData.tTrace.slice(start, end),

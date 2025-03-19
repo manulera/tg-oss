@@ -113,53 +113,53 @@ export default function Chromatogram(props) {
           // left: posOfSeqRead,
           display: "inline-block"
         }}
-        // tnr comment back in for start of tooltip work
-        // onMouseEnter={() => {
-        //   this.setState({ showTooltip: true });
-        // }}
-        // onMouseLeave={() => {
-        //   this.setState({ showTooltip: false });
-        // }}
-        // onMouseMove={(e) => {
-        //   const { row } = this.props;
-        //   const boundingRowRect =
-        //     this.chromatogramRef.getBoundingClientRect();
-        //   let nearestCaretPos;
-        //   if (
-        //     getClientY(e) > boundingRowRect.top &&
-        //     getClientY(e) < boundingRowRect.top + boundingRowRect.height
-        //   ) {
-        //     if (getClientX(e) - boundingRowRect.left < 0) {
-        //       nearestCaretPos = row.start;
-        //     } else {
-        //       const clickXPositionRelativeToRowContainer =
-        //         getClientX(e) - boundingRowRect.left;
-        //       const numberOfBPsInFromRowStart = Math.floor(
-        //         (clickXPositionRelativeToRowContainer + charWidth / 2) /
-        //           charWidth
-        //       );
-        //       nearestCaretPos = numberOfBPsInFromRowStart + row.start;
-        //       if (nearestCaretPos > row.end + 1) {
-        //         nearestCaretPos = row.end + 1;
-        //       }
-        //     }
-        //     this.setState({
-        //       nearestCaretPos
-        //     });
-        //     if (this.tooltipRef) {
-        //       this.tooltipRef.style.left =
-        //         getClientX(e) - boundingRowRect.left + "px";
-        //       this.tooltipRef.style.top =
-        //         getClientY(e) - boundingRowRect.top + "px";
-        //     }
-        //     if (this.tooltipHolderRef) {
-        //       this.tooltipHolderRef.reposition();
-        //     }
-        //   }
-        // }}
-        // ref={(n) => {
-        //   if (n) this.chromatogramRef = n;
-        // }}
+      // tnr comment back in for start of tooltip work
+      // onMouseEnter={() => {
+      //   this.setState({ showTooltip: true });
+      // }}
+      // onMouseLeave={() => {
+      //   this.setState({ showTooltip: false });
+      // }}
+      // onMouseMove={(e) => {
+      //   const { row } = this.props;
+      //   const boundingRowRect =
+      //     this.chromatogramRef.getBoundingClientRect();
+      //   let nearestCaretPos;
+      //   if (
+      //     getClientY(e) > boundingRowRect.top &&
+      //     getClientY(e) < boundingRowRect.top + boundingRowRect.height
+      //   ) {
+      //     if (getClientX(e) - boundingRowRect.left < 0) {
+      //       nearestCaretPos = row.start;
+      //     } else {
+      //       const clickXPositionRelativeToRowContainer =
+      //         getClientX(e) - boundingRowRect.left;
+      //       const numberOfBPsInFromRowStart = Math.floor(
+      //         (clickXPositionRelativeToRowContainer + charWidth / 2) /
+      //           charWidth
+      //       );
+      //       nearestCaretPos = numberOfBPsInFromRowStart + row.start;
+      //       if (nearestCaretPos > row.end + 1) {
+      //         nearestCaretPos = row.end + 1;
+      //       }
+      //     }
+      //     this.setState({
+      //       nearestCaretPos
+      //     });
+      //     if (this.tooltipRef) {
+      //       this.tooltipRef.style.left =
+      //         getClientX(e) - boundingRowRect.left + "px";
+      //       this.tooltipRef.style.top =
+      //         getClientY(e) - boundingRowRect.top + "px";
+      //     }
+      //     if (this.tooltipHolderRef) {
+      //       this.tooltipHolderRef.reposition();
+      //     }
+      //   }
+      // }}
+      // ref={(n) => {
+      //   if (n) this.chromatogramRef = n;
+      // }}
       >
         {/* tnr comment back in for start of tooltip work {this.state.showTooltip && (
           <div
@@ -254,13 +254,12 @@ function drawTrace({
 
       const traceForIndex = traceData.baseTraces[baseIndex][traceType];
       const traceLength = traceForIndex.length;
-      const shift = traceLength / (traceLength + 1) - 0.5;
       const tracePointSpacing = charWidth / traceLength;
 
       const gapsBefore = getGaps(baseIndex - 1).gapsBefore || 0;
       const gapsAt = getGaps(baseIndex).gapsBefore;
       const startXPosition =
-        (baseIndex + gapsAt - startBp - gapsBeforeRow - shift) * charWidth;
+        (baseIndex + gapsAt - startBp - gapsBeforeRow) * charWidth;
       const hasGaps = gapsBefore !== gapsAt;
 
       // eslint-disable-next-line no-loop-func
