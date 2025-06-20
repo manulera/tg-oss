@@ -140,7 +140,7 @@ export default class EditorDemo extends React.Component {
         translations: true
       },
       alignmentTracks: [
-        ...Array(20)
+        ...Array(2)
           .fill()
           .map((v, i) => ({
             sequenceData: {
