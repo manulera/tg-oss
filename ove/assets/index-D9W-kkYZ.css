@@ -8819,12 +8819,14 @@ span.bp3-popover-target{
 /*# sourceMappingURL=blueprint-icons.css.map */:root {
   --base1: #ffffff;
   --base2: #cdcdcd;
+  --base3: #a1a3a5;
   --reversed: #293742;
 }
 
 body.bp3-dark {
   --base1: #393a3a;
   --base2: #293742;
+  --base3: #959697;
   --reversed: #cdcdcd;
 }
 
@@ -9609,6 +9611,50 @@ button:not(:disabled):active {
 
 .ReactTable.ReactTable .rt-tbody .rt-tr {
   border: none;
+}
+
+.ReactTable.ReactTable .rt-tbody .rt-tr-group.no-group-border {
+  border-bottom: none;
+}
+
+.react-draggable .bp3-dialog {
+  /* add little chevrons in the bottom corners of the dialog to show its draggable */
+  position: relative;
+}
+
+.react-draggable .bp3-dialog::before,
+.react-draggable .bp3-dialog::after {
+  content: "";
+  position: absolute;
+  bottom: 3px;
+  width: 10px;
+  height: 10px;
+  border-style: double;
+  border-color: var(--base3);
+  border-width: 0;
+  border-bottom-width: 6px;
+  pointer-events: none;
+}
+
+.react-draggable .bp3-dialog::before {
+  left: 3px;
+  border-left-width: 6px;
+  border-bottom-left-radius: 2px;
+}
+
+.react-draggable .bp3-dialog::after {
+  right: 3px;
+  border-right-width: 6px;
+  border-bottom-right-radius: 2px;
+}
+
+.react-draggable .tg-dialog-resize-handle div:first-child {
+  bottom: 0px !important;
+  left: 0px !important;
+}
+.react-draggable .tg-dialog-resize-handle div:nth-child(2) {
+  bottom: 0px !important;
+  right: 0px !important;
 }
 
 .bp3-dark .ReactTable.ReactTable .rt-tbody .rt-tr-group {
@@ -11185,6 +11231,10 @@ path.partWithSelectedTag {
   height: 12px;
   top: 2px;
 }
+.alignment-search-bar .bp3-input {
+  border-radius: 5px !important;
+}
+
 .tg-pinch-helper {
   width: 100%;
 }
@@ -11247,6 +11297,10 @@ path.partWithSelectedTag {
 /* .alignmentViewTrackContainer:hover .alignmentTrackNameDiv {
   opacity: 1 !important;
 } */
+.ve-alignment-top-bar {
+  align-items: center;
+}
+
 .ve-alignment-top-bar > * {
   overflow-wrap: normal;
   flex: 0 0 auto;
@@ -11259,6 +11313,94 @@ path.partWithSelectedTag {
   top: 0;
   height: 100% !important;
   overflow: hidden;
+}
+.veAlignmentMismatch {
+  opacity: 0.9;
+}
+
+.veDiffNavigator {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Menu item content layout */
+.veDiffMenuItem-inner {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Navigation pill — groups prev/counter/next into one unit */
+.veDiffNav {
+  display: flex;
+  align-items: center;
+  border-radius: 3px;
+  background: rgba(92, 112, 128, 0.06);
+  border: 1px solid rgba(92, 112, 128, 0.18);
+}
+
+.veDiffNav-center {
+  display: flex;
+  align-items: baseline;
+  gap: 3px;
+  padding: 0 6px;
+  min-width: 64px;
+  justify-content: center;
+}
+
+.veDiffNav-fraction {
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  color: #5c7080;
+  line-height: 1;
+}
+
+.veDiffNav-sep {
+  margin: 0 1px;
+  opacity: 0.45;
+}
+
+/* Position number — monospace fits sequence coordinates */
+.veDiffNav-pos {
+  font-size: 10px;
+  font-family: monospace;
+  font-variant-numeric: tabular-nums;
+  color: #a7b6c2;
+  line-height: 1;
+}
+
+.veDiffNav-empty {
+  font-size: 11px;
+  font-style: italic;
+  color: #a7b6c2;
+  padding: 0 4px;
+}
+
+.bp3-dark .veDiffNav {
+  background: rgba(167, 182, 194, 0.05);
+  border-color: rgba(167, 182, 194, 0.14);
+}
+
+.bp3-dark .veDiffNav-fraction {
+  color: #5c7080;
+}
+
+.bp3-dark .veDiffNav-pos {
+  color: #4f6272;
+}
+
+.bp3-dark .veDiffNav-empty {
+  color: #5c7080;
+}
+.veRowItem:has(.rowViewTextContainer) .veAlignmentMismatch {
+  opacity: 0.5;
+}
+.alignmentView .veAlignmentSelectionLayer.veRowViewSelectionLayer {
+  background: gray;
+}
+.alignmentView:focus .veAlignmentSelectionLayer.veRowViewSelectionLayer {
+  background: #0099ff;
 }
 .alignmentView .veSelectionLayer {
   top: 0;
@@ -11318,6 +11460,60 @@ path.partWithSelectedTag {
   background: #1585c5;
   opacity: 0.5;
   top: 0;
+}
+.veFindBar {
+  background: #ffffff;
+  border-bottom: 1px solid lightgrey;
+  border-left: 1px solid lightgrey;
+  border-right: 1px solid lightgrey;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.veFindBar > .bp3-control {
+  margin-bottom: 0px;
+}
+.veFindBar > * {
+  width: fit-content;
+}
+
+.bp3-dark .veFindBar {
+  border-radius: 5px;
+  background: #30404d !important;
+  border-bottom: 1px solid #202b33 !important;
+  border-left: 1px solid #202b33 !important;
+  border-right: 1px solid #202b33 !important;
+}
+
+.ve-find-options-popover > * {
+  margin: 10px 5px;
+}
+.veAnnotationFindMatches {
+  width: 250px;
+  padding: 10px;
+  max-height: 180px;
+  overflow-y: scroll;
+  min-width: 313px;
+}
+
+.veAnnotationFoundType {
+  font-weight: bold;
+}
+.veAnnotationFoundResult {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 5px;
+  padding-right: 5px;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  cursor: pointer;
+}
+.veAnnotationFoundResult:hover {
+  background: lightblue;
+}
+.veAnnotationFoundResultRange {
+  font-size: 10;
+  color: gray;
 }
 .simple-dialog .dialog-buttons {
   display: flex;
@@ -11607,15 +11803,6 @@ path.partWithSelectedTag {
   align-items: center;
   justify-content: center;
 }
-
-h5 {
-  margin: 0;
-  font-size: 15px;
-  font-weight: bold;
-  text-align: center;
-  padding: 5px 0;
-  border-bottom: 1px solid #f1f1f1;
-}
 .ta_link {
   cursor: pointer;
   color: blue;
@@ -11638,60 +11825,6 @@ h5 {
 .veToolbarCutsiteFilterHolder .tg-select {
   overflow: auto;
   max-height: 50vh;
-}
-.veFindBar {
-  background: #ffffff;
-  border-bottom: 1px solid lightgrey;
-  border-left: 1px solid lightgrey;
-  border-right: 1px solid lightgrey;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-}
-
-.veFindBar > .bp3-control {
-  margin-bottom: 0px;
-}
-.veFindBar > * {
-  width: fit-content;
-}
-
-.bp3-dark .veFindBar {
-  border-radius: 5px;
-  background: #30404d !important;
-  border-bottom: 1px solid #202b33 !important;
-  border-left: 1px solid #202b33 !important;
-  border-right: 1px solid #202b33 !important;
-}
-
-.ve-find-options-popover > * {
-  margin: 10px 5px;
-}
-.veAnnotationFindMatches {
-  width: 250px;
-  padding: 10px;
-  max-height: 180px;
-  overflow-y: scroll;
-  min-width: 313px;
-}
-
-.veAnnotationFoundType {
-  font-weight: bold;
-}
-.veAnnotationFoundResult {
-  display: flex;
-  justify-content: space-between;
-  padding-left: 5px;
-  padding-right: 5px;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  cursor: pointer;
-}
-.veAnnotationFoundResult:hover {
-  background: lightblue;
-}
-.veAnnotationFoundResultRange {
-  font-size: 10;
-  color: gray;
 }
 .veStatusBar {
   display: flex;
@@ -11827,7 +11960,8 @@ h5 {
 .bp3-dark .veEditor:not(.tg-simple-dna-view) {
   background: #293742 !important;
 }
-.veLabelLine {
+.veLabelLine,
+.aminoAcidNumber {
   stroke: black;
   background: black;
 }
@@ -11836,7 +11970,8 @@ h5 {
   stroke: white;
   background: white;
 }
-.bp3-dark .veLabelLine {
+.bp3-dark .veLabelLine,
+.bp3-dark .aminoAcidNumber {
   stroke: #f5f8fa !important;
   background: #f5f8fa !important;
 }

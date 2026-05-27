@@ -7731,8 +7731,8 @@ function createSelectorHook(context2 = ReactReduxContext) {
 }
 __name(createSelectorHook, "createSelectorHook");
 const useSelector = /* @__PURE__ */ createSelectorHook();
-function _extends$j() {
-  _extends$j = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$k() {
+  _extends$k = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key in source) {
@@ -7743,9 +7743,9 @@ function _extends$j() {
     }
     return target;
   };
-  return _extends$j.apply(this, arguments);
+  return _extends$k.apply(this, arguments);
 }
-__name(_extends$j, "_extends$j");
+__name(_extends$k, "_extends$k");
 function _objectWithoutPropertiesLoose$5(source, excluded) {
   if (source == null) return {};
   var target = {};
@@ -8237,7 +8237,7 @@ function mapStateToPropsFactory(mapStateToProps2) {
 }
 __name(mapStateToPropsFactory, "mapStateToPropsFactory");
 function defaultMergeProps(stateProps, dispatchProps, ownProps) {
-  return _extends$j({}, ownProps, stateProps, dispatchProps);
+  return _extends$k({}, ownProps, stateProps, dispatchProps);
 }
 __name(defaultMergeProps, "defaultMergeProps");
 function wrapMergePropsFunc(mergeProps) {
@@ -8561,7 +8561,7 @@ function connect(mapStateToProps2, mapDispatchToProps2, mergeProps, {
         if (didStoreComeFromProps) {
           return contextValue;
         }
-        return _extends$j({}, contextValue, {
+        return _extends$k({}, contextValue, {
           subscription
         });
       }, [didStoreComeFromProps, contextValue, subscription]);
@@ -8639,7 +8639,7 @@ ${latestSubscriptionCallbackError.current.stack}
       const renderedWrappedComponent = reactExports.useMemo(() => {
         return (
           // @ts-ignore
-          /* @__PURE__ */ reactExports.createElement(WrappedComponent, _extends$j({}, actualChildProps, {
+          /* @__PURE__ */ reactExports.createElement(WrappedComponent, _extends$k({}, actualChildProps, {
             ref: reactReduxForwardedRef
           }))
         );
@@ -8661,7 +8661,7 @@ ${latestSubscriptionCallbackError.current.stack}
     Connect.displayName = ConnectFunction.displayName = displayName;
     if (forwardRef2) {
       const _forwarded = reactExports.forwardRef(/* @__PURE__ */ __name(function forwardConnectRef(props, ref2) {
-        return /* @__PURE__ */ reactExports.createElement(Connect, _extends$j({}, props, {
+        return /* @__PURE__ */ reactExports.createElement(Connect, _extends$k({}, props, {
           reactReduxForwardedRef: ref2
         }));
       }, "forwardConnectRef"));
@@ -12012,7 +12012,7 @@ var defineProperty$2 = /* @__PURE__ */ __name(function(obj, key, value) {
   }
   return obj;
 }, "defineProperty$2");
-var _extends$i = Object.assign || function(target) {
+var _extends$j = Object.assign || function(target) {
   for (var i2 = 1; i2 < arguments.length; i2++) {
     var source = arguments[i2];
     for (var key in source) {
@@ -12024,7 +12024,7 @@ var _extends$i = Object.assign || function(target) {
   return target;
 };
 function getClientRect$1(offsets) {
-  return _extends$i({}, offsets, {
+  return _extends$j({}, offsets, {
     right: offsets.left + offsets.width,
     bottom: offsets.top + offsets.height
   });
@@ -12216,7 +12216,7 @@ function computeAutoPlacement$1(placement, refRect, popper2, reference2, boundar
     }
   };
   var sortedAreas = Object.keys(rects).map(function(key) {
-    return _extends$i({
+    return _extends$j({
       key
     }, rects[key], {
       area: getArea(rects[key])
@@ -12548,9 +12548,9 @@ function computeStyle(data, options) {
   var attributes = {
     "x-placement": data.placement
   };
-  data.attributes = _extends$i({}, attributes, data.attributes);
-  data.styles = _extends$i({}, styles2, data.styles);
-  data.arrowStyles = _extends$i({}, data.offsets.arrow, data.arrowStyles);
+  data.attributes = _extends$j({}, attributes, data.attributes);
+  data.styles = _extends$j({}, styles2, data.styles);
+  data.arrowStyles = _extends$j({}, data.offsets.arrow, data.arrowStyles);
   return data;
 }
 __name(computeStyle, "computeStyle");
@@ -12690,7 +12690,7 @@ function flip$3(data, options) {
         variation = getOppositeVariation(variation);
       }
       data.placement = placement + (variation ? "-" + variation : "");
-      data.offsets.popper = _extends$i({}, data.offsets.popper, getPopperOffsets(data.instance.popper, data.offsets.reference, data.placement));
+      data.offsets.popper = _extends$j({}, data.offsets.popper, getPopperOffsets(data.instance.popper, data.offsets.reference, data.placement));
       data = runModifiers(data.instance.modifiers, data, "flip");
     }
   });
@@ -12854,7 +12854,7 @@ function preventOverflow$2(data, options) {
   };
   order2.forEach(function(placement) {
     var side = ["left", "top"].indexOf(placement) !== -1 ? "primary" : "secondary";
-    popper2 = _extends$i({}, popper2, check2[side](placement));
+    popper2 = _extends$j({}, popper2, check2[side](placement));
   });
   data.offsets.popper = popper2;
   return data;
@@ -12873,7 +12873,7 @@ function shift$1(data) {
       start: defineProperty$2({}, side, reference2[side]),
       end: defineProperty$2({}, side, reference2[side] + reference2[measurement] - popper2[measurement])
     };
-    data.offsets.popper = _extends$i({}, popper2, shiftOffsets[shiftvariation]);
+    data.offsets.popper = _extends$j({}, popper2, shiftOffsets[shiftvariation]);
   }
   return data;
 }
@@ -13279,7 +13279,7 @@ var Popper$1 = function() {
       return requestAnimationFrame(_this.update);
     };
     this.update = debounce$3(this.update.bind(this));
-    this.options = _extends$i({}, Popper2.Defaults, options);
+    this.options = _extends$j({}, Popper2.Defaults, options);
     this.state = {
       isDestroyed: false,
       isCreated: false,
@@ -13288,11 +13288,11 @@ var Popper$1 = function() {
     this.reference = reference2 && reference2.jquery ? reference2[0] : reference2;
     this.popper = popper2 && popper2.jquery ? popper2[0] : popper2;
     this.options.modifiers = {};
-    Object.keys(_extends$i({}, Popper2.Defaults.modifiers, options.modifiers)).forEach(function(name2) {
-      _this.options.modifiers[name2] = _extends$i({}, Popper2.Defaults.modifiers[name2] || {}, options.modifiers ? options.modifiers[name2] : {});
+    Object.keys(_extends$j({}, Popper2.Defaults.modifiers, options.modifiers)).forEach(function(name2) {
+      _this.options.modifiers[name2] = _extends$j({}, Popper2.Defaults.modifiers[name2] || {}, options.modifiers ? options.modifiers[name2] : {});
     });
     this.modifiers = Object.keys(this.options.modifiers).map(function(name2) {
-      return _extends$i({
+      return _extends$j({
         name: name2
       }, _this.options.modifiers[name2]);
     }).sort(function(a2, b3) {
@@ -13759,8 +13759,8 @@ var InnerPopper = /* @__PURE__ */ function(_React$Component) {
         placement: _this.props.placement,
         eventsEnabled: _this.props.eventsEnabled,
         positionFixed: _this.props.positionFixed,
-        modifiers: _extends$j({}, _this.props.modifiers, {
-          arrow: _extends$j({}, _this.props.modifiers && _this.props.modifiers.arrow, {
+        modifiers: _extends$k({}, _this.props.modifiers, {
+          arrow: _extends$k({}, _this.props.modifiers && _this.props.modifiers.arrow, {
             enabled: !!_this.arrowNode,
             element: _this.arrowNode
           }),
@@ -13772,7 +13772,7 @@ var InnerPopper = /* @__PURE__ */ function(_React$Component) {
       };
     });
     _defineProperty$9(_assertThisInitialized$1(_assertThisInitialized$1(_this)), "getPopperStyle", function() {
-      return !_this.popperNode || !_this.state.data ? initialStyle : _extends$j({
+      return !_this.popperNode || !_this.state.data ? initialStyle : _extends$k({
         position: _this.state.data.offsets.popper.position
       }, _this.state.data.styles);
     });
@@ -13847,7 +13847,7 @@ Popper$1.placements;
 function Popper(_ref) {
   var referenceElement = _ref.referenceElement, props = _objectWithoutPropertiesLoose$5(_ref, ["referenceElement"]);
   return reactExports.createElement(ManagerReferenceNodeContext.Consumer, null, function(referenceNode) {
-    return reactExports.createElement(InnerPopper, _extends$j({
+    return reactExports.createElement(InnerPopper, _extends$k({
       referenceElement: referenceElement !== void 0 ? referenceElement : referenceNode
     }, props));
   });
@@ -13884,7 +13884,7 @@ var InnerReference = /* @__PURE__ */ function(_React$Component) {
 }(reactExports.Component);
 function Reference(props) {
   return reactExports.createElement(ManagerReferenceNodeSetterContext.Consumer, null, function(setReferenceNode) {
-    return reactExports.createElement(InnerReference, _extends$j({
+    return reactExports.createElement(InnerReference, _extends$k({
       setReferenceNode
     }, props));
   });
@@ -24095,6 +24095,13 @@ document.addEventListener("mouseup", () => {
   isDragging$1 = false;
 });
 let tippys = [];
+function isInAllowedContainer(element2) {
+  if (window.onlyAllowTooltipsInVeEditor) {
+    return element2.closest(".veEditor") !== null;
+  }
+  return true;
+}
+__name(isInAllowedContainer, "isInAllowedContainer");
 let recentlyHidden = false;
 let clearMe;
 (function() {
@@ -24102,6 +24109,9 @@ let clearMe;
   document.addEventListener("mouseover", function(event) {
     var _a2, _b2;
     const element2 = event.target;
+    if (!isInAllowedContainer(element2)) {
+      return;
+    }
     if (element2 instanceof Element && element2 !== lastMouseOverElement) {
       let clearOldTippys = /* @__PURE__ */ __name(function(maybeInst) {
         tippys = tippys.filter((t2) => {
@@ -26561,7 +26571,7 @@ var initialize$1 = /* @__PURE__ */ __name(function initialize(form2, values3, ke
   }
   return {
     type: INITIALIZE,
-    meta: _extends$j({
+    meta: _extends$k({
       form: form2,
       keepDirty
     }, otherMeta),
@@ -26781,7 +26791,7 @@ var ReduxFormContext = reactExports.createContext(null);
 var renderChildren = /* @__PURE__ */ __name(function renderChildren2(Component, _ref) {
   var forwardedRef = _ref.forwardedRef, rest = _objectWithoutPropertiesLoose$5(_ref, ["forwardedRef"]);
   return function(_reduxForm) {
-    return reactExports.createElement(Component, _extends$j({}, rest, {
+    return reactExports.createElement(Component, _extends$k({}, rest, {
       _reduxForm,
       ref: forwardedRef
     }));
@@ -26803,7 +26813,7 @@ var withReduxForm = /* @__PURE__ */ __name(function withReduxForm2(Component) {
     return Hoc2;
   }(reactExports.Component);
   var ref2 = reactExports.forwardRef(function(props, ref3) {
-    return reactExports.createElement(Hoc, _extends$j({}, props, {
+    return reactExports.createElement(Hoc, _extends$k({}, props, {
       forwardedRef: ref3
     }));
   });
@@ -27010,23 +27020,23 @@ const invariant$2 = /* @__PURE__ */ getDefaultExportFromCjs(browserExports);
 var processProps = /* @__PURE__ */ __name(function processProps2(type2, props, _value, deepEqual3) {
   var value = props.value;
   if (type2 === "checkbox") {
-    return _extends$j({}, props, {
+    return _extends$k({}, props, {
       checked: !!value
     });
   }
   if (type2 === "radio") {
-    return _extends$j({}, props, {
+    return _extends$k({}, props, {
       checked: deepEqual3(value, _value),
       value: _value
     });
   }
   if (type2 === "select-multiple") {
-    return _extends$j({}, props, {
+    return _extends$k({}, props, {
       value: value || []
     });
   }
   if (type2 === "file") {
-    return _extends$j({}, props, {
+    return _extends$k({}, props, {
       value: value || void 0
     });
   }
@@ -27061,7 +27071,7 @@ function createFieldProps(_ref, name2, _ref2) {
       onFocus,
       value: formattedFieldValue
     }, _value, deepEqual3),
-    meta: _extends$j({}, toJS3(state2), {
+    meta: _extends$k({}, toJS3(state2), {
       active: !!(state2 && getIn3(state2, "active")),
       asyncValidating,
       autofilled: !!(state2 && getIn3(state2, "autofilled")),
@@ -27079,7 +27089,7 @@ function createFieldProps(_ref, name2, _ref2) {
       valid: !error,
       visited: !!(state2 && getIn3(state2, "visited"))
     }),
-    custom: _extends$j({}, custom, {}, props)
+    custom: _extends$k({}, custom, {}, props)
   };
 }
 __name(createFieldProps, "createFieldProps");
@@ -28072,7 +28082,7 @@ var setInWithPath = /* @__PURE__ */ __name(function setInWithPath2(state2, value
     copy[parseInt(first, 10)] = next;
     return copy;
   }
-  return _extends$j({}, state2, (_extends2 = {}, _extends2[first] = next, _extends2));
+  return _extends$k({}, state2, (_extends2 = {}, _extends2[first] = next, _extends2));
 }, "setInWithPath");
 var setIn = /* @__PURE__ */ __name(function setIn2(state2, field, value) {
   return setInWithPath(state2, value, _toPath(field), 0);
@@ -29102,7 +29112,7 @@ function deleteInWithPath(state2, first) {
     if (first in state2) {
       var _extends2;
       var _result = deleteInWithPath.apply(void 0, [state2 && state2[first]].concat(rest));
-      return state2[first] === _result ? state2 : _extends$j({}, state2, (_extends2 = {}, _extends2[first] = _result, _extends2));
+      return state2[first] === _result ? state2 : _extends$k({}, state2, (_extends2 = {}, _extends2[first] = _result, _extends2));
     }
     return state2;
   }
@@ -29119,7 +29129,7 @@ function deleteInWithPath(state2, first) {
     return state2;
   }
   if (first in state2) {
-    var _copy2 = _extends$j({}, state2);
+    var _copy2 = _extends$k({}, state2);
     delete _copy2[first];
     return _copy2;
   }
@@ -29234,7 +29244,7 @@ function createConnectedField(structure$1) {
         var defaultPrevented = false;
         if (onChange) {
           if (!isReactNative && isEvent(event)) {
-            onChange(_extends$j({}, event, {
+            onChange(_extends$k({}, event, {
               preventDefault: /* @__PURE__ */ __name(function preventDefault2() {
                 defaultPrevented = true;
                 return eventPreventDefault(event);
@@ -29259,7 +29269,7 @@ function createConnectedField(structure$1) {
         var defaultPrevented = false;
         if (onFocus) {
           if (!isReactNative) {
-            onFocus(_extends$j({}, event, {
+            onFocus(_extends$k({}, event, {
               preventDefault: /* @__PURE__ */ __name(function preventDefault2() {
                 defaultPrevented = true;
                 return eventPreventDefault(event);
@@ -29286,7 +29296,7 @@ function createConnectedField(structure$1) {
         var defaultPrevented = false;
         if (onBlur) {
           if (!isReactNative) {
-            onBlur(_extends$j({}, event, {
+            onBlur(_extends$k({}, event, {
               preventDefault: /* @__PURE__ */ __name(function preventDefault2() {
                 defaultPrevented = true;
                 return eventPreventDefault(event);
@@ -29315,7 +29325,7 @@ function createConnectedField(structure$1) {
         var newValue = eventDataTransferGetData(event, dataKey);
         var defaultPrevented = false;
         if (onDrop) {
-          onDrop(_extends$j({}, event, {
+          onDrop(_extends$k({}, event, {
             preventDefault: /* @__PURE__ */ __name(function preventDefault2() {
               defaultPrevented = true;
               return eventPreventDefault(event);
@@ -29355,7 +29365,7 @@ function createConnectedField(structure$1) {
       _this$props6.onDrop;
       _this$props6.immutableProps;
       var rest = _objectWithoutPropertiesLoose$5(_this$props6, ["component", "forwardRef", "name", "_reduxForm", "normalize", "onBlur", "onChange", "onFocus", "onDragStart", "onDrop", "immutableProps"]);
-      var _createFieldProps = createFieldProps(structure$1, name2, _extends$j({}, rest, {
+      var _createFieldProps = createFieldProps(structure$1, name2, _extends$k({}, rest, {
         form: _reduxForm.form,
         onBlur: this.handleBlur,
         onChange: this.handleChange,
@@ -29369,9 +29379,9 @@ function createConnectedField(structure$1) {
       if (typeof component === "string") {
         var input = props.input;
         props.meta;
-        return reactExports.createElement(component, _extends$j({}, input, {}, custom));
+        return reactExports.createElement(component, _extends$k({}, input, {}, custom));
       } else {
-        return reactExports.createElement(component, _extends$j({}, props, {}, custom));
+        return reactExports.createElement(component, _extends$k({}, props, {}, custom));
       }
     }, "render");
     return ConnectedField2;
@@ -29481,7 +29491,7 @@ function createField(structure$1) {
       return this.ref.current ? this.ref.current.getRenderedComponent() : void 0;
     }, "getRenderedComponent");
     _proto.render = /* @__PURE__ */ __name(function render3() {
-      return reactExports.createElement(ConnectedField, _extends$j({}, this.props, {
+      return reactExports.createElement(ConnectedField, _extends$k({}, this.props, {
         name: this.name,
         normalize: this.normalize,
         ref: this.ref
@@ -29992,7 +30002,7 @@ function createFieldArrayProps(_ref, name2, form2, sectionPrefix, getValue3, _re
   var error = syncError || asyncError || submitError;
   var warning2 = syncWarning;
   var fieldName = sectionPrefix ? name2.replace(sectionPrefix + ".", "") : name2;
-  var finalProps = _extends$j({
+  var finalProps = _extends$k({
     fields: {
       _isFieldArray: true,
       forEach: /* @__PURE__ */ __name(function forEach4(callback2) {
@@ -30234,7 +30244,7 @@ function createFieldArray(structure2) {
       return this.ref && this.ref.current.getRenderedComponent();
     }, "getRenderedComponent");
     _proto.render = /* @__PURE__ */ __name(function render3() {
-      return reactExports.createElement(ConnectedFieldArray, _extends$j({}, this.props, {
+      return reactExports.createElement(ConnectedFieldArray, _extends$k({}, this.props, {
         name: this.name,
         ref: this.ref
       }));
@@ -31052,7 +31062,7 @@ function generateValidator(validators, _ref) {
 __name(generateValidator, "generateValidator");
 var mergeErrors = /* @__PURE__ */ __name(function mergeErrors2(_ref) {
   var asyncErrors = _ref.asyncErrors, syncErrors = _ref.syncErrors;
-  return asyncErrors && typeof asyncErrors.merge === "function" ? asyncErrors.merge(syncErrors).toJS() : _extends$j({}, asyncErrors, {}, syncErrors);
+  return asyncErrors && typeof asyncErrors.merge === "function" ? asyncErrors.merge(syncErrors).toJS() : _extends$k({}, asyncErrors, {}, syncErrors);
 }, "mergeErrors");
 var executeSubmit = /* @__PURE__ */ __name(function executeSubmit2(submit3, fields, props) {
   var dispatch = props.dispatch, submitAsSideEffect = props.submitAsSideEffect, onSubmitFail = props.onSubmitFail, onSubmitSuccess = props.onSubmitSuccess, startSubmit3 = props.startSubmit, stopSubmit3 = props.stopSubmit, setSubmitFailed3 = props.setSubmitFailed, setSubmitSucceeded3 = props.setSubmitSucceeded, values3 = props.values;
@@ -31175,7 +31185,7 @@ function createReduxForm(structure$1) {
   var deepEqual3 = structure$1.deepEqual, empty2 = structure$1.empty, getIn3 = structure$1.getIn, setIn3 = structure$1.setIn, keys3 = structure$1.keys, fromJS2 = structure$1.fromJS, toJS3 = structure$1.toJS;
   var isValid3 = createIsValid(structure$1);
   return function(initialConfig) {
-    var config = _extends$j({
+    var config = _extends$k({
       touchOnBlur: true,
       touchOnChange: false,
       persistentSubmitErrors: false,
@@ -31464,7 +31474,7 @@ function createReduxForm(structure$1) {
                 } else {
                   return _this.listenToSubmit(handleSubmit(
                     checkSubmit(onSubmit),
-                    _extends$j({}, _this.props, {}, bindActionCreators({
+                    _extends$k({}, _this.props, {}, bindActionCreators({
                       blur: blur3,
                       change: change3
                     }, dispatch)),
@@ -31482,7 +31492,7 @@ function createReduxForm(structure$1) {
               return silenceEvents(function() {
                 return !_this.submitPromise && _this.listenToSubmit(handleSubmit(
                   checkSubmit(submitOrEvent),
-                  _extends$j({}, _this.props, {}, bindActionCreators({
+                  _extends$k({}, _this.props, {}, bindActionCreators({
                     blur: blur3,
                     change: change3
                   }, dispatch)),
@@ -31603,7 +31613,7 @@ function createReduxForm(structure$1) {
           _this$props12.validExceptSubmit;
           _this$props12.values;
           var warning2 = _this$props12.warning, rest = _objectWithoutPropertiesLoose$5(_this$props12, ["anyTouched", "array", "arrayInsert", "arrayMove", "arrayPop", "arrayPush", "arrayRemove", "arrayRemoveAll", "arrayShift", "arraySplice", "arraySwap", "arrayUnshift", "asyncErrors", "asyncValidate", "asyncValidating", "blur", "change", "clearSubmit", "destroy", "destroyOnUnmount", "forceUnregisterOnUnmount", "dirty", "dispatch", "enableReinitialize", "error", "focus", "form", "getFormState", "immutableProps", "initialize", "initialized", "initialValues", "invalid", "keepDirtyOnReinitialize", "keepValues", "updateUnregisteredFields", "pristine", "propNamespace", "registeredFields", "registerField", "reset", "resetSection", "setSubmitFailed", "setSubmitSucceeded", "shouldAsyncValidate", "shouldValidate", "shouldError", "shouldWarn", "startAsyncValidation", "startSubmit", "stopAsyncValidation", "stopSubmit", "submitAsSideEffect", "submitting", "submitFailed", "submitSucceeded", "touch", "touchOnBlur", "touchOnChange", "persistentSubmitErrors", "syncErrors", "syncWarnings", "unregisterField", "untouch", "updateSyncErrors", "updateSyncWarnings", "valid", "validExceptSubmit", "values", "warning"]);
-          var reduxFormProps = _extends$j({
+          var reduxFormProps = _extends$k({
             array: array2,
             anyTouched,
             asyncValidate: this.asyncValidate,
@@ -31635,11 +31645,11 @@ function createReduxForm(structure$1) {
             valid: valid2,
             warning: warning2
           });
-          var propsToPass = _extends$j({}, propNamespace ? (_ref = {}, _ref[propNamespace] = reduxFormProps, _ref) : reduxFormProps, {}, rest);
+          var propsToPass = _extends$k({}, propNamespace ? (_ref = {}, _ref[propNamespace] = reduxFormProps, _ref) : reduxFormProps, {}, rest);
           if (isClassComponent(WrappedComponent)) {
             propsToPass.ref = this.wrapped;
           }
-          var _reduxForm = _extends$j({}, this.props, {
+          var _reduxForm = _extends$k({}, this.props, {
             getFormState: /* @__PURE__ */ __name(function getFormState(state2) {
               return getIn3(_this3.props.getFormState(state2), _this3.props.form);
             }, "getFormState"),
@@ -31755,7 +31765,7 @@ function createReduxForm(structure$1) {
           swap: bindActionCreators(boundArrayACs.arraySwap, dispatch),
           unshift: bindActionCreators(boundArrayACs.arrayUnshift, dispatch)
         };
-        return _extends$j({}, connectedFormACs, {}, boundArrayACs, {
+        return _extends$k({}, connectedFormACs, {}, boundArrayACs, {
           blur: boundBlur,
           change: boundChange,
           array: connectedArrayACs,
@@ -31790,7 +31800,7 @@ function createReduxForm(structure$1) {
         }, "reset");
         _proto2.render = /* @__PURE__ */ __name(function render3() {
           var _this$props13 = this.props, initialValues2 = _this$props13.initialValues, rest = _objectWithoutPropertiesLoose$5(_this$props13, ["initialValues"]);
-          return reactExports.createElement(ConnectedForm, _extends$j({}, rest, {
+          return reactExports.createElement(ConnectedForm, _extends$k({}, rest, {
             ref: this.ref,
             // convert initialValues if need to
             initialValues: fromJS2(initialValues2)
@@ -35470,6 +35480,15 @@ function baseLt(value, other) {
   return value < other;
 }
 __name(baseLt, "baseLt");
+function mapValues$1(object3, iteratee) {
+  var result = {};
+  iteratee = baseIteratee(iteratee);
+  baseForOwn(object3, function(value, key, object4) {
+    baseAssignValue(result, key, iteratee(value, key, object4));
+  });
+  return result;
+}
+__name(mapValues$1, "mapValues$1");
 function baseExtremum(array2, iteratee, comparator) {
   var index2 = -1, length = array2.length;
   while (++index2 < length) {
@@ -36094,7 +36113,7 @@ var mapProps = /* @__PURE__ */ __name(function mapProps2(propsMapper) {
 }, "mapProps2");
 var withProps = /* @__PURE__ */ __name(function withProps2(input) {
   var hoc = mapProps(function(props) {
-    return _extends$j({}, props, typeof input === "function" ? input(props) : input);
+    return _extends$k({}, props, typeof input === "function" ? input(props) : input);
   });
   return hoc;
 }, "withProps2");
@@ -36167,7 +36186,7 @@ var withHandlers = /* @__PURE__ */ __name(function withHandlers2(handlers2) {
       __name(WithHandlers2, "WithHandlers2");
       var _proto = WithHandlers2.prototype;
       _proto.render = /* @__PURE__ */ __name(function render3() {
-        return factory(_extends$j({}, this.props, this.handlers));
+        return factory(_extends$k({}, this.props, this.handlers));
       }, "render");
       return WithHandlers2;
     }(reactExports.Component);
@@ -36242,7 +36261,7 @@ var lifecycle = /* @__PURE__ */ __name(function lifecycle2(spec) {
       __name(Lifecycle22, "Lifecycle2");
       var _proto = Lifecycle22.prototype;
       _proto.render = /* @__PURE__ */ __name(function render3() {
-        return factory(_extends$j({}, this.props, this.state));
+        return factory(_extends$k({}, this.props, this.state));
       }, "render");
       return Lifecycle22;
     }(reactExports.Component);
@@ -36344,6 +36363,195 @@ function DialogFooter({
   );
 }
 __name(DialogFooter, "DialogFooter");
+var NOT_FOUND = "NOT_FOUND";
+function createSingletonCache(equals2) {
+  var entry;
+  return {
+    get: /* @__PURE__ */ __name(function get7(key) {
+      if (entry && equals2(entry.key, key)) {
+        return entry.value;
+      }
+      return NOT_FOUND;
+    }, "get"),
+    put: /* @__PURE__ */ __name(function put(key, value) {
+      entry = {
+        key,
+        value
+      };
+    }, "put"),
+    getEntries: /* @__PURE__ */ __name(function getEntries() {
+      return entry ? [entry] : [];
+    }, "getEntries"),
+    clear: /* @__PURE__ */ __name(function clear3() {
+      entry = void 0;
+    }, "clear")
+  };
+}
+__name(createSingletonCache, "createSingletonCache");
+function createLruCache(maxSize, equals2) {
+  var entries2 = [];
+  function get7(key) {
+    var cacheIndex = entries2.findIndex(function(entry2) {
+      return equals2(key, entry2.key);
+    });
+    if (cacheIndex > -1) {
+      var entry = entries2[cacheIndex];
+      if (cacheIndex > 0) {
+        entries2.splice(cacheIndex, 1);
+        entries2.unshift(entry);
+      }
+      return entry.value;
+    }
+    return NOT_FOUND;
+  }
+  __name(get7, "get");
+  function put(key, value) {
+    if (get7(key) === NOT_FOUND) {
+      entries2.unshift({
+        key,
+        value
+      });
+      if (entries2.length > maxSize) {
+        entries2.pop();
+      }
+    }
+  }
+  __name(put, "put");
+  function getEntries() {
+    return entries2;
+  }
+  __name(getEntries, "getEntries");
+  function clear3() {
+    entries2 = [];
+  }
+  __name(clear3, "clear");
+  return {
+    get: get7,
+    put,
+    getEntries,
+    clear: clear3
+  };
+}
+__name(createLruCache, "createLruCache");
+var defaultEqualityCheck = /* @__PURE__ */ __name(function defaultEqualityCheck2(a2, b3) {
+  return a2 === b3;
+}, "defaultEqualityCheck");
+function createCacheKeyComparator(equalityCheck) {
+  return /* @__PURE__ */ __name(function areArgumentsShallowlyEqual(prev, next) {
+    if (prev === null || next === null || prev.length !== next.length) {
+      return false;
+    }
+    var length = prev.length;
+    for (var i2 = 0; i2 < length; i2++) {
+      if (!equalityCheck(prev[i2], next[i2])) {
+        return false;
+      }
+    }
+    return true;
+  }, "areArgumentsShallowlyEqual");
+}
+__name(createCacheKeyComparator, "createCacheKeyComparator");
+function defaultMemoize(func, equalityCheckOrOptions) {
+  var providedOptions = typeof equalityCheckOrOptions === "object" ? equalityCheckOrOptions : {
+    equalityCheck: equalityCheckOrOptions
+  };
+  var _providedOptions$equa = providedOptions.equalityCheck, equalityCheck = _providedOptions$equa === void 0 ? defaultEqualityCheck : _providedOptions$equa, _providedOptions$maxS = providedOptions.maxSize, maxSize = _providedOptions$maxS === void 0 ? 1 : _providedOptions$maxS, resultEqualityCheck = providedOptions.resultEqualityCheck;
+  var comparator = createCacheKeyComparator(equalityCheck);
+  var cache2 = maxSize === 1 ? createSingletonCache(comparator) : createLruCache(maxSize, comparator);
+  function memoized() {
+    var value = cache2.get(arguments);
+    if (value === NOT_FOUND) {
+      value = func.apply(null, arguments);
+      if (resultEqualityCheck) {
+        var entries2 = cache2.getEntries();
+        var matchingEntry = entries2.find(function(entry) {
+          return resultEqualityCheck(entry.value, value);
+        });
+        if (matchingEntry) {
+          value = matchingEntry.value;
+        }
+      }
+      cache2.put(arguments, value);
+    }
+    return value;
+  }
+  __name(memoized, "memoized");
+  memoized.clearCache = function() {
+    return cache2.clear();
+  };
+  return memoized;
+}
+__name(defaultMemoize, "defaultMemoize");
+function getDependencies(funcs) {
+  var dependencies2 = Array.isArray(funcs[0]) ? funcs[0] : funcs;
+  if (!dependencies2.every(function(dep) {
+    return typeof dep === "function";
+  })) {
+    var dependencyTypes = dependencies2.map(function(dep) {
+      return typeof dep === "function" ? "function " + (dep.name || "unnamed") + "()" : typeof dep;
+    }).join(", ");
+    throw new Error("createSelector expects all input-selectors to be functions, but received the following types: [" + dependencyTypes + "]");
+  }
+  return dependencies2;
+}
+__name(getDependencies, "getDependencies");
+function createSelectorCreator(memoize2) {
+  for (var _len = arguments.length, memoizeOptionsFromArgs = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+    memoizeOptionsFromArgs[_key - 1] = arguments[_key];
+  }
+  var createSelector2 = /* @__PURE__ */ __name(function createSelector3() {
+    for (var _len2 = arguments.length, funcs = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+      funcs[_key2] = arguments[_key2];
+    }
+    var _recomputations = 0;
+    var _lastResult;
+    var directlyPassedOptions = {
+      memoizeOptions: void 0
+    };
+    var resultFunc = funcs.pop();
+    if (typeof resultFunc === "object") {
+      directlyPassedOptions = resultFunc;
+      resultFunc = funcs.pop();
+    }
+    if (typeof resultFunc !== "function") {
+      throw new Error("createSelector expects an output function after the inputs, but received: [" + typeof resultFunc + "]");
+    }
+    var _directlyPassedOption = directlyPassedOptions, _directlyPassedOption2 = _directlyPassedOption.memoizeOptions, memoizeOptions = _directlyPassedOption2 === void 0 ? memoizeOptionsFromArgs : _directlyPassedOption2;
+    var finalMemoizeOptions = Array.isArray(memoizeOptions) ? memoizeOptions : [memoizeOptions];
+    var dependencies2 = getDependencies(funcs);
+    var memoizedResultFunc = memoize2.apply(void 0, [/* @__PURE__ */ __name(function recomputationWrapper() {
+      _recomputations++;
+      return resultFunc.apply(null, arguments);
+    }, "recomputationWrapper")].concat(finalMemoizeOptions));
+    var selector = memoize2(/* @__PURE__ */ __name(function dependenciesChecker() {
+      var params = [];
+      var length = dependencies2.length;
+      for (var i2 = 0; i2 < length; i2++) {
+        params.push(dependencies2[i2].apply(null, arguments));
+      }
+      _lastResult = memoizedResultFunc.apply(null, params);
+      return _lastResult;
+    }, "dependenciesChecker"));
+    Object.assign(selector, {
+      resultFunc,
+      memoizedResultFunc,
+      dependencies: dependencies2,
+      lastResult: /* @__PURE__ */ __name(function lastResult() {
+        return _lastResult;
+      }, "lastResult"),
+      recomputations: /* @__PURE__ */ __name(function recomputations() {
+        return _recomputations;
+      }, "recomputations"),
+      resetRecomputations: /* @__PURE__ */ __name(function resetRecomputations() {
+        return _recomputations = 0;
+      }, "resetRecomputations")
+    });
+    return selector;
+  }, "createSelector");
+  return createSelector2;
+}
+__name(createSelectorCreator, "createSelectorCreator");
+var createSelector = /* @__PURE__ */ createSelectorCreator(defaultMemoize);
 function useCombinedRefs() {
   for (var _len = arguments.length, refs = new Array(_len), _key = 0; _key < _len; _key++) {
     refs[_key] = arguments[_key];
@@ -40311,12 +40519,12 @@ var getComputedStyleX;
 if (typeof window !== "undefined") {
   getComputedStyleX = window.getComputedStyle ? _getComputedStyle : _getComputedStyleIE;
 }
-function each$2(arr, fn4) {
+function each(arr, fn4) {
   for (var i2 = 0; i2 < arr.length; i2++) {
     fn4(arr[i2]);
   }
 }
-__name(each$2, "each$2");
+__name(each, "each");
 function isBorderBoxFn(elem) {
   return getComputedStyleX(elem, "boxSizing") === "border-box";
 }
@@ -40371,7 +40579,7 @@ function isWindow(obj) {
 }
 __name(isWindow, "isWindow");
 var domUtils = {};
-each$2(["Width", "Height"], function(name2) {
+each(["Width", "Height"], function(name2) {
   domUtils["doc".concat(name2)] = function(refWin) {
     var d2 = refWin.document;
     return Math.max(
@@ -40467,7 +40675,7 @@ function css(el, name2, v2) {
   return getComputedStyleX(el, name2);
 }
 __name(css, "css");
-each$2(["width", "height"], function(name2) {
+each(["width", "height"], function(name2) {
   var first = name2.charAt(0).toUpperCase() + name2.slice(1);
   domUtils["outer".concat(first)] = function(el, includeMargin) {
     return el && getWHIgnoreDisplay(el, name2, includeMargin ? MARGIN_INDEX : BORDER_INDEX);
@@ -40518,7 +40726,7 @@ var util$2 = _objectSpread2$2({
     }
   }, "offset"),
   isWindow,
-  each: each$2,
+  each,
   css,
   clone: /* @__PURE__ */ __name(function clone(obj) {
     var ret = {};
@@ -41354,7 +41562,7 @@ function requireReactList() {
 __name(requireReactList, "requireReactList");
 var reactListExports = requireReactList();
 const ReactList = /* @__PURE__ */ getDefaultExportFromCjs(reactListExports);
-var _extends$h = Object.assign || function(target) {
+var _extends$i = Object.assign || function(target) {
   for (var i2 = 1; i2 < arguments.length; i2++) {
     var source = arguments[i2];
     for (var key in source) {
@@ -41504,7 +41712,7 @@ function makeTemplateComponent(compClass, displayName) {
     var children = _ref.children, className = _ref.className, rest = _objectWithoutProperties$3(_ref, ["children", "className"]);
     return React$1.createElement(
       "div",
-      _extends$h({ className: classNames$1(compClass, className) }, rest),
+      _extends$i({ className: classNames$1(compClass, className) }, rest),
       children
     );
   }, "cmp");
@@ -41736,7 +41944,7 @@ var _slicedToArray$3 = /* @__PURE__ */ function() {
     }
   };
 }();
-var _extends$g = Object.assign || function(target) {
+var _extends$h = Object.assign || function(target) {
   for (var i2 = 1; i2 < arguments.length; i2++) {
     var source = arguments[i2];
     for (var key in source) {
@@ -41816,7 +42024,7 @@ const Methods = /* @__PURE__ */ __name(function(Base) {
     _createClass$b(_class, [{
       key: "getResolvedState",
       value: /* @__PURE__ */ __name(function getResolvedState(props, state2) {
-        var resolvedState = _extends$g({}, _$1.compactObject(this.state), _$1.compactObject(this.props), _$1.compactObject(state2), _$1.compactObject(props));
+        var resolvedState = _extends$h({}, _$1.compactObject(this.state), _$1.compactObject(this.props), _$1.compactObject(state2), _$1.compactObject(props));
         return resolvedState;
       }, "getResolvedState")
     }, {
@@ -41848,9 +42056,9 @@ const Methods = /* @__PURE__ */ __name(function(Base) {
         var makeDecoratedColumn = /* @__PURE__ */ __name(function makeDecoratedColumn2(column, parentColumn) {
           var dcol = void 0;
           if (column.expander) {
-            dcol = _extends$g({}, _this2.props.column, _this2.props.expanderDefaults, column);
+            dcol = _extends$h({}, _this2.props.column, _this2.props.expanderDefaults, column);
           } else {
-            dcol = _extends$g({}, _this2.props.column, column);
+            dcol = _extends$h({}, _this2.props.column, column);
           }
           if (dcol.maxWidth < dcol.minWidth) {
             dcol.minWidth = dcol.maxWidth;
@@ -41885,7 +42093,7 @@ const Methods = /* @__PURE__ */ __name(function(Base) {
         }, "decorateAndAddToAll");
         var decoratedColumns = columnsWithExpander.map(function(column) {
           if (column.columns) {
-            return _extends$g({}, column, {
+            return _extends$h({}, column, {
               columns: column.columns.map(function(d2) {
                 return decorateAndAddToAll(d2, column);
               })
@@ -41900,7 +42108,7 @@ const Methods = /* @__PURE__ */ __name(function(Base) {
             var visibleSubColumns = column.columns.filter(function(d2) {
               return pivotBy.indexOf(d2.id) > -1 ? false : _$1.getFirstDefined(d2.show, true);
             });
-            return _extends$g({}, column, {
+            return _extends$h({}, column, {
               columns: visibleSubColumns
             });
           }
@@ -41936,14 +42144,14 @@ const Methods = /* @__PURE__ */ __name(function(Base) {
           var pivotColumnGroup = {
             Header: PivotGroupHeader,
             columns: pivotColumns.map(function(col) {
-              return _extends$g({}, _this2.props.pivotDefaults, col, {
+              return _extends$h({}, _this2.props.pivotDefaults, col, {
                 pivoted: true
               });
             })
             // Place the pivotColumns back into the visibleColumns
           };
           if (pivotIndex >= 0) {
-            pivotColumnGroup = _extends$g({}, visibleColumns[pivotIndex], pivotColumnGroup);
+            pivotColumnGroup = _extends$h({}, visibleColumns[pivotIndex], pivotColumnGroup);
             visibleColumns.splice(pivotIndex, 1, pivotColumnGroup);
           } else {
             visibleColumns.unshift(pivotColumnGroup);
@@ -41952,7 +42160,7 @@ const Methods = /* @__PURE__ */ __name(function(Base) {
         var headerGroups = [];
         var currentSpan = [];
         var addHeader = /* @__PURE__ */ __name(function addHeader2(columns2, column) {
-          headerGroups.push(_extends$g({}, _this2.props.column, column, {
+          headerGroups.push(_extends$h({}, _this2.props.column, column, {
             columns: columns2
           }));
           currentSpan = [];
@@ -42017,13 +42225,13 @@ const Methods = /* @__PURE__ */ __name(function(Base) {
             groupedRows = groupedRows.map(function(rowGroup) {
               var _extends2;
               var subRows = groupRecursively2(rowGroup[subRowsKey], keys3, i2 + 1);
-              return _extends$g({}, rowGroup, (_extends2 = {}, _defineProperty$4(_extends2, subRowsKey, subRows), _defineProperty$4(_extends2, aggregatedKey, true), _extends2), aggregate(subRows));
+              return _extends$h({}, rowGroup, (_extends2 = {}, _defineProperty$4(_extends2, subRowsKey, subRows), _defineProperty$4(_extends2, aggregatedKey, true), _extends2), aggregate(subRows));
             });
             return groupedRows;
           }, "groupRecursively");
           resolvedData = groupRecursively(resolvedData, pivotBy);
         }
-        return _extends$g({}, newState, {
+        return _extends$h({}, newState, {
           resolvedData,
           allVisibleColumns,
           headerGroups,
@@ -42085,7 +42293,7 @@ const Methods = /* @__PURE__ */ __name(function(Base) {
             if (!row[_this3.props.subRowsKey]) {
               return row;
             }
-            return _extends$g({}, row, _defineProperty$4({}, _this3.props.subRowsKey, _this3.filterData(row[_this3.props.subRowsKey], filtered, defaultFilterMethod2, allVisibleColumns)));
+            return _extends$h({}, row, _defineProperty$4({}, _this3.props.subRowsKey, _this3.filterData(row[_this3.props.subRowsKey], filtered, defaultFilterMethod2, allVisibleColumns)));
           }).filter(function(row) {
             if (!row[_this3.props.subRowsKey]) {
               return true;
@@ -42365,7 +42573,7 @@ var _createClass$a = /* @__PURE__ */ function() {
     return Constructor;
   };
 }();
-var _extends$f = Object.assign || function(target) {
+var _extends$g = Object.assign || function(target) {
   for (var i2 = 1; i2 < arguments.length; i2++) {
     var source = arguments[i2];
     for (var key in source) {
@@ -42400,7 +42608,7 @@ __name(_inherits$9, "_inherits$9");
 var defaultButton = /* @__PURE__ */ __name(function defaultButton2(props) {
   return React$1.createElement(
     "button",
-    _extends$f({ type: "button" }, props, { className: "-btn" }),
+    _extends$g({ type: "button" }, props, { className: "-btn" }),
     props.children
   );
 }, "defaultButton");
@@ -42600,7 +42808,7 @@ ReactTablePagination.defaultProps = {
     );
   }, "renderPageSizeOptions")
 };
-var _extends$e = Object.assign || function(target) {
+var _extends$f = Object.assign || function(target) {
   for (var i2 = 1; i2 < arguments.length; i2++) {
     var source = arguments[i2];
     for (var key in source) {
@@ -42791,7 +42999,7 @@ const defaultProps$1 = {
     var children = _ref.children, className = _ref.className, rest = _objectWithoutProperties$2(_ref, ["children", "className"]);
     return React$1.createElement(
       "div",
-      _extends$e({
+      _extends$f({
         className: classNames$1("rt-table", className),
         role: "grid"
         // tabIndex='0'
@@ -42805,7 +43013,7 @@ const defaultProps$1 = {
     var children = _ref2.children, className = _ref2.className, rest = _objectWithoutProperties$2(_ref2, ["children", "className"]);
     return React$1.createElement(
       "div",
-      _extends$e({ className: classNames$1("rt-tr-group", className), role: "rowgroup" }, rest),
+      _extends$f({ className: classNames$1("rt-tr-group", className), role: "rowgroup" }, rest),
       children
     );
   }, "TrGroupComponent"),
@@ -42813,7 +43021,7 @@ const defaultProps$1 = {
     var children = _ref3.children, className = _ref3.className, rest = _objectWithoutProperties$2(_ref3, ["children", "className"]);
     return React$1.createElement(
       "div",
-      _extends$e({ className: classNames$1("rt-tr", className), role: "row" }, rest),
+      _extends$f({ className: classNames$1("rt-tr", className), role: "row" }, rest),
       children
     );
   }, "TrComponent"),
@@ -42823,7 +43031,7 @@ const defaultProps$1 = {
       // eslint-disable-next-line jsx-a11y/click-events-have-key-events
       React$1.createElement(
         "div",
-        _extends$e({
+        _extends$f({
           className: classNames$1("rt-th", className),
           onClick: /* @__PURE__ */ __name(function onClick(e2) {
             return toggleSort && toggleSort(e2);
@@ -42841,7 +43049,7 @@ const defaultProps$1 = {
     var className = _ref5.className, children = _ref5.children, rest = _objectWithoutProperties$2(_ref5, ["toggleSort", "className", "children"]);
     return React$1.createElement(
       "div",
-      _extends$e({ className: classNames$1("rt-td", className), role: "gridcell" }, rest),
+      _extends$f({ className: classNames$1("rt-td", className), role: "gridcell" }, rest),
       children
     );
   }, "TdComponent"),
@@ -42909,7 +43117,7 @@ const defaultProps$1 = {
     var className = _ref10.className, loading = _ref10.loading, loadingText = _ref10.loadingText, rest = _objectWithoutProperties$2(_ref10, ["className", "loading", "loadingText"]);
     return React$1.createElement(
       "div",
-      _extends$e({ className: classNames$1("-loading", { "-active": loading }, className) }, rest),
+      _extends$f({ className: classNames$1("-loading", { "-active": loading }, className) }, rest),
       React$1.createElement(
         "div",
         { className: "-loading-inner" },
@@ -43113,7 +43321,7 @@ var _slicedToArray$2 = /* @__PURE__ */ function() {
     }
   };
 }();
-var _extends$d = Object.assign || function(target) {
+var _extends$e = Object.assign || function(target) {
   for (var i2 = 1; i2 < arguments.length; i2++) {
     var source = arguments[i2];
     for (var key in source) {
@@ -43223,7 +43431,7 @@ var ReactTable = function(_Methods) {
         var index2 = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : -1;
         return [rows.map(function(row, i2) {
           index2 += 1;
-          var rowWithViewIndex = _extends$d({}, row, {
+          var rowWithViewIndex = _extends$e({}, row, {
             _viewIndex: index2
           });
           var newPath = path2.concat([i2]);
@@ -43248,7 +43456,7 @@ var ReactTable = function(_Methods) {
         return _$1.getFirstDefined(resizedColumn.value, d2.width, d2.minWidth);
       }));
       var rowIndex = -1;
-      var finalState = _extends$d({}, resolvedState, {
+      var finalState = _extends$e({}, resolvedState, {
         startRow,
         endRow,
         pageRows,
@@ -43282,8 +43490,8 @@ var ReactTable = function(_Methods) {
         var theadGroupThProps = _$1.splitProps(getTheadGroupThProps(finalState, void 0, column, _this2));
         var columnHeaderProps = _$1.splitProps(column.getHeaderProps(finalState, void 0, column, _this2));
         var classes = [column.headerClassName, theadGroupThProps.className, columnHeaderProps.className];
-        var styles2 = _extends$d({}, column.headerStyle, theadGroupThProps.style, columnHeaderProps.style);
-        var rest = _extends$d({}, theadGroupThProps.rest, columnHeaderProps.rest);
+        var styles2 = _extends$e({}, column.headerStyle, theadGroupThProps.style, columnHeaderProps.style);
+        var rest = _extends$e({}, theadGroupThProps.rest, columnHeaderProps.rest);
         var flexStyles = {
           flex: flex + " 0 auto",
           width: _$1.asPx(width),
@@ -43291,10 +43499,10 @@ var ReactTable = function(_Methods) {
         };
         return React$1.createElement(
           ThComponent3,
-          _extends$d({
+          _extends$e({
             key: i2 + "-" + column.id,
             className: classNames$1(classes),
-            style: _extends$d({}, styles2, flexStyles)
+            style: _extends$e({}, styles2, flexStyles)
           }, rest),
           _$1.normalizeComponent(column.Header, {
             data: sortedData,
@@ -43307,15 +43515,15 @@ var ReactTable = function(_Methods) {
         var theadGroupTrProps = _$1.splitProps(getTheadGroupTrProps(finalState, void 0, void 0, _this2));
         return React$1.createElement(
           TheadComponent,
-          _extends$d({
+          _extends$e({
             className: classNames$1("-headerGroups", theadGroupProps.className),
-            style: _extends$d({}, theadGroupProps.style, {
+            style: _extends$e({}, theadGroupProps.style, {
               minWidth: rowMinWidth + "px"
             })
           }, theadGroupProps.rest),
           React$1.createElement(
             TrComponent2,
-            _extends$d({
+            _extends$e({
               className: theadGroupTrProps.className,
               style: theadGroupTrProps.style
             }, theadGroupTrProps.rest),
@@ -43336,10 +43544,10 @@ var ReactTable = function(_Methods) {
         var theadThProps = _$1.splitProps(getTheadThProps(finalState, void 0, column, _this2));
         var columnHeaderProps = _$1.splitProps(column.getHeaderProps(finalState, void 0, column, _this2));
         var classes = [column.headerClassName, theadThProps.className, columnHeaderProps.className];
-        var styles2 = _extends$d({}, column.headerStyle, theadThProps.style, columnHeaderProps.style);
-        var rest = _extends$d({}, theadThProps.rest, columnHeaderProps.rest);
+        var styles2 = _extends$e({}, column.headerStyle, theadThProps.style, columnHeaderProps.style);
+        var rest = _extends$e({}, theadThProps.rest, columnHeaderProps.rest);
         var isResizable = _$1.getFirstDefined(column.resizable, resizable, false);
-        var resizer = isResizable ? React$1.createElement(ResizerComponent, _extends$d({
+        var resizer = isResizable ? React$1.createElement(ResizerComponent, _extends$e({
           onMouseDown: /* @__PURE__ */ __name(function onMouseDown(e2) {
             return _this2.resizeColumnStart(e2, column, false);
           }, "onMouseDown"),
@@ -43350,10 +43558,10 @@ var ReactTable = function(_Methods) {
         var isSortable = _$1.getFirstDefined(column.sortable, sortable, false);
         return React$1.createElement(
           ThComponent3,
-          _extends$d({
+          _extends$e({
             key: i2 + "-" + column.id,
             className: classNames$1(classes, isResizable && "rt-resizable-header", sort2 ? sort2.desc ? "-sort-desc" : "-sort-asc" : "", isSortable && "-cursor-pointer", !show2 && "-hidden", pivotBy && pivotBy.slice(0, -1).includes(column.id) && "rt-header-pivot"),
-            style: _extends$d({}, styles2, {
+            style: _extends$e({}, styles2, {
               flex: width + " 0 auto",
               width: _$1.asPx(width),
               maxWidth: _$1.asPx(maxWidth)
@@ -43378,15 +43586,15 @@ var ReactTable = function(_Methods) {
         var theadTrProps = _$1.splitProps(getTheadTrProps(finalState, void 0, void 0, _this2));
         return React$1.createElement(
           TheadComponent,
-          _extends$d({
+          _extends$e({
             className: classNames$1("-header", theadProps.className),
-            style: _extends$d({}, theadProps.style, {
+            style: _extends$e({}, theadProps.style, {
               minWidth: rowMinWidth + "px"
             })
           }, theadProps.rest),
           React$1.createElement(
             TrComponent2,
-            _extends$d({
+            _extends$e({
               className: theadTrProps.className,
               style: theadTrProps.style
             }, theadTrProps.rest),
@@ -43403,8 +43611,8 @@ var ReactTable = function(_Methods) {
         var theadFilterThProps = _$1.splitProps(getTheadFilterThProps(finalState, void 0, column, _this2));
         var columnHeaderProps = _$1.splitProps(column.getHeaderProps(finalState, void 0, column, _this2));
         var classes = [column.headerClassName, theadFilterThProps.className, columnHeaderProps.className];
-        var styles2 = _extends$d({}, column.headerStyle, theadFilterThProps.style, columnHeaderProps.style);
-        var rest = _extends$d({}, theadFilterThProps.rest, columnHeaderProps.rest);
+        var styles2 = _extends$e({}, column.headerStyle, theadFilterThProps.style, columnHeaderProps.style);
+        var rest = _extends$e({}, theadFilterThProps.rest, columnHeaderProps.rest);
         var filter2 = filtered.find(function(filter3) {
           return filter3.id === column.id;
         });
@@ -43412,10 +43620,10 @@ var ReactTable = function(_Methods) {
         var isFilterable = _$1.getFirstDefined(column.filterable, filterable, false);
         return React$1.createElement(
           ThComponent3,
-          _extends$d({
+          _extends$e({
             key: i2 + "-" + column.id,
             className: classNames$1(classes),
-            style: _extends$d({}, styles2, {
+            style: _extends$e({}, styles2, {
               flex: width + " 0 auto",
               width: _$1.asPx(width),
               maxWidth: _$1.asPx(maxWidth)
@@ -43435,15 +43643,15 @@ var ReactTable = function(_Methods) {
         var theadFilterTrProps = _$1.splitProps(getTheadFilterTrProps(finalState, void 0, void 0, _this2));
         return React$1.createElement(
           TheadComponent,
-          _extends$d({
+          _extends$e({
             className: classNames$1("-filters", theadFilterProps.className),
-            style: _extends$d({}, theadFilterProps.style, {
+            style: _extends$e({}, theadFilterProps.style, {
               minWidth: rowMinWidth + "px"
             })
           }, theadFilterProps.rest),
           React$1.createElement(
             TrComponent2,
-            _extends$d({
+            _extends$e({
               className: theadFilterTrProps.className,
               style: theadFilterTrProps.style
             }, theadFilterTrProps.rest),
@@ -43471,10 +43679,10 @@ var ReactTable = function(_Methods) {
         var trProps = _$1.splitProps(getTrProps(finalState, rowInfo, void 0, _this2));
         return React$1.createElement(
           TrGroupComponent2,
-          _extends$d({ key: rowInfo.nestingPath.join("_") }, trGroupProps),
+          _extends$e({ key: rowInfo.nestingPath.join("_") }, trGroupProps),
           React$1.createElement(
             TrComponent2,
-            _extends$d({
+            _extends$e({
               className: classNames$1(trProps.className, row._viewIndex % 2 ? "-even" : "-odd"),
               style: trProps.style
             }, trProps.rest),
@@ -43488,10 +43696,10 @@ var ReactTable = function(_Methods) {
               var tdProps = _$1.splitProps(getTdProps(finalState, rowInfo, column, _this2));
               var columnProps = _$1.splitProps(column.getProps(finalState, rowInfo, column, _this2));
               var classes = [tdProps.className, column.className, columnProps.className];
-              var styles2 = _extends$d({}, tdProps.style, column.style, columnProps.style);
-              var cellInfo = _extends$d({}, rowInfo, {
+              var styles2 = _extends$e({}, tdProps.style, column.style, columnProps.style);
+              var cellInfo = _extends$e({}, rowInfo, {
                 isExpanded,
-                column: _extends$d({}, column),
+                column: _extends$e({}, column),
                 value: rowInfo.row[column.id],
                 pivoted: column.pivoted,
                 expander: column.expander,
@@ -43545,7 +43753,7 @@ var ReactTable = function(_Methods) {
                 isBranch = rowInfo.row[pivotIDKey] === column.id && cellInfo.subRows;
                 isPreview = pivotBy.indexOf(column.id) > pivotBy.indexOf(rowInfo.row[pivotIDKey]) && cellInfo.subRows;
                 if (isBranch) {
-                  resolvedCell = _$1.normalizeComponent(ResolvedPivotComponent, _extends$d({}, cellInfo, {
+                  resolvedCell = _$1.normalizeComponent(ResolvedPivotComponent, _extends$e({}, cellInfo, {
                     value: row[pivotValKey]
                   }), row[pivotValKey]);
                 } else if (isPreview) {
@@ -43588,10 +43796,10 @@ var ReactTable = function(_Methods) {
               }
               return React$1.createElement(
                 TdComponent2,
-                _extends$d({
+                _extends$e({
                   key: i22 + "-" + column.id,
                   className: classNames$1(classes, !cellInfo.expandable && !show2 && "hidden", cellInfo.expandable && "rt-expandable", (isBranch || isPreview) && "rt-pivot"),
-                  style: _extends$d({}, styles2, {
+                  style: _extends$e({}, styles2, {
                     flex: width + " 0 auto",
                     width: _$1.asPx(width),
                     maxWidth: _$1.asPx(maxWidth)
@@ -43621,13 +43829,13 @@ var ReactTable = function(_Methods) {
         var tdProps = _$1.splitProps(getTdProps(finalState, void 0, column, _this2));
         var columnProps = _$1.splitProps(column.getProps(finalState, void 0, column, _this2));
         var classes = [tdProps.className, column.className, columnProps.className];
-        var styles2 = _extends$d({}, tdProps.style, column.style, columnProps.style);
+        var styles2 = _extends$e({}, tdProps.style, column.style, columnProps.style);
         return React$1.createElement(
           TdComponent2,
-          _extends$d({
+          _extends$e({
             key: i2 + "-" + column.id,
             className: classNames$1(classes, !show2 && "hidden"),
-            style: _extends$d({}, styles2, {
+            style: _extends$e({}, styles2, {
               flex: flex + " 0 auto",
               width: _$1.asPx(width),
               maxWidth: _$1.asPx(maxWidth)
@@ -43641,7 +43849,7 @@ var ReactTable = function(_Methods) {
         var trProps = _$1.splitProps(getTrProps(finalState, void 0, void 0, _this2));
         return React$1.createElement(
           TrGroupComponent2,
-          _extends$d({ key: "pad-" + i2 }, trGroupProps),
+          _extends$e({ key: "pad-" + i2 }, trGroupProps),
           React$1.createElement(
             TrComponent2,
             {
@@ -43663,13 +43871,13 @@ var ReactTable = function(_Methods) {
         var columnProps = _$1.splitProps(column.getProps(finalState, void 0, column, _this2));
         var columnFooterProps = _$1.splitProps(column.getFooterProps(finalState, void 0, column, _this2));
         var classes = [tFootTdProps.className, column.className, columnProps.className, columnFooterProps.className];
-        var styles2 = _extends$d({}, tFootTdProps.style, column.style, columnProps.style, columnFooterProps.style);
+        var styles2 = _extends$e({}, tFootTdProps.style, column.style, columnProps.style, columnFooterProps.style);
         return React$1.createElement(
           TdComponent2,
-          _extends$d({
+          _extends$e({
             key: i2 + "-" + column.id,
             className: classNames$1(classes, !show2 && "hidden"),
-            style: _extends$d({}, styles2, {
+            style: _extends$e({}, styles2, {
               flex: width + " 0 auto",
               width: _$1.asPx(width),
               maxWidth: _$1.asPx(maxWidth)
@@ -43686,15 +43894,15 @@ var ReactTable = function(_Methods) {
         var tFootTrProps = _$1.splitProps(getTfootTrProps(finalState, void 0, void 0, _this2));
         return React$1.createElement(
           TfootComponent,
-          _extends$d({
+          _extends$e({
             className: tFootProps.className,
-            style: _extends$d({}, tFootProps.style, {
+            style: _extends$e({}, tFootProps.style, {
               minWidth: rowMinWidth + "px"
             })
           }, tFootProps.rest),
           React$1.createElement(
             TrComponent2,
-            _extends$d({
+            _extends$e({
               className: classNames$1(tFootTrProps.className),
               style: tFootTrProps.style
             }, tFootTrProps.rest),
@@ -43704,7 +43912,7 @@ var ReactTable = function(_Methods) {
       }, "makeColumnFooters");
       var makePagination = /* @__PURE__ */ __name(function makePagination2(isTop) {
         var paginationProps = _$1.splitProps(getPaginationProps(finalState, void 0, void 0, _this2));
-        return React$1.createElement(PaginationComponent, _extends$d({}, resolvedState, {
+        return React$1.createElement(PaginationComponent, _extends$e({}, resolvedState, {
           pages,
           canPrevious,
           canNext,
@@ -43718,9 +43926,9 @@ var ReactTable = function(_Methods) {
       var makeTable = /* @__PURE__ */ __name(function makeTable2() {
         return React$1.createElement(
           "div",
-          _extends$d({
+          _extends$e({
             className: classNames$1("ReactTable", className, rootProps.className),
-            style: _extends$d({}, style2, rootProps.style)
+            style: _extends$e({}, style2, rootProps.style)
           }, rootProps.rest, {
             ref: /* @__PURE__ */ __name(function ref2(r2) {
               if (!r2) return;
@@ -43737,7 +43945,7 @@ var ReactTable = function(_Methods) {
           ) : null,
           React$1.createElement(
             TableComponent2,
-            _extends$d({
+            _extends$e({
               className: classNames$1(tableProps.className, currentlyResizing ? "rt-resizing" : ""),
               style: tableProps.style
             }, tableProps.rest),
@@ -43746,9 +43954,9 @@ var ReactTable = function(_Methods) {
             hasFilters ? makeFilters() : null,
             React$1.createElement(
               TbodyComponent,
-              _extends$d({
+              _extends$e({
                 className: classNames$1(tBodyProps.className),
-                style: _extends$d({}, tBodyProps.style, {
+                style: _extends$e({}, tBodyProps.style, {
                   minWidth: rowMinWidth + "px"
                 })
               }, tBodyProps.rest),
@@ -43777,7 +43985,7 @@ var ReactTable = function(_Methods) {
             noDataProps,
             _$1.normalizeComponent(noDataText)
           ),
-          React$1.createElement(LoadingComponent3, _extends$d({ loading, loadingText }, loadingProps))
+          React$1.createElement(LoadingComponent3, _extends$e({ loading, loadingText }, loadingProps))
         );
       }, "makeTable");
       return children ? children(finalState, makeTable, this) : makeTable();
@@ -44232,10 +44440,25 @@ function requireCopyToClipboard() {
 __name(requireCopyToClipboard, "requireCopyToClipboard");
 var copyToClipboardExports = requireCopyToClipboard();
 const copyToClipboard = /* @__PURE__ */ getDefaultExportFromCjs(copyToClipboardExports);
+const HTML_ESCAPES = {
+  "&": "&amp;",
+  "<": "&lt;",
+  ">": "&gt;",
+  '"': "&quot;"
+};
+const escapeHtml = /* @__PURE__ */ __name((value) => String(value != null ? value : "").replace(/[&<>"]/g, (c2) => HTML_ESCAPES[c2]), "escapeHtml");
+const tsvToHtmlTable = /* @__PURE__ */ __name((tsv) => {
+  const rows = String(tsv != null ? tsv : "").split("\n").map((line) => {
+    const cells = line.split("	").map((v2) => `<td>${escapeHtml(v2)}</td>`).join("");
+    return `<tr>${cells}</tr>`;
+  }).join("");
+  return `<table>${rows}</table>`;
+}, "tsvToHtmlTable");
 const handleCopyHelper = /* @__PURE__ */ __name((stringToCopy, jsonToCopy, message) => {
   !window.Cypress && copyToClipboard(stringToCopy, {
     onCopy: /* @__PURE__ */ __name((clipboardData) => {
       clipboardData.setData("application/json", JSON.stringify(jsonToCopy));
+      clipboardData.setData("text/html", tsvToHtmlTable(stringToCopy));
     }, "onCopy"),
     // keep this so that pasting into spreadsheets works.
     format: "text/plain"
@@ -44349,23 +44572,6 @@ const useTableEntities = /* @__PURE__ */ __name((tableFormName) => {
   const { allOrderedEntities, selectedEntities } = useSelector(entitySelector);
   return { selectTableEntities, allOrderedEntities, selectedEntities };
 }, "useTableEntities");
-const isEqualIgnoreFunctions = /* @__PURE__ */ __name((o1, o2) => {
-  const isEq = isEqualWith(o1, o2, function(val1, val2) {
-    if (isFunction$1(val1) && isFunction$1(val2)) {
-      return val1 === val2 || val1.toString() === val2.toString();
-    }
-    if (val1 && val1.constructor && val1.constructor.name === "FiberNode")
-      return true;
-  });
-  return isEq;
-}, "isEqualIgnoreFunctions");
-const useDeepEqualMemo = /* @__PURE__ */ __name((value) => {
-  const ref2 = reactExports.useRef();
-  if (!isEqualIgnoreFunctions(value, ref2.current)) {
-    ref2.current = value;
-  }
-  return ref2.current;
-}, "useDeepEqualMemo");
 function rowClick(e2, rowInfo, entities, {
   reduxFormSelectedEntityIdMap,
   isSingleSelect,
@@ -44378,7 +44584,8 @@ function rowClick(e2, rowInfo, entities, {
   onMultiRowSelect,
   noDeselectAll,
   onRowSelect,
-  change: change3
+  change: change3,
+  getCheckboxGroupId
 }) {
   const entity = rowInfo.original;
   onRowClick(e2, entity, rowInfo);
@@ -44448,6 +44655,38 @@ function rowClick(e2, rowInfo, entities, {
           newIdMap[rowId].time = Date.now() + 1;
         }
       }
+    }
+  }
+  if (getCheckboxGroupId) {
+    const clickedRowId = rowId;
+    const clickedEntity = entity;
+    const clickedGroupId = getCheckboxGroupId(clickedEntity, rowInfo.index);
+    if (!newIdMap[clickedRowId] && clickedGroupId) {
+      entities.forEach((e22, i2) => {
+        if (getCheckboxGroupId(e22, i2) === clickedGroupId) {
+          const id2 = getIdOrCodeOrIndex(e22, i2);
+          delete newIdMap[id2];
+        }
+      });
+    }
+    const selectedGroupIds = /* @__PURE__ */ new Set();
+    entities.forEach((e22, i2) => {
+      const id2 = getIdOrCodeOrIndex(e22, i2);
+      if (newIdMap[id2]) {
+        const gid = getCheckboxGroupId(e22, i2);
+        if (gid) selectedGroupIds.add(gid);
+      }
+    });
+    if (selectedGroupIds.size > 0) {
+      entities.forEach((e22, i2) => {
+        const gid = getCheckboxGroupId(e22, i2);
+        if (gid && selectedGroupIds.has(gid)) {
+          const id2 = getIdOrCodeOrIndex(e22, i2);
+          if (!newIdMap[id2]) {
+            newIdMap[id2] = { entity: e22, time: Date.now() };
+          }
+        }
+      });
     }
   }
   finalizeSelection({
@@ -46344,6 +46583,23 @@ function applyWhereClause(records, where) {
               if (!isString$1(value) || !new RegExp(conditionValue.replace(/%/g, ".*")).test(value))
                 return false;
               break;
+            case "_in":
+              if (!some2(conditionValue, (item) => isEqual$3(value, item)))
+                return false;
+              break;
+            case "_nin":
+              if (some2(conditionValue, (item) => isEqual$3(value, item)))
+                return false;
+              break;
+            case "_regex": {
+              try {
+                if (!isString$1(value) || !new RegExp(conditionValue).test(value))
+                  return false;
+              } catch (e2) {
+                return false;
+              }
+              break;
+            }
             default:
               if (operator.startsWith("_")) {
                 console.warn(`Unsupported operator: ${operator}`);
@@ -47996,7 +48252,7 @@ var get$2 = /* @__PURE__ */ __name(function get(c1, c2, size3, serverCanvas) {
   checkboardCache[key] = checkboard;
   return checkboard;
 }, "get");
-var _extends$c = Object.assign || function(target) {
+var _extends$d = Object.assign || function(target) {
   for (var i2 = 1; i2 < arguments.length; i2++) {
     var source = arguments[i2];
     for (var key in source) {
@@ -48019,7 +48275,7 @@ var Checkboard = /* @__PURE__ */ __name(function Checkboard2(_ref) {
       }
     }
   });
-  return reactExports.isValidElement(children) ? React$1.cloneElement(children, _extends$c({}, children.props, { style: _extends$c({}, children.props.style, styles2.grid) })) : React$1.createElement("div", { style: styles2.grid });
+  return reactExports.isValidElement(children) ? React$1.cloneElement(children, _extends$d({}, children.props, { style: _extends$d({}, children.props.style, styles2.grid) })) : React$1.createElement("div", { style: styles2.grid });
 }, "Checkboard");
 Checkboard.defaultProps = {
   size: 8,
@@ -48027,7 +48283,7 @@ Checkboard.defaultProps = {
   grey: "rgba(0,0,0,.08)",
   renderers: {}
 };
-var _extends$b = Object.assign || function(target) {
+var _extends$c = Object.assign || function(target) {
   for (var i2 = 1; i2 < arguments.length; i2++) {
     var source = arguments[i2];
     for (var key in source) {
@@ -48155,7 +48411,7 @@ var Alpha = function(_ref) {
             top: rgb.a * 100 + "%"
           }
         },
-        "overwrite": _extends$b({}, this.props.style)
+        "overwrite": _extends$c({}, this.props.style)
       }, {
         vertical: this.props.direction === "vertical",
         overwrite: true
@@ -49905,7 +50161,7 @@ var isvalidColorString = /* @__PURE__ */ __name(function isvalidColorString2(str
   var stringWithoutDegree = string2.replace("°", "");
   return tinycolor(type2 + " (" + stringWithoutDegree + ")")._ok;
 }, "isvalidColorString");
-var _extends$a = Object.assign || function(target) {
+var _extends$b = Object.assign || function(target) {
   for (var i2 = 1; i2 < arguments.length; i2++) {
     var source = arguments[i2];
     for (var key in source) {
@@ -49976,7 +50232,7 @@ var ColorWrap = /* @__PURE__ */ __name(function ColorWrap2(Picker) {
           _this.props.onSwatchHover && _this.props.onSwatchHover(colors, event);
         }
       };
-      _this.state = _extends$a({}, toState(props.color, 0));
+      _this.state = _extends$b({}, toState(props.color, 0));
       _this.debounce = debounce(function(fn4, data, event) {
         fn4(data, event);
       }, 100);
@@ -49990,20 +50246,20 @@ var ColorWrap = /* @__PURE__ */ __name(function ColorWrap2(Picker) {
         if (this.props.onSwatchHover) {
           optionalEvents.onSwatchHover = this.handleSwatchHover;
         }
-        return React$1.createElement(Picker, _extends$a({}, this.props, this.state, {
+        return React$1.createElement(Picker, _extends$b({}, this.props, this.state, {
           onChange: this.handleChange
         }, optionalEvents));
       }, "render")
     }], [{
       key: "getDerivedStateFromProps",
       value: /* @__PURE__ */ __name(function getDerivedStateFromProps(nextProps, state2) {
-        return _extends$a({}, toState(nextProps.color, state2.oldHue));
+        return _extends$b({}, toState(nextProps.color, state2.oldHue));
       }, "getDerivedStateFromProps")
     }]);
     return ColorPicker2;
   }(reactExports.PureComponent || reactExports.Component);
-  ColorPicker.propTypes = _extends$a({}, Picker.propTypes);
-  ColorPicker.defaultProps = _extends$a({}, Picker.defaultProps, {
+  ColorPicker.propTypes = _extends$b({}, Picker.propTypes);
+  ColorPicker.defaultProps = _extends$b({}, Picker.defaultProps, {
     color: {
       h: 250,
       s: 0.5,
@@ -50013,7 +50269,7 @@ var ColorWrap = /* @__PURE__ */ __name(function ColorWrap2(Picker) {
   });
   return ColorPicker;
 }, "ColorWrap");
-var _extends$9 = Object.assign || function(target) {
+var _extends$a = Object.assign || function(target) {
   for (var i2 = 1; i2 < arguments.length; i2++) {
     var source = arguments[i2];
     for (var key in source) {
@@ -50086,14 +50342,14 @@ var handleFocus = /* @__PURE__ */ __name(function handleFocus2(Component) {
         return React$1.createElement(
           Span,
           { onFocus: this.handleFocus, onBlur: this.handleBlur },
-          React$1.createElement(Component, _extends$9({}, this.props, this.state))
+          React$1.createElement(Component, _extends$a({}, this.props, this.state))
         );
       }, "render")
     }]);
     return Focus;
   }(React$1.Component);
 }, "handleFocus");
-var _extends$8 = Object.assign || function(target) {
+var _extends$9 = Object.assign || function(target) {
   for (var i2 = 1; i2 < arguments.length; i2++) {
     var source = arguments[i2];
     for (var key in source) {
@@ -50111,7 +50367,7 @@ var Swatch = /* @__PURE__ */ __name(function Swatch2(_ref) {
   var transparent = color2 === "transparent";
   var styles2 = reactCSS({
     default: {
-      swatch: _extends$8({
+      swatch: _extends$9({
         background: color2,
         height: "100%",
         width: "100%",
@@ -50136,7 +50392,7 @@ var Swatch = /* @__PURE__ */ __name(function Swatch2(_ref) {
   }
   return React$1.createElement(
     "div",
-    _extends$8({
+    _extends$9({
       style: styles2.swatch,
       onClick: handleClick,
       title,
@@ -50172,7 +50428,7 @@ var AlphaPointer = /* @__PURE__ */ __name(function AlphaPointer2(_ref) {
   }, { vertical: direction === "vertical" });
   return React$1.createElement("div", { style: styles2.picker });
 }, "AlphaPointer");
-var _extends$7 = Object.assign || function(target) {
+var _extends$8 = Object.assign || function(target) {
   for (var i2 = 1; i2 < arguments.length; i2++) {
     var source = arguments[i2];
     for (var key in source) {
@@ -50201,7 +50457,7 @@ var AlphaPicker = /* @__PURE__ */ __name(function AlphaPicker2(_ref) {
   return React$1.createElement(
     "div",
     { style: styles2.picker, className: "alpha-picker " + className },
-    React$1.createElement(Alpha, _extends$7({}, styles2.alpha, {
+    React$1.createElement(Alpha, _extends$8({}, styles2.alpha, {
       rgb,
       hsl,
       pointer,
@@ -51447,7 +51703,7 @@ var SliderPointer$1 = /* @__PURE__ */ __name(function SliderPointer(_ref) {
   }, { vertical: direction === "vertical" });
   return React$1.createElement("div", { style: styles2.picker });
 }, "SliderPointer");
-var _extends$6 = Object.assign || function(target) {
+var _extends$7 = Object.assign || function(target) {
   for (var i2 = 1; i2 < arguments.length; i2++) {
     var source = arguments[i2];
     for (var key in source) {
@@ -51478,7 +51734,7 @@ var HuePicker = /* @__PURE__ */ __name(function HuePicker2(_ref) {
   return React$1.createElement(
     "div",
     { style: styles2.picker, className: "hue-picker " + className },
-    React$1.createElement(Hue, _extends$6({}, styles2.hue, {
+    React$1.createElement(Hue, _extends$7({}, styles2.hue, {
       hsl,
       pointer,
       onChange: handleChange,
@@ -52262,7 +52518,7 @@ var SketchFields = /* @__PURE__ */ __name(function SketchFields2(_ref) {
     )
   );
 }, "SketchFields");
-var _extends$5 = Object.assign || function(target) {
+var _extends$6 = Object.assign || function(target) {
   for (var i2 = 1; i2 < arguments.length; i2++) {
     var source = arguments[i2];
     for (var key in source) {
@@ -52319,7 +52575,7 @@ var SketchPresetColors = /* @__PURE__ */ __name(function SketchPresetColors2(_re
       return React$1.createElement(
         "div",
         { key, style: styles2.swatchWrap },
-        React$1.createElement(Swatch$1, _extends$5({}, c2, {
+        React$1.createElement(Swatch$1, _extends$6({}, c2, {
           style: styles2.swatch,
           onClick: handleClick,
           onHover: onSwatchHover,
@@ -52337,7 +52593,7 @@ SketchPresetColors.propTypes = {
     title: PropTypes.string
   })])).isRequired
 };
-var _extends$4 = Object.assign || function(target) {
+var _extends$5 = Object.assign || function(target) {
   for (var i2 = 1; i2 < arguments.length; i2++) {
     var source = arguments[i2];
     for (var key in source) {
@@ -52351,7 +52607,7 @@ var _extends$4 = Object.assign || function(target) {
 var Sketch = /* @__PURE__ */ __name(function Sketch2(_ref) {
   var width = _ref.width, rgb = _ref.rgb, hex = _ref.hex, hsv = _ref.hsv, hsl = _ref.hsl, onChange = _ref.onChange, onSwatchHover = _ref.onSwatchHover, disableAlpha = _ref.disableAlpha, presetColors = _ref.presetColors, renderers = _ref.renderers, _ref$styles = _ref.styles, passedStyles = _ref$styles === void 0 ? {} : _ref$styles, _ref$className = _ref.className, className = _ref$className === void 0 ? "" : _ref$className;
   var styles2 = reactCSS(merge$1({
-    "default": _extends$4({
+    "default": _extends$5({
       picker: {
         width,
         padding: "10px 10px 0",
@@ -61813,7 +62069,7 @@ const _TgSelect = class _TgSelect extends React$1.Component {
     };
   }
   render() {
-    var _b2;
+    var _b2, _c2;
     let _a2 = this.props, {
       multi,
       asTag,
@@ -61913,6 +62169,7 @@ const _TgSelect = class _TgSelect extends React$1.Component {
         (opt) => opt && opt.value === (value2 && value2.value || value2)
       );
     });
+    const inputClassname = `${multi ? "tg-multiselect-input" : "tg-single-select-input"} ${tagInputProps && ((_c2 = tagInputProps.inputProps) == null ? void 0 : _c2.className) || ""}`;
     const toRet = /* @__PURE__ */ React$1.createElement(
       MultiSelect,
       __spreadValues(__spreadValues({
@@ -61989,12 +62246,14 @@ const _TgSelect = class _TgSelect extends React$1.Component {
               this.setOpenState(true);
             }
           }, "onKeyDown"),
-          inputProps: __spreadValues({
+          inputProps: __spreadProps(__spreadValues({
             autoComplete: "off",
             name: "tg-multiselect-input",
             autoFocus: autoFocus || autoOpen,
             onBlur
-          }, tagInputProps && tagInputProps.inputProps)
+          }, tagInputProps && tagInputProps.inputProps), {
+            className: inputClassname
+          })
         })
       }), rest)
     );
@@ -63973,6 +64232,7 @@ const DisplayOptions = /* @__PURE__ */ __name(({
 }, "DisplayOptions");
 const { LoadingComponent: LoadingComponent2 } = ReactTableDefaults;
 function DisabledLoadingComponent({ disabled, loading, loadingText }) {
+  if (!loading) return null;
   return /* @__PURE__ */ React$1.createElement(
     LoadingComponent2,
     {
@@ -64210,7 +64470,7 @@ function createLocation(path2, state2, key, currentLocation) {
     location2 = parsePath(path2);
     location2.state = state2;
   } else {
-    location2 = _extends$j({}, path2);
+    location2 = _extends$k({}, path2);
     if (location2.pathname === void 0) location2.pathname = "";
     if (location2.search) {
       if (location2.search.charAt(0) !== "?") location2.search = "?" + location2.search;
@@ -64368,7 +64628,7 @@ function createBrowserHistory(props) {
   __name(createKey2, "createKey");
   var transitionManager = createTransitionManager();
   function setState(nextState) {
-    _extends$j(history, nextState);
+    _extends$k(history, nextState);
     history.length = globalHistory.length;
     transitionManager.notifyListeners(history.location, history.action);
   }
@@ -64603,7 +64863,7 @@ function createHashHistory(props) {
   __name(getDOMLocation, "getDOMLocation");
   var transitionManager = createTransitionManager();
   function setState(nextState) {
-    _extends$j(history, nextState);
+    _extends$k(history, nextState);
     history.length = globalHistory.length;
     transitionManager.notifyListeners(history.location, history.action);
   }
@@ -64798,7 +65058,7 @@ function createMemoryHistory(props) {
   var _props = props, getUserConfirmation = _props.getUserConfirmation, _props$initialEntries = _props.initialEntries, initialEntries = _props$initialEntries === void 0 ? ["/"] : _props$initialEntries, _props$initialIndex = _props.initialIndex, initialIndex = _props$initialIndex === void 0 ? 0 : _props$initialIndex, _props$keyLength = _props.keyLength, keyLength = _props$keyLength === void 0 ? 6 : _props$keyLength;
   var transitionManager = createTransitionManager();
   function setState(nextState) {
-    _extends$j(history, nextState);
+    _extends$k(history, nextState);
     history.length = history.entries.length;
     transitionManager.notifyListeners(history.location, history.action);
   }
@@ -64907,16 +65167,16 @@ function createMemoryHistory(props) {
   return history;
 }
 __name(createMemoryHistory, "createMemoryHistory");
-function _extends$3() {
-  return _extends$3 = Object.assign ? Object.assign.bind() : function(n2) {
+function _extends$4() {
+  return _extends$4 = Object.assign ? Object.assign.bind() : function(n2) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t2 = arguments[e2];
       for (var r2 in t2) ({}).hasOwnProperty.call(t2, r2) && (n2[r2] = t2[r2]);
     }
     return n2;
-  }, _extends$3.apply(null, arguments);
+  }, _extends$4.apply(null, arguments);
 }
-__name(_extends$3, "_extends$3");
+__name(_extends$4, "_extends$4");
 var pathToRegexp$1 = { exports: {} };
 var isarray;
 var hasRequiredIsarray;
@@ -65519,7 +65779,7 @@ function Redirect(_ref) {
     !context2 ? invariant$1() : void 0;
     var history = context2.history, staticContext = context2.staticContext;
     var method = push3 ? history.push : history.replace;
-    var location2 = createLocation(computedMatch ? typeof to === "string" ? generatePath(to, computedMatch.params) : _extends$3({}, to, {
+    var location2 = createLocation(computedMatch ? typeof to === "string" ? generatePath(to, computedMatch.params) : _extends$4({}, to, {
       pathname: generatePath(to.pathname, computedMatch.params)
     }) : to);
     if (staticContext) {
@@ -65532,7 +65792,7 @@ function Redirect(_ref) {
       }, "onMount"),
       onUpdate: /* @__PURE__ */ __name(function onUpdate2(self2, prevProps) {
         var prevLocation = createLocation(prevProps.to);
-        if (!locationsAreEqual(prevLocation, _extends$3({}, location2, {
+        if (!locationsAreEqual(prevLocation, _extends$4({}, location2, {
           key: prevLocation.key
         }))) {
           method(location2);
@@ -65619,7 +65879,7 @@ var Route = /* @__PURE__ */ function(_React$Component) {
       !context$1 ? invariant$1() : void 0;
       var location2 = _this.props.location || context$1.location;
       var match = _this.props.computedMatch ? _this.props.computedMatch : _this.props.path ? matchPath(location2.pathname, _this.props) : context$1.match;
-      var props = _extends$3({}, context$1, {
+      var props = _extends$4({}, context$1, {
         location: location2,
         match
       });
@@ -65640,7 +65900,7 @@ function addLeadingSlash(path2) {
 __name(addLeadingSlash, "addLeadingSlash");
 function addBasename(basename2, location2) {
   if (!basename2) return location2;
-  return _extends$3({}, location2, {
+  return _extends$4({}, location2, {
     pathname: addLeadingSlash(basename2) + location2.pathname
   });
 }
@@ -65649,7 +65909,7 @@ function stripBasename(basename2, location2) {
   if (!basename2) return location2;
   var base = addLeadingSlash(basename2);
   if (location2.pathname.indexOf(base) !== 0) return location2;
-  return _extends$3({}, location2, {
+  return _extends$4({}, location2, {
     pathname: location2.pathname.substr(base.length)
   });
 }
@@ -65713,7 +65973,7 @@ __name(noop$6, "noop$6");
       listen: this.handleListen,
       block: this.handleBlock
     };
-    return /* @__PURE__ */ React$1.createElement(Router, _extends$3({}, rest, {
+    return /* @__PURE__ */ React$1.createElement(Router, _extends$4({}, rest, {
       history,
       staticContext: context2
     }));
@@ -65737,7 +65997,7 @@ __name(noop$6, "noop$6");
         if (match == null && /* @__PURE__ */ React$1.isValidElement(child)) {
           element2 = child;
           var path2 = child.props.path || child.props.from;
-          match = path2 ? matchPath(location2.pathname, _extends$3({}, child.props, {
+          match = path2 ? matchPath(location2.pathname, _extends$4({}, child.props, {
             path: path2
           })) : context2.match;
         }
@@ -65756,7 +66016,7 @@ function withRouter(Component) {
     var wrappedComponentRef = props.wrappedComponentRef, remainingProps = _objectWithoutPropertiesLoose$3(props, ["wrappedComponentRef"]);
     return /* @__PURE__ */ React$1.createElement(context.Consumer, null, function(context2) {
       !context2 ? invariant$1() : void 0;
-      return /* @__PURE__ */ React$1.createElement(Component, _extends$3({}, remainingProps, context2, {
+      return /* @__PURE__ */ React$1.createElement(Component, _extends$4({}, remainingProps, context2, {
         ref: wrappedComponentRef
       }));
     });
@@ -65777,16 +66037,16 @@ function _inheritsLoose$1(t2, o2) {
   t2.prototype = Object.create(o2.prototype), t2.prototype.constructor = t2, _setPrototypeOf$1(t2, o2);
 }
 __name(_inheritsLoose$1, "_inheritsLoose$1");
-function _extends$2() {
-  return _extends$2 = Object.assign ? Object.assign.bind() : function(n2) {
+function _extends$3() {
+  return _extends$3 = Object.assign ? Object.assign.bind() : function(n2) {
     for (var e2 = 1; e2 < arguments.length; e2++) {
       var t2 = arguments[e2];
       for (var r2 in t2) ({}).hasOwnProperty.call(t2, r2) && (n2[r2] = t2[r2]);
     }
     return n2;
-  }, _extends$2.apply(null, arguments);
+  }, _extends$3.apply(null, arguments);
 }
-__name(_extends$2, "_extends$2");
+__name(_extends$3, "_extends$3");
 function _objectWithoutPropertiesLoose$2(r2, e2) {
   if (null == r2) return {};
   var t2 = {};
@@ -65859,7 +66119,7 @@ __name(isModifiedEvent, "isModifiedEvent");
 var LinkAnchor = forwardRef(function(_ref, forwardedRef) {
   var innerRef = _ref.innerRef, navigate = _ref.navigate, _onClick = _ref.onClick, rest = _objectWithoutPropertiesLoose$2(_ref, ["innerRef", "navigate", "onClick"]);
   var target = rest.target;
-  var props = _extends$2({}, rest, {
+  var props = _extends$3({}, rest, {
     onClick: /* @__PURE__ */ __name(function onClick(event) {
       try {
         if (_onClick) _onClick(event);
@@ -65890,7 +66150,7 @@ var Link = forwardRef(function(_ref2, forwardedRef) {
     var history = context2.history;
     var location2 = normalizeToLocation(resolveToLocation(to, context2.location), context2.location);
     var href = location2 ? history.createHref(location2) : "";
-    var props = _extends$2({}, rest, {
+    var props = _extends$3({}, rest, {
       href,
       navigate: /* @__PURE__ */ __name(function navigate() {
         var location22 = resolveToLocation(to, context2.location);
@@ -65942,9 +66202,9 @@ var NavLink = forwardRef$1(function(_ref, forwardedRef) {
     var style2 = typeof styleProp === "function" ? styleProp(isActive2) : styleProp;
     if (isActive2) {
       className = joinClassnames(className, activeClassName);
-      style2 = _extends$2({}, style2, activeStyle);
+      style2 = _extends$3({}, style2, activeStyle);
     }
-    var props = _extends$2({
+    var props = _extends$3({
       "aria-current": isActive2 && ariaCurrent || null,
       className,
       style: style2,
@@ -79879,7 +80139,7 @@ const FilterAndSortMenu = /* @__PURE__ */ __name(({
       filterValToUse = false;
     } else if (ccSelectedFilter2 === "inList" || ccSelectedFilter2 === "notInList") {
       if (dataType === "number") {
-        filterValToUse = filterValue && filterValue.map((val2) => parseFloat(val2.replaceAll(",", "")));
+        filterValToUse = filterValue && filterValue.map((val2) => parseFloat(`${val2}`.replaceAll(",", "")));
       }
     }
     if (isInvalidFilterValue(filterValToUse)) {
@@ -79985,7 +80245,7 @@ const FilterInput = /* @__PURE__ */ __name(({
           multi: true,
           creatable: true,
           value: (filterValue || []).map((val2) => ({
-            label: val2,
+            label: `${val2}`,
             value: val2
           })),
           onChange: /* @__PURE__ */ __name((selectedOptions) => {
@@ -81138,6 +81398,7 @@ const useColumns = /* @__PURE__ */ __name(({
   resetDefaultVisibility,
   currentParams,
   compact,
+  hideExpandSubCompColumn,
   editingCell,
   editingCellSelectAll,
   entities,
@@ -81185,7 +81446,8 @@ const useColumns = /* @__PURE__ */ __name(({
   withSort = true,
   recordIdToIsVisibleMap,
   setRecordIdToIsVisibleMap,
-  withDisplayOptions
+  withDisplayOptions,
+  getCheckboxGroupId
 }) => {
   const dispatch = useDispatch();
   const change$12 = reactExports.useCallback(
@@ -81433,6 +81695,14 @@ const useColumns = /* @__PURE__ */ __name(({
         return /* @__PURE__ */ React$1.createElement("div", null);
       }
       const entity = entities[rowIndex];
+      if (getCheckboxGroupId) {
+        const currentGroupId = getCheckboxGroupId(entity, rowIndex);
+        const previousEntity = entities[rowIndex - 1];
+        const previousGroupId = previousEntity ? getCheckboxGroupId(previousEntity, rowIndex - 1) : void 0;
+        if (currentGroupId && currentGroupId === previousGroupId) {
+          return /* @__PURE__ */ React$1.createElement("div", null);
+        }
+      }
       return /* @__PURE__ */ React$1.createElement(
         Checkbox,
         {
@@ -81451,7 +81721,8 @@ const useColumns = /* @__PURE__ */ __name(({
               onMultiRowSelect,
               noDeselectAll,
               onRowSelect,
-              change: change$12
+              change: change$12,
+              getCheckboxGroupId
             });
           }, "onClick"),
           checked: isSelected
@@ -81472,7 +81743,8 @@ const useColumns = /* @__PURE__ */ __name(({
       onRowSelect,
       onSingleRowSelect,
       reduxFormSelectedEntityIdMap,
-      withCheckboxes
+      withCheckboxes,
+      getCheckboxGroupId
     ]
   );
   const finishCellEdit = reactExports.useCallback(
@@ -81547,13 +81819,14 @@ const useColumns = /* @__PURE__ */ __name(({
         );
       }, "Header")
     }), {
+      show: !hideExpandSubCompColumn,
       expander: true,
       Expander: /* @__PURE__ */ __name(({ isExpanded, original: record }) => {
         let shouldShow = true;
         if (shouldShowSubComponent) {
           shouldShow = shouldShowSubComponent(record);
         }
-        if (!shouldShow) return null;
+        if (!shouldShow || hideExpandSubCompColumn) return null;
         return /* @__PURE__ */ React$1.createElement(
           Button,
           {
@@ -81921,8 +82194,8 @@ function _createClass(Constructor, protoProps, staticProps) {
   return Constructor;
 }
 __name(_createClass, "_createClass");
-function _extends$1() {
-  _extends$1 = Object.assign ? Object.assign.bind() : function(target) {
+function _extends$2() {
+  _extends$2 = Object.assign ? Object.assign.bind() : function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key in source) {
@@ -81933,9 +82206,9 @@ function _extends$1() {
     }
     return target;
   };
-  return _extends$1.apply(this, arguments);
+  return _extends$2.apply(this, arguments);
 }
-__name(_extends$1, "_extends$1");
+__name(_extends$2, "_extends$2");
 function _inheritsLoose(subClass, superClass) {
   subClass.prototype = Object.create(superClass.prototype);
   subClass.prototype.constructor = subClass;
@@ -82022,7 +82295,7 @@ function createDecoratorAnnotation(annotation) {
 __name(createDecoratorAnnotation, "createDecoratorAnnotation");
 function storeAnnotation(prototype, key, annotation) {
   if (!hasProp(prototype, storedAnnotationsSymbol)) {
-    addHiddenProp(prototype, storedAnnotationsSymbol, _extends$1({}, prototype[storedAnnotationsSymbol]));
+    addHiddenProp(prototype, storedAnnotationsSymbol, _extends$2({}, prototype[storedAnnotationsSymbol]));
   }
   if (!isOverride(annotation)) {
     prototype[storedAnnotationsSymbol][key] = annotation;
@@ -82391,7 +82664,7 @@ function make_$3(adm, key, descriptor) {
 __name(make_$3, "make_$3");
 function extend_$3(adm, key, descriptor, proxyTrap) {
   assertComputedDescriptor(adm, this, key, descriptor);
-  return adm.defineComputedProperty_(key, _extends$1({}, this.options_, {
+  return adm.defineComputedProperty_(key, _extends$2({}, this.options_, {
     get: descriptor.get,
     set: descriptor.set
   }), proxyTrap);
@@ -82402,7 +82675,7 @@ function decorate_20223_$3(get42, context2) {
   var key = context2.name, addInitializer = context2.addInitializer;
   addInitializer(function() {
     var adm = asObservableObject(this)[$mobx];
-    var options = _extends$1({}, ann.options_, {
+    var options = _extends$2({}, ann.options_, {
       get: get42,
       context: this
     });
@@ -85201,7 +85474,7 @@ var ObservableObjectAdministration = /* @__PURE__ */ function() {
         }
         var newValue = change3.newValue;
         if (descriptor.value !== newValue) {
-          descriptor = _extends$1({}, descriptor, {
+          descriptor = _extends$2({}, descriptor, {
             value: newValue
           });
         }
@@ -85806,6 +86079,33 @@ if (typeof __MOBX_DEVTOOLS_GLOBAL_HOOK__ === "object") {
     $mobx
   });
 }
+const isEqualIgnoreFunctions = /* @__PURE__ */ __name((o1, o2) => {
+  const isEq = isEqualWith(o1, o2, function(val1, val2) {
+    if (isFunction$1(val1) && isFunction$1(val2)) {
+      return val1 === val2 || val1.toString() === val2.toString();
+    }
+    if (val1 && val1.constructor && val1.constructor.name === "FiberNode")
+      return true;
+  });
+  return isEq;
+}, "isEqualIgnoreFunctions");
+const useDeepEqualMemoIgnoreFns = /* @__PURE__ */ __name((value) => {
+  const ref2 = reactExports.useRef();
+  if (!isEqualIgnoreFunctions(value, ref2.current)) {
+    ref2.current = value;
+  }
+  return ref2.current;
+}, "useDeepEqualMemoIgnoreFns");
+const useDeepEqualMemo = /* @__PURE__ */ __name((value) => {
+  const ref2 = reactExports.useRef();
+  if (!isEqual$3(value, ref2.current)) {
+    ref2.current = value;
+  }
+  return ref2.current;
+}, "useDeepEqualMemo");
+const useMemoDeepEqual = /* @__PURE__ */ __name((value, depsArray) => {
+  return reactExports.useMemo(value, useDeepEqualMemo(depsArray));
+}, "useMemoDeepEqual");
 T$1();
 const IS_LINUX = window.navigator.platform.toLowerCase().search("linux") > -1;
 const itemSizeEstimators = {
@@ -85877,24 +86177,32 @@ const DataTable = /* @__PURE__ */ __name((_A) => {
     }
     return false;
   });
+  const dtFormParamsSelector = reactExports.useMemo(
+    () => createSelector(
+      (state2) => formValueSelector(formName2)(
+        state2,
+        "reduxFormCellValidation",
+        "reduxFormEntities",
+        "reduxFormQueryParams",
+        "reduxFormSelectedEntityIdMap"
+      ),
+      (result) => result
+      // identity, but memoized
+    ),
+    [formName2]
+  );
   const {
     reduxFormCellValidation: _reduxFormCellValidation,
     reduxFormEditingCell,
     reduxFormEntities,
     reduxFormQueryParams: _reduxFormQueryParams = {},
     reduxFormSelectedEntityIdMap: _reduxFormSelectedEntityIdMap = {}
-  } = useSelector(/* @__PURE__ */ __name(function dtFormParamsSelector(state2) {
-    return formValueSelector(formName2)(
-      state2,
-      "reduxFormCellValidation",
-      "reduxFormEntities",
-      "reduxFormQueryParams",
-      "reduxFormSelectedEntityIdMap"
-    );
-  }, "dtFormParamsSelector"));
-  const reduxFormCellValidation = useDeepEqualMemo(_reduxFormCellValidation);
-  const reduxFormQueryParams = useDeepEqualMemo(_reduxFormQueryParams);
-  const reduxFormSelectedEntityIdMap = useDeepEqualMemo(
+  } = useSelector(dtFormParamsSelector);
+  const reduxFormCellValidation = useDeepEqualMemoIgnoreFns(
+    _reduxFormCellValidation
+  );
+  const reduxFormQueryParams = useDeepEqualMemoIgnoreFns(_reduxFormQueryParams);
+  const reduxFormSelectedEntityIdMap = useDeepEqualMemoIgnoreFns(
     _reduxFormSelectedEntityIdMap
   );
   let props = ownProps;
@@ -85969,7 +86277,7 @@ const DataTable = /* @__PURE__ */ __name((_A) => {
     const tmp = (urlConnected ? getCurrentParamsFromUrl(history.location) : reduxFormQueryParams) || {};
     return tmp;
   }, [history, reduxFormQueryParams, urlConnected]);
-  const currentParams = useDeepEqualMemo(_currentParams);
+  const currentParams = useDeepEqualMemoIgnoreFns(_currentParams);
   const tableParams = reactExports.useMemo(() => {
     if (!isTableParamsConnected) {
       const setNewParams2 = /* @__PURE__ */ __name((newParams) => {
@@ -86095,6 +86403,7 @@ const DataTable = /* @__PURE__ */ __name((_A) => {
     minimalStyle,
     mustClickCheckboxToSelect,
     noDeselectAll,
+    hideExpandSubCompColumn,
     noFooter = isSimple ? !withPaging : false,
     noFullscreenButton = isSimple,
     noHeader = false,
@@ -86142,14 +86451,15 @@ const DataTable = /* @__PURE__ */ __name((_A) => {
     withSort,
     withTitle = !isSimple,
     noExcessiveCheck,
-    isEntityCountLoading
+    isEntityCountLoading,
+    getCheckboxGroupId
   } = props;
   const _entities = reactExports.useMemo(
     () => ((reduxFormEntities == null ? void 0 : reduxFormEntities.length) ? reduxFormEntities : _origEntities) || [],
     [_origEntities, reduxFormEntities]
   );
-  const entities = useDeepEqualMemo(_entities);
-  const entitiesAcrossPages = useDeepEqualMemo(_entitiesAcrossPages);
+  const entities = useDeepEqualMemoIgnoreFns(_entities);
+  const entitiesAcrossPages = useDeepEqualMemoIgnoreFns(_entitiesAcrossPages);
   reactExports.useEffect(() => {
     change$12("allOrderedEntities", entitiesAcrossPages);
     if (entities.length === 0 || isEmpty$1(reduxFormSelectedEntityIdMap)) return;
@@ -86194,11 +86504,9 @@ const DataTable = /* @__PURE__ */ __name((_A) => {
           newTableConfig = {
             fieldOptions: []
           };
-          if (isEqual$3(prev, newTableConfig)) {
-            return prev;
-          } else {
-            return newTableConfig;
-          }
+        }
+        if (isEqual$3(prev, newTableConfig)) {
+          return prev;
         } else {
           return newTableConfig;
         }
@@ -87679,6 +87987,15 @@ const DataTable = /* @__PURE__ */ __name((_A) => {
       const isExpanded = expandedEntityIdMap[rowId];
       const rowDisabled = isEntityDisabled(entity);
       const dataId = entity.id || entity.code;
+      let noGroupBorder = false;
+      if (getCheckboxGroupId) {
+        const currentGroupId = getCheckboxGroupId(entity, rowInfo.index);
+        const nextEntity = entities[rowInfo.index + 1];
+        const nextGroupId = nextEntity ? getCheckboxGroupId(nextEntity, rowInfo.index + 1) : void 0;
+        if (currentGroupId && currentGroupId === nextGroupId) {
+          noGroupBorder = true;
+        }
+      }
       return {
         onClick: /* @__PURE__ */ __name((e2) => {
           if (isCellEditable) return;
@@ -87705,7 +88022,8 @@ const DataTable = /* @__PURE__ */ __name((_A) => {
             onMultiRowSelect,
             noDeselectAll,
             onRowSelect,
-            change: change$12
+            change: change$12,
+            getCheckboxGroupId
           });
         }, "onClick"),
         //row right click
@@ -87747,9 +88065,11 @@ const DataTable = /* @__PURE__ */ __name((_A) => {
           {
             disabled: rowDisabled,
             selected: rowSelected && !withCheckboxes,
-            "rt-tr-last-row": rowInfo.index === entities.length - 1
+            "rt-tr-last-row": rowInfo.index === entities.length - 1,
+            "no-group-border": noGroupBorder
           }
         ),
+        "data-test-selected": !!rowSelected,
         "data-test-id": dataId === void 0 ? rowInfo.index : dataId,
         "data-index": rowInfo.index,
         "data-tip": typeof rowDisabled === "string" ? rowDisabled : void 0,
@@ -87780,7 +88100,8 @@ const DataTable = /* @__PURE__ */ __name((_A) => {
       reduxFormSelectedEntityIdMap,
       selectedCells,
       showContextMenu2,
-      withCheckboxes
+      withCheckboxes,
+      getCheckboxGroupId
     ]
   );
   const getTableCellProps = reactExports.useCallback(
@@ -88093,6 +88414,7 @@ const DataTable = /* @__PURE__ */ __name((_A) => {
     isSingleSelect,
     isSelectionARectangle,
     noDeselectAll,
+    hideExpandSubCompColumn,
     noSelect,
     noUserSelect,
     onDeselect,
@@ -88124,6 +88446,7 @@ const DataTable = /* @__PURE__ */ __name((_A) => {
     withFilter,
     withSort,
     recordIdToIsVisibleMap,
+    getCheckboxGroupId,
     setRecordIdToIsVisibleMap
   });
   const scrollToTop = reactExports.useCallback(
@@ -90698,7 +91021,7 @@ const SimpleInsertDataDialog = compose(
       return (_b2 = (_a3 = state2.form) == null ? void 0 : _a3[dataTableForm]) == null ? void 0 : _b2.values.reduxFormEntities;
     }
   );
-  const reduxFormEntities = useDeepEqualMemo(_reduxFormEntities);
+  const reduxFormEntities = useDeepEqualMemoIgnoreFns(_reduxFormEntities);
   reactExports.useEffect(() => {
     return () => dispatch(destroy2(dataTableForm));
   }, [dataTableForm, dispatch]);
@@ -90708,7 +91031,9 @@ const SimpleInsertDataDialog = compose(
       return (_b2 = (_a3 = state2.form) == null ? void 0 : _a3[dataTableForm]) == null ? void 0 : _b2.values.reduxFormCellValidation;
     }, "_reduxFormCellValidationSelector")
   );
-  const reduxFormCellValidation = useDeepEqualMemo(_reduxFormCellValidation);
+  const reduxFormCellValidation = useDeepEqualMemoIgnoreFns(
+    _reduxFormCellValidation
+  );
   const { entsToUse, validationToUse } = reactExports.useMemo(
     () => removeCleanRows(reduxFormEntities, reduxFormCellValidation),
     [reduxFormEntities, reduxFormCellValidation]
@@ -90793,8 +91118,10 @@ const UploadCsvWizardDialogInner = reduxForm()(({
       "reduxFormCellValidation"
     );
   }, "dtFormNameSelector"));
-  const reduxFormEntities = useDeepEqualMemo(_reduxFormEntities);
-  const reduxFormCellValidation = useDeepEqualMemo(_reduxFormCellValidation);
+  const reduxFormEntities = useDeepEqualMemoIgnoreFns(_reduxFormEntities);
+  const reduxFormCellValidation = useDeepEqualMemoIgnoreFns(
+    _reduxFormCellValidation
+  );
   let inner2;
   if (hasSubmitted) {
     inner2 = /* @__PURE__ */ React$1.createElement(
@@ -91096,8 +91423,10 @@ const UploadCsvWizardDialog = compose(
       };
     }
   });
-  const reduxFormEntitiesArray = useDeepEqualMemo(_reduxFormEntitiesArray);
-  const finishedFiles = useDeepEqualMemo(_finishedFiles);
+  const reduxFormEntitiesArray = useDeepEqualMemoIgnoreFns(
+    _reduxFormEntitiesArray
+  );
+  const finishedFiles = useDeepEqualMemoIgnoreFns(_finishedFiles);
   const [hasSubmittedOuter, setSubmittedOuter] = reactExports.useState();
   const [steps, setSteps] = reactExports.useState(getInitialSteps(true));
   const [focusedTab, setFocusedTab] = reactExports.useState(0);
@@ -95683,6 +96012,7 @@ const Uploader = /* @__PURE__ */ __name(({
           style: { fontSize: 11, marginBottom: 5 }
         },
         advancedAccept && !acceptLoading ? /* @__PURE__ */ React$1.createElement("div", null, "Accepts  ", /* @__PURE__ */ React$1.createElement("span", null, advancedAccept.map((acc, i2) => {
+          var _a3;
           const disabled2 = !(acc.description || acc.exampleFile || acc.exampleFiles);
           const PopOrTooltip = acc.exampleFiles ? Popover : Tooltip;
           const hasDownload = acc.exampleFile || acc.exampleFiles;
@@ -95692,7 +96022,7 @@ const Uploader = /* @__PURE__ */ __name(({
             {
               key: i2,
               interactionKind: "hover",
-              disabled: disabled2,
+              disabled: disabled2 || !!((_a3 = window.Cypress) == null ? void 0 : _a3.tg_disableDownloadExampleHover),
               modifiers: popoverOverflowModifiers,
               content: acc.exampleFiles ? /* @__PURE__ */ React$1.createElement(Menu, null, acc.exampleFiles.map(
                 ({ description: description2, subtext, exampleFile, icon }, i22) => /* @__PURE__ */ React$1.createElement(
@@ -96269,9 +96599,19 @@ function AdvancedOptions({
   content: content2,
   label,
   style: style2,
-  isOpenByDefault
+  isOpenByDefault,
+  localStorageKey
 }) {
-  const [isOpen2, setOpen] = reactExports.useState(isOpenByDefault);
+  const [isOpen2, setOpen] = reactExports.useState(() => {
+    if (localStorageKey) {
+      if (window.localStorage.getItem(localStorageKey) === "true") {
+        return true;
+      } else if (window.localStorage.getItem(localStorageKey) === "false") {
+        return false;
+      }
+    }
+    return isOpenByDefault;
+  });
   if (!(content2 || children)) {
     return null;
   }
@@ -96279,25 +96619,34 @@ function AdvancedOptions({
     "div",
     {
       onClick: /* @__PURE__ */ __name(() => {
-        setOpen(!isOpen2);
+        const newIsOpen = !isOpen2;
+        setOpen(newIsOpen);
+        if (localStorageKey) {
+          window.localStorage.setItem(localStorageKey, newIsOpen);
+        }
       }, "onClick"),
-      style: { cursor: "pointer", display: "flex", alignItems: "flex-end" },
-      className: "tg-toggle-advanced-options"
+      style: {
+        cursor: "pointer",
+        display: "flex",
+        alignItems: "center",
+        userSelect: "none"
+      },
+      className: `tg-toggle-advanced-options`
     },
-    label || "Advanced",
-    " ",
     /* @__PURE__ */ React$1.createElement(
       Icon,
       {
         icon: isOpen2 ? "caret-down" : "caret-right",
-        style: { marginLeft: 5 }
+        style: { marginRight: 5 }
       }
-    )
+    ),
+    /* @__PURE__ */ React$1.createElement("strong", null, label || "Advanced")
   ), isOpen2 && /* @__PURE__ */ React$1.createElement("div", { style: { marginTop: 10 } }, content2 || children));
 }
 __name(AdvancedOptions, "AdvancedOptions");
 const TgHTMLSelect = /* @__PURE__ */ __name((_C) => {
   var _D = _C, { disabled } = _D, rest = __objRest(_D, ["disabled"]);
+  rest["data-test-value"] = rest.value;
   if (disabled) {
     const opt = rest.options.find((o2) => o2.value === rest.value);
     return /* @__PURE__ */ React$1.createElement("div", __spreadProps(__spreadValues({}, rest), { className: classNames$1("bp3-html-select", rest.className) }), opt.label);
@@ -99580,6 +99929,7 @@ const _ResizableDraggableDialog = class _ResizableDraggableDialog extends React$
             topLeft: true,
             topRight: true
           },
+          resizeHandleWrapperClass: "tg-dialog-resize-handle",
           maxHeight: windowHeight,
           maxWidth: windowWidth,
           bounds: "window",
@@ -99598,12 +99948,21 @@ const _ResizableDraggableDialog = class _ResizableDraggableDialog extends React$
         }, RndProps),
         /* @__PURE__ */ React$1.createElement(
           Dialog,
-          __spreadValues({
+          __spreadProps(__spreadValues({
             enforceFocus: false,
             hasBackdrop: false,
             usePortal: false,
             canEscapeKeyClose: true
-          }, rest)
+          }, rest), {
+            title: /* @__PURE__ */ React$1.createElement("div", { style: { display: "flex", alignItems: "center", gap: 8 } }, /* @__PURE__ */ React$1.createElement(
+              Icon,
+              {
+                size: "14",
+                "data-tip": "I'm a resizable draggable dialog!",
+                icon: "move"
+              }
+            ), rest.title)
+          })
         )
       )
     );
@@ -100795,8 +101154,8 @@ const batch$1 = createAction("Batch", function() {
   }
   return actions2;
 });
-function _extends() {
-  _extends = Object.assign || function(target) {
+function _extends$1() {
+  _extends$1 = Object.assign || function(target) {
     for (var i2 = 1; i2 < arguments.length; i2++) {
       var source = arguments[i2];
       for (var key in source) {
@@ -100807,9 +101166,9 @@ function _extends() {
     }
     return target;
   };
-  return _extends.apply(this, arguments);
+  return _extends$1.apply(this, arguments);
 }
-__name(_extends, "_extends");
+__name(_extends$1, "_extends$1");
 function normalizeType(typeOrActionCreator) {
   if (typeOrActionCreator && typeOrActionCreator.getType) {
     return typeOrActionCreator.toString();
@@ -100824,7 +101183,7 @@ function createReducer() {
     payload: true,
     fallback: null
   };
-  var reducer2 = _extends(reduce2, {
+  var reducer2 = _extends$1(reduce2, {
     has: has4,
     on: on2,
     off,
@@ -101662,25 +102021,6 @@ const frameTranslations$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object
   frameTranslationToggleOff,
   frameTranslationToggleOn,
   getMinimumOrfSize: getMinimumOrfSize$1
-}, Symbol.toStringTag, { value: "Module" }));
-const hoveredAnnotationUpdate = createMetaAction("HOVEREDANNOTATIONUPDATE");
-const hoveredAnnotationClear = createMetaAction("HOVEREDANNOTATIONCLEAR");
-const hoveredAnnotation = createReducer(
-  {
-    [hoveredAnnotationUpdate]: (state2, payload) => {
-      return payload || null;
-    },
-    [hoveredAnnotationClear]: () => {
-      return "";
-    }
-  },
-  ""
-);
-const hoveredAnnotationActions = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: hoveredAnnotation,
-  hoveredAnnotationClear,
-  hoveredAnnotationUpdate
 }, Symbol.toStringTag, { value: "Module" }));
 const minimumOrfSizeUpdate = createMetaAction("minimumOrfSizeUpdate");
 const minimumOrfSize = createReducer(
@@ -103008,7 +103348,7 @@ const genbankFeatureTypes = [
   { name: "regulatory", color: "#3F6C51" },
   { name: "SecStr", color: "#7B4B94" },
   { name: "Site", color: "#7D82B8" },
-  { name: "telomere", color: "DE9151" },
+  { name: "telomere", color: "#DE9151" },
   { name: "tmRNA", color: "#B7E3CC" },
   { name: "unsure", color: "#C4FFB2" },
   { name: "V_segment", color: "#D6F7A3" },
@@ -104311,14 +104651,16 @@ function filterSequenceString(sequenceString = "", {
   name: name2,
   isProtein: isProtein2,
   isRna: isRna2,
-  isMixedRnaAndDna
+  isMixedRnaAndDna,
+  getAcceptedInsertChars
 } = {}) {
-  const acceptedChars = getAcceptedChars({
+  const sequenceTypeInfo = {
     isOligo: isOligo2,
     isProtein: isProtein2,
     isRna: isRna2,
     isMixedRnaAndDna
-  });
+  };
+  const acceptedChars = isFunction$1(getAcceptedInsertChars) ? getAcceptedInsertChars(sequenceTypeInfo) : getAcceptedChars(sequenceTypeInfo);
   const replaceChars = getReplaceChars({
     isOligo: isOligo2,
     isProtein: isProtein2,
@@ -104554,6 +104896,7 @@ function tidyUpSequenceData(pSeqData, options = {}) {
     doNotProvideIdsForAnnotations,
     noCdsTranslations,
     convertAnnotationsFromAAIndices,
+    getAcceptedInsertChars,
     topLevelSeqData
   } = options;
   let seqData = cloneDeep$1(pSeqData);
@@ -104585,13 +104928,16 @@ function tidyUpSequenceData(pSeqData, options = {}) {
   if (!doNotRemoveInvalidChars) {
     if (seqData.isProtein) {
       const [newSeq] = filterSequenceString(seqData.proteinSequence, __spreadProps(__spreadValues({}, topLevelSeqData || seqData), {
-        isProtein: true
+        isProtein: true,
+        getAcceptedInsertChars
       }));
       seqData.proteinSequence = newSeq;
     } else {
-      const [newSeq] = filterSequenceString(seqData.sequence, __spreadValues({
+      const [newSeq] = filterSequenceString(seqData.sequence, __spreadProps(__spreadValues({
         additionalValidChars
-      }, topLevelSeqData || seqData));
+      }, topLevelSeqData || seqData), {
+        getAcceptedInsertChars
+      }));
       seqData.sequence = newSeq;
     }
   }
@@ -104646,17 +104992,25 @@ function tidyUpSequenceData(pSeqData, options = {}) {
   });
   if (!noTranslationData) {
     seqData.translations = flatMap(seqData.translations, (translation) => {
+      var _a2, _b2;
       if (noCdsTranslations && translation.translationType === "CDS Feature") {
         return [];
       }
-      if (!translation.aminoAcids && !seqData.noSequence) {
-        translation.aminoAcids = getAminoAcidDataForEachBaseOfDna(
+      const codonStart = ((_b2 = (_a2 = translation == null ? void 0 : translation.notes) == null ? void 0 : _a2.codon_start) == null ? void 0 : _b2[0]) - 1 || 0;
+      const expandedRange = expandOrContractRangeByLength(
+        translation,
+        -codonStart,
+        true,
+        seqData.sequence.length
+      );
+      if (!expandedRange.aminoAcids && !seqData.noSequence) {
+        expandedRange.aminoAcids = getAminoAcidDataForEachBaseOfDna(
           seqData.sequence,
-          translation.forward,
-          translation
+          expandedRange.forward,
+          expandedRange
         );
       }
-      return translation;
+      return expandedRange;
     });
   }
   if (annotationsAsObjects) {
@@ -113211,7 +113565,10 @@ function getOrfsFromSequence(options) {
   return nonDuplicatedOrfRanges;
 }
 __name(getOrfsFromSequence, "getOrfsFromSequence");
-function findOrfsInPlasmid(sequence2, circular2, minimumOrfSize2, useAdditionalOrfStartCodons2) {
+function findOrfsInPlasmid(sequence2, circular2, minimumOrfSize2, useAdditionalOrfStartCodons2, isProteinOrOligo) {
+  if (isProteinOrOligo) {
+    return [];
+  }
   const forwardOrfs = getOrfsFromSequence({
     sequence: sequence2,
     minimumOrfSize: minimumOrfSize2,
@@ -113439,6 +113796,15 @@ function getAnnotationsBetweenRange(annotationsToBeAdjusted, range2, maxLength, 
     }
     const overlaps = getZeroedRangeOverlaps(annotation, range2, maxLength).map(
       (overlap) => {
+        const allLocations = annotation.locations;
+        if (allLocations && allLocations.length) {
+          const newLocations = allLocations.filter((loc) => {
+            return isRangeWithinRange(loc, overlap, maxLength);
+          });
+          return assignIn({}, annotation, overlap, {
+            locations: newLocations
+          });
+        }
         return assignIn({}, annotation, overlap);
       }
     );
@@ -113841,6 +114207,160 @@ function calculateNebTm(sequence2, { monovalentCationConc = 0.05, primerConc = 5
   }
 }
 __name(calculateNebTm, "calculateNebTm");
+const PRIMER3_PARAMS = {
+  saltMonovalent: 50,
+  // mM
+  saltDivalent: 1.5,
+  // mM
+  dntpConc: 0.6,
+  // mM
+  dnaConc: 50,
+  // nM
+  R: 1.987
+  // Gas constant (cal/K·mol)
+};
+const SANTA_LUCIA_NN = {
+  AA: { dH: -7.9, dS: -22.2 },
+  TT: { dH: -7.9, dS: -22.2 },
+  AT: { dH: -7.2, dS: -20.4 },
+  TA: { dH: -7.2, dS: -21.3 },
+  CA: { dH: -8.5, dS: -22.7 },
+  TG: { dH: -8.5, dS: -22.7 },
+  GT: { dH: -8.4, dS: -22.4 },
+  AC: { dH: -8.4, dS: -22.4 },
+  CT: { dH: -7.8, dS: -21 },
+  AG: { dH: -7.8, dS: -21 },
+  GA: { dH: -8.2, dS: -22.2 },
+  TC: { dH: -8.2, dS: -22.2 },
+  CG: { dH: -10.6, dS: -27.2 },
+  GC: { dH: -9.8, dS: -24.4 },
+  GG: { dH: -8, dS: -19.9 },
+  CC: { dH: -8, dS: -19.9 }
+};
+const SANTA_LUCIA_INIT = {
+  GC: { dH: 0.1, dS: -2.8 },
+  // initiation with terminal GC
+  AT: { dH: 2.3, dS: 4.1 }
+  // initiation with terminal AT
+};
+function getEffectiveMonovalentConc() {
+  let effectiveMono = PRIMER3_PARAMS.saltMonovalent;
+  {
+    const freeMg = Math.max(
+      0,
+      PRIMER3_PARAMS.saltDivalent - PRIMER3_PARAMS.dntpConc
+    );
+    effectiveMono += 120 * Math.sqrt(freeMg);
+  }
+  return effectiveMono;
+}
+__name(getEffectiveMonovalentConc, "getEffectiveMonovalentConc");
+function applySaltCorrection(deltaS, nnPairs) {
+  const effectiveMono = getEffectiveMonovalentConc();
+  return deltaS + 0.368 * nnPairs * Math.log(effectiveMono / 1e3);
+}
+__name(applySaltCorrection, "applySaltCorrection");
+function isValidSequence(sequence2) {
+  return /^[ATGCN]+$/.test(sequence2);
+}
+__name(isValidSequence, "isValidSequence");
+function calculateSantaLuciaTm(sequence2) {
+  try {
+    sequence2 = sequence2 == null ? void 0 : sequence2.toUpperCase().trim();
+    if (!isValidSequence(sequence2)) {
+      throw new Error("Invalid sequence: contains non-DNA characters");
+    }
+    if (sequence2.length < 2) {
+      throw new Error("Sequence too short: minimum length is 2 bases");
+    }
+    let deltaH = 0;
+    let deltaS = 0;
+    for (let i2 = 0; i2 < sequence2.length - 1; i2++) {
+      const dinucleotide = sequence2.substring(i2, i2 + 2);
+      if (dinucleotide.includes("N")) {
+        continue;
+      }
+      const params = SANTA_LUCIA_NN[dinucleotide];
+      if (params) {
+        deltaH += params.dH;
+        deltaS += params.dS;
+      }
+    }
+    const firstBase = sequence2[0];
+    const lastBase = sequence2[sequence2.length - 1];
+    if (firstBase === "G" || firstBase === "C") {
+      deltaH += SANTA_LUCIA_INIT.GC.dH;
+      deltaS += SANTA_LUCIA_INIT.GC.dS;
+    } else {
+      deltaH += SANTA_LUCIA_INIT.AT.dH;
+      deltaS += SANTA_LUCIA_INIT.AT.dS;
+    }
+    if (lastBase === "G" || lastBase === "C") {
+      deltaH += SANTA_LUCIA_INIT.GC.dH;
+      deltaS += SANTA_LUCIA_INIT.GC.dS;
+    } else {
+      deltaH += SANTA_LUCIA_INIT.AT.dH;
+      deltaS += SANTA_LUCIA_INIT.AT.dS;
+    }
+    const nnPairs = sequence2.length - 1;
+    deltaS = applySaltCorrection(deltaS, nnPairs);
+    const C2 = PRIMER3_PARAMS.dnaConc * 1e-9;
+    const Tm = deltaH * 1e3 / (deltaS + PRIMER3_PARAMS.R * Math.log(C2 / 4));
+    return Tm - 273.15;
+  } catch (e2) {
+    return `Error calculating Tm for sequence ${sequence2}. ${e2}`;
+  }
+}
+__name(calculateSantaLuciaTm, "calculateSantaLuciaTm");
+function calculateEndStability(sequence2) {
+  try {
+    sequence2 = sequence2 == null ? void 0 : sequence2.toUpperCase().trim();
+    if (!isValidSequence(sequence2)) {
+      throw new Error("Invalid sequence: contains non-DNA characters");
+    }
+    if (sequence2.length < 5) {
+      throw new Error(
+        "Sequence too short: minimum length is 5 bases for end stability calculation"
+      );
+    }
+    const last5Bases = sequence2.substring(sequence2.length - 5);
+    let deltaH = 0;
+    let deltaS = 0;
+    for (let i2 = 0; i2 < 4; i2++) {
+      const dinucleotide = last5Bases.substring(i2, i2 + 2);
+      if (dinucleotide.includes("N")) {
+        continue;
+      }
+      const params = SANTA_LUCIA_NN[dinucleotide];
+      if (params) {
+        deltaH += params.dH;
+        deltaS += params.dS;
+      }
+    }
+    const firstBase = last5Bases[0];
+    const lastBase = last5Bases[last5Bases.length - 1];
+    if (firstBase === "G" || firstBase === "C") {
+      deltaH += SANTA_LUCIA_INIT.GC.dH;
+      deltaS += SANTA_LUCIA_INIT.GC.dS;
+    } else {
+      deltaH += SANTA_LUCIA_INIT.AT.dH;
+      deltaS += SANTA_LUCIA_INIT.AT.dS;
+    }
+    if (lastBase === "G" || lastBase === "C") {
+      deltaH += SANTA_LUCIA_INIT.GC.dH;
+      deltaS += SANTA_LUCIA_INIT.GC.dS;
+    } else {
+      deltaH += SANTA_LUCIA_INIT.AT.dH;
+      deltaS += SANTA_LUCIA_INIT.AT.dS;
+    }
+    const T2 = 310.15;
+    const deltaG = deltaH - T2 * deltaS / 1e3;
+    return Math.round(Math.abs(deltaG) * 100) / 100;
+  } catch (e2) {
+    return `Error calculating end stability for sequence ${sequence2}. ${e2}`;
+  }
+}
+__name(calculateEndStability, "calculateEndStability");
 function convertAACaretPositionOrRangeToDna(rangeOrCaret) {
   if (typeof rangeOrCaret === "object" && rangeOrCaret !== null) {
     return convertAARangeToDnaRange(__spreadProps(__spreadValues({}, rangeOrCaret), {
@@ -114615,8 +115135,9 @@ function genbankToJson(string2, options = {}) {
       if (line === null) {
         return true;
       }
-      const key = getLineKey(line);
-      const val2 = getLineVal(line);
+      const shouldUseSpaceAsDelimiter = !line.trim().startsWith("/");
+      const key = getLineKey(line, shouldUseSpaceAsDelimiter);
+      const val2 = getLineVal(line, shouldUseSpaceAsDelimiter);
       const isKeyRunon = isKeywordRunon(line);
       const isSubKey = isSubKeyword(line);
       const isKey2 = isKeyword(line);
@@ -114987,10 +115508,10 @@ function genbankToJson(string2, options = {}) {
     currentFeatureNote = currentNotes[key];
   }
   __name(parseFeatureNote, "parseFeatureNote");
-  function getLineKey(line) {
+  function getLineKey(line, shouldUseSpaceAsDelimiter) {
     let arr;
     line = line.replace(/^[\s]*/, "");
-    if (line.indexOf("=") < 0) {
+    if (line.indexOf("=") < 0 || shouldUseSpaceAsDelimiter) {
       arr = line.split(/[\s]+/);
     } else {
       arr = line.split(/=/);
@@ -114998,9 +115519,9 @@ function genbankToJson(string2, options = {}) {
     return arr[0];
   }
   __name(getLineKey, "getLineKey");
-  function getLineVal(line) {
+  function getLineVal(line, shouldUseSpaceAsDelimiter) {
     let arr;
-    if (line.indexOf("=") < 0) {
+    if (line.indexOf("=") < 0 || shouldUseSpaceAsDelimiter) {
       line = line.replace(/^[\s]*[\S]+[\s]+|[\s]+$/, "");
       line = line.trim();
       return line;
@@ -115045,6 +115566,10 @@ function genbankToJson(string2, options = {}) {
       feat.name = feat.notes.ApEinfo_label[0];
     } else if (feat.notes.name) {
       feat.name = feat.notes.name[0];
+    } else if (feat.notes.product) {
+      feat.name = feat.notes.product[0];
+    } else if (feat.notes.region_name) {
+      feat.name = feat.notes.region_name[0];
     } else if (feat.notes.organism) {
       feat.name = feat.notes.organism[0];
     } else if (feat.notes.locus_tag) {
@@ -119319,17 +119844,20 @@ function snapgeneToJson(_0) {
           const b3 = new fxpExports.XMLParser({
             ignoreAttributes: false,
             attributeNamePrefix: "",
-            isArray: /* @__PURE__ */ __name((name2) => name2 === "Feature" || name2 === "Segment", "isArray")
+            isArray: /* @__PURE__ */ __name((name2) => ["Feature", "Segment", "Q", "V"].includes(name2), "isArray")
           }).parse(xml2);
           const { Features: { Feature: Feature2 = [] } = {} } = b3;
           data.features = [];
           Feature2.forEach((feat) => {
+            var _a2, _b2, _c2, _d2;
             const { directionality, Segment = [], name: name2, type: type2 } = feat;
+            let color2;
             let maxStart = 0;
             let maxEnd = 0;
             const locations = Segment && Segment.map((seg) => {
               if (!seg) throw new Error("invalid feature definition");
               const { range: range2 } = seg;
+              if (seg.color) color2 = seg.color;
               let { start: start2, end: end2 } = getStartAndEndFromRangeString(range2);
               start2 = isProtein2 ? start2 * 3 : start2;
               end2 = isProtein2 ? end2 * 3 + 2 : end2;
@@ -119340,6 +119868,10 @@ function snapgeneToJson(_0) {
                 end: end2
               };
             });
+            const colorQual = (_a2 = feat.Q) == null ? void 0 : _a2.find((q2) => q2.name === "color");
+            if (colorQual) {
+              color2 = ((_c2 = (_b2 = colorQual.V) == null ? void 0 : _b2[0]) == null ? void 0 : _c2.text) || ((_d2 = colorQual.V) == null ? void 0 : _d2[0]);
+            }
             data.features.push(__spreadProps(__spreadValues({
               name: name2,
               type: type2
@@ -119347,8 +119879,8 @@ function snapgeneToJson(_0) {
               strand: directionality ? strand_dict[directionality][0] : 1,
               arrowheadType: directionality ? strand_dict[directionality][1] : "NONE",
               start: maxStart,
-              end: maxEnd
-              // color,
+              end: maxEnd,
+              color: color2
             }));
           });
         } else if (ord(next_byte) === 6) {
@@ -124053,6 +124585,38 @@ function cutUpStr(val2, start2, end2) {
   return val2.slice(start2, end2);
 }
 __name(cutUpStr, "cutUpStr");
+function featureToGenbankLocationString(feat, options) {
+  const { inclusive1BasedStart, inclusive1BasedEnd, isProtein: isProtein2 } = options;
+  let locStr = "";
+  if (feat.locations && feat.locations.length > 1) {
+    feat.locations.forEach((loc, i2) => {
+      locStr += getProteinStart(
+        parseInt(loc.start, 10) + (inclusive1BasedStart ? 0 : 1),
+        isProtein2
+      ) + ".." + getProteinEnd(
+        parseInt(loc.end, 10) + (inclusive1BasedEnd ? 0 : 1),
+        isProtein2
+      );
+      if (i2 !== feat.locations.length - 1) {
+        locStr += ",";
+      }
+    });
+    locStr = "join(" + locStr + ")";
+  } else {
+    locStr += getProteinStart(
+      parseInt(feat.start, 10) + (inclusive1BasedStart ? 0 : 1),
+      isProtein2
+    ) + ".." + getProteinEnd(
+      parseInt(feat.end, 10) + (inclusive1BasedEnd ? 0 : 1),
+      isProtein2
+    );
+  }
+  if (feat.strand === -1) {
+    locStr = "complement(" + locStr + ")";
+  }
+  return locStr;
+}
+__name(featureToGenbankLocationString, "featureToGenbankLocationString");
 function jsonToGenbank(_serSeq, options) {
   options = options || {};
   options.reformatSeqName = options.reformatSeqName !== false;
@@ -124200,7 +124764,44 @@ function getCurrentDateString() {
   return day2 + "-" + month + "-" + year;
 }
 __name(getCurrentDateString, "getCurrentDateString");
+const standardLineLength = 79;
 function featureNoteInDataToGenbankString(name2, value, options) {
+  const valueString = mangleOrStripUrls(value, options);
+  if (valueString.length > standardLineLength - 25 - name2.length) {
+    const lines = [];
+    let currentIndex = 0;
+    while (currentIndex < valueString.length) {
+      if (currentIndex === 0) {
+        const chunk = valueString.substring(
+          currentIndex,
+          currentIndex + standardLineLength - name2.length - 24
+        );
+        lines.push(
+          StringUtil.lpad("/", " ", 22) + name2 + '="' + chunk + (currentIndex + standardLineLength - 22 - name2.length >= valueString.length ? '"' : "")
+        );
+        currentIndex += standardLineLength - name2.length - 24;
+      } else {
+        const chunk = valueString.substring(
+          currentIndex,
+          currentIndex + standardLineLength - 21
+        );
+        if (currentIndex + standardLineLength - 21 >= valueString.length) {
+          const lineString = " ".repeat(21) + chunk;
+          if (lineString.length === standardLineLength) {
+            lines.push(lineString);
+            lines.push(" ".repeat(21) + '"');
+          } else {
+            lines.push(lineString + '"');
+          }
+        } else {
+          const lineString = " ".repeat(21) + chunk;
+          lines.push(lineString);
+        }
+        currentIndex += standardLineLength - 21;
+      }
+    }
+    return lines.join("\r\n");
+  }
   return StringUtil.lpad("/", " ", 22) + name2 + '="' + mangleOrStripUrls(value, options) + '"';
 }
 __name(featureNoteInDataToGenbankString, "featureNoteInDataToGenbankString");
@@ -124210,33 +124811,7 @@ function featureToGenbankString(feat, options) {
     feat.type = "primer_bind";
   }
   const line = "     " + StringUtil.rpad(feat.type || "misc_feature", " ", options.featurePadLength);
-  let locStr = "";
-  if (feat.locations && feat.locations.length > 1) {
-    feat.locations.forEach((loc, i2) => {
-      locStr += getProteinStart(
-        parseInt(loc.start, 10) + (options.inclusive1BasedStart ? 0 : 1),
-        options.isProtein
-      ) + ".." + getProteinEnd(
-        parseInt(loc.end, 10) + (options.inclusive1BasedEnd ? 0 : 1),
-        options.isProtein
-      );
-      if (i2 !== feat.locations.length - 1) {
-        locStr += ",";
-      }
-    });
-    locStr = "join(" + locStr + ")";
-  } else {
-    locStr += getProteinStart(
-      parseInt(feat.start, 10) + (options.inclusive1BasedStart ? 0 : 1),
-      options.isProtein
-    ) + ".." + getProteinEnd(
-      parseInt(feat.end, 10) + (options.inclusive1BasedEnd ? 0 : 1),
-      options.isProtein
-    );
-  }
-  if (feat.strand === -1) {
-    locStr = "complement(" + locStr + ")";
-  }
+  const locStr = featureToGenbankLocationString(feat, options);
   lines.push(line + locStr);
   lines.push(
     featureNoteInDataToGenbankString(
@@ -124478,12 +125053,34 @@ function addHighlightedDifferences(alignmentTracks2) {
       track.alignmentData.sequence
     );
     const mismatches = matchHighlightRanges.filter(({ isMatch }) => !isMatch);
+    const alignedSeq = track.alignmentData.sequence;
+    const seqLen = alignedSeq.length;
+    const startIndex = seqLen - alignedSeq.replace(/^-+/, "").length;
+    const endIndex = alignedSeq.replace(/-+$/, "").length;
+    const gapRanges = [
+      startIndex > 0 && {
+        start: 0,
+        end: startIndex - 1,
+        differenceType: "gap"
+      },
+      endIndex < seqLen && {
+        start: endIndex,
+        end: seqLen - 1,
+        differenceType: "gap"
+      }
+    ].filter(Boolean);
     return __spreadProps(__spreadValues({}, track), {
       sequenceData: sequenceData2,
       matchHighlightRanges,
-      additionalSelectionLayers: matchHighlightRanges.filter(({ isMatch }) => !isMatch).map((range2) => {
-        return __spreadValues(__spreadValues({}, range2), highlightRangeProps);
-      }),
+      additionalSelectionLayers: [
+        ...matchHighlightRanges.filter(({ isMatch }) => !isMatch).map((range2) => __spreadProps(__spreadValues(__spreadValues({}, range2), highlightRangeProps), {
+          className: "veAlignmentMismatch"
+        })),
+        ...gapRanges.map((range2) => __spreadProps(__spreadValues(__spreadValues({}, range2), highlightRangeProps), {
+          className: "veAlignmentMismatch"
+        }))
+      ],
+      gapRanges,
       mismatches
     });
   });
@@ -124548,10 +125145,12 @@ const alignments = /* @__PURE__ */ __name((state2 = {}, { payload = {}, type: ty
         let match;
         const additionalSelectionLayers = [];
         while ((match = re2.exec(condensedSeq)) != null) {
-          additionalSelectionLayers.push(__spreadValues({
+          additionalSelectionLayers.push(__spreadProps(__spreadValues({
             start: match.index,
             end: match.index + match[0].length - 1
-          }, highlightRangeProps));
+          }, highlightRangeProps), {
+            className: "veAlignmentMismatch"
+          }));
         }
         re2 = /g+/gi;
         while ((match = re2.exec(condensedSeq)) != null) {
@@ -124615,23 +125214,30 @@ function getRangeMatchesBetweenTemplateAndNonTemplate(tempSeq, nonTempSeq) {
   const startIndex = seqLength - nonTempSeqWithoutLeadingDashes.length;
   const endIndex = seqLength - (seqLength - nonTempSeqWithoutTrailingDashes.length);
   for (let index2 = startIndex; index2 < endIndex; index2++) {
-    const isMatch = tempSeq[index2].toLowerCase() === nonTempSeq[index2].toLowerCase();
-    const previousRange = ranges[ranges.length - 1];
-    if (previousRange) {
-      if (previousRange.isMatch === isMatch) {
-        previousRange.end++;
+    const tempBase = tempSeq[index2].toLowerCase();
+    const nonTempBase = nonTempSeq[index2].toLowerCase();
+    const isMatch = tempBase === nonTempBase;
+    let differenceType = null;
+    if (!isMatch) {
+      if (tempBase === "-") {
+        differenceType = "insertion";
+      } else if (nonTempBase === "-") {
+        differenceType = "deletion";
       } else {
-        ranges.push({
-          start: index2,
-          end: index2,
-          isMatch
-        });
+        differenceType = "mismatch";
       }
+    }
+    const previousRange = ranges[ranges.length - 1];
+    if (previousRange && previousRange.isMatch === isMatch && previousRange.differenceType === differenceType) {
+      previousRange.end++;
+    } else if (previousRange) {
+      ranges.push({ start: index2, end: index2, isMatch, differenceType });
     } else {
       ranges.push({
         start: startIndex,
         end: startIndex,
-        isMatch
+        isMatch,
+        differenceType
       });
     }
   }
@@ -125777,6 +126383,30 @@ const selectedPartTags$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.
   default: selectedPartTags,
   updateSelectedPartTags
 }, Symbol.toStringTag, { value: "Module" }));
+const updateTemporaryAnnotations = createMetaAction(
+  "TEMPORARY_ANNOTATIONS_UPDATE"
+);
+const temporaryAnnotations = createMergedDefaultStateReducer(
+  {
+    TEMPORARY_ANNOTATIONS_UPDATE: /* @__PURE__ */ __name((state2, payload) => {
+      return __spreadValues(__spreadValues({}, state2), payload);
+    }, "TEMPORARY_ANNOTATIONS_UPDATE"),
+    VECTOR_EDITOR_UPDATE: /* @__PURE__ */ __name((state2, payload) => {
+      return __spreadValues(__spreadValues({}, state2), payload.temporaryAnnotations);
+    }, "VECTOR_EDITOR_UPDATE")
+  },
+  {
+    features: {},
+    primers: {},
+    parts: {},
+    searchLayers: []
+  }
+);
+const temporaryAnnotations$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  default: temporaryAnnotations,
+  updateTemporaryAnnotations
+}, Symbol.toStringTag, { value: "Module" }));
 const vectorEditorMiddleware = /* @__PURE__ */ __name((store2) => (next) => (action2) => {
   if (action2.meta && action2.meta.disregardUndo) {
     return next(action2);
@@ -125870,7 +126500,6 @@ const subReducers = {
   toolBar: toolBar$1,
   findTool: findTool$1,
   frameTranslations: frameTranslations$1,
-  hoveredAnnotation: hoveredAnnotationActions,
   minimumOrfSize: minimumOrfSize$1,
   panelsShown: panelsShown$1,
   propertiesTool: propertiesTool$1,
@@ -125892,7 +126521,8 @@ const subReducers = {
   partLengthsToHide: partLengthsToHide$1,
   primerLengthsToHide: primerLengthsToHide$1,
   featureLengthsToHide: featureLengthsToHide$1,
-  selectedPartTags: selectedPartTags$1
+  selectedPartTags: selectedPartTags$1,
+  temporaryAnnotations: temporaryAnnotations$1
 };
 const vectorEditorInitialize = createMetaAction("VECTOR_EDITOR_UPDATE");
 const vectorEditorClear = createMetaAction("VECTOR_EDITOR_CLEAR");
@@ -125993,7 +126623,7 @@ const makeStore = /* @__PURE__ */ __name(() => {
     //   replacer: (key, value) => {
     //   }
     // },
-    actionsDenylist: ["HOVEREDANNOTATIONUPDATE", "HOVEREDANNOTATIONCLEAR"]
+    actionsDenylist: []
   }) || compose$1;
   const store2 = createStore$2(
     combineReducers({
@@ -126068,195 +126698,6 @@ function sequenceSelector(state2) {
   return sequenceDataSelector(state2).sequence;
 }
 __name(sequenceSelector, "sequenceSelector");
-var NOT_FOUND = "NOT_FOUND";
-function createSingletonCache(equals2) {
-  var entry;
-  return {
-    get: /* @__PURE__ */ __name(function get7(key) {
-      if (entry && equals2(entry.key, key)) {
-        return entry.value;
-      }
-      return NOT_FOUND;
-    }, "get"),
-    put: /* @__PURE__ */ __name(function put(key, value) {
-      entry = {
-        key,
-        value
-      };
-    }, "put"),
-    getEntries: /* @__PURE__ */ __name(function getEntries() {
-      return entry ? [entry] : [];
-    }, "getEntries"),
-    clear: /* @__PURE__ */ __name(function clear3() {
-      entry = void 0;
-    }, "clear")
-  };
-}
-__name(createSingletonCache, "createSingletonCache");
-function createLruCache(maxSize, equals2) {
-  var entries2 = [];
-  function get7(key) {
-    var cacheIndex = entries2.findIndex(function(entry2) {
-      return equals2(key, entry2.key);
-    });
-    if (cacheIndex > -1) {
-      var entry = entries2[cacheIndex];
-      if (cacheIndex > 0) {
-        entries2.splice(cacheIndex, 1);
-        entries2.unshift(entry);
-      }
-      return entry.value;
-    }
-    return NOT_FOUND;
-  }
-  __name(get7, "get");
-  function put(key, value) {
-    if (get7(key) === NOT_FOUND) {
-      entries2.unshift({
-        key,
-        value
-      });
-      if (entries2.length > maxSize) {
-        entries2.pop();
-      }
-    }
-  }
-  __name(put, "put");
-  function getEntries() {
-    return entries2;
-  }
-  __name(getEntries, "getEntries");
-  function clear3() {
-    entries2 = [];
-  }
-  __name(clear3, "clear");
-  return {
-    get: get7,
-    put,
-    getEntries,
-    clear: clear3
-  };
-}
-__name(createLruCache, "createLruCache");
-var defaultEqualityCheck = /* @__PURE__ */ __name(function defaultEqualityCheck2(a2, b3) {
-  return a2 === b3;
-}, "defaultEqualityCheck");
-function createCacheKeyComparator(equalityCheck) {
-  return /* @__PURE__ */ __name(function areArgumentsShallowlyEqual(prev, next) {
-    if (prev === null || next === null || prev.length !== next.length) {
-      return false;
-    }
-    var length = prev.length;
-    for (var i2 = 0; i2 < length; i2++) {
-      if (!equalityCheck(prev[i2], next[i2])) {
-        return false;
-      }
-    }
-    return true;
-  }, "areArgumentsShallowlyEqual");
-}
-__name(createCacheKeyComparator, "createCacheKeyComparator");
-function defaultMemoize(func, equalityCheckOrOptions) {
-  var providedOptions = typeof equalityCheckOrOptions === "object" ? equalityCheckOrOptions : {
-    equalityCheck: equalityCheckOrOptions
-  };
-  var _providedOptions$equa = providedOptions.equalityCheck, equalityCheck = _providedOptions$equa === void 0 ? defaultEqualityCheck : _providedOptions$equa, _providedOptions$maxS = providedOptions.maxSize, maxSize = _providedOptions$maxS === void 0 ? 1 : _providedOptions$maxS, resultEqualityCheck = providedOptions.resultEqualityCheck;
-  var comparator = createCacheKeyComparator(equalityCheck);
-  var cache2 = maxSize === 1 ? createSingletonCache(comparator) : createLruCache(maxSize, comparator);
-  function memoized() {
-    var value = cache2.get(arguments);
-    if (value === NOT_FOUND) {
-      value = func.apply(null, arguments);
-      if (resultEqualityCheck) {
-        var entries2 = cache2.getEntries();
-        var matchingEntry = entries2.find(function(entry) {
-          return resultEqualityCheck(entry.value, value);
-        });
-        if (matchingEntry) {
-          value = matchingEntry.value;
-        }
-      }
-      cache2.put(arguments, value);
-    }
-    return value;
-  }
-  __name(memoized, "memoized");
-  memoized.clearCache = function() {
-    return cache2.clear();
-  };
-  return memoized;
-}
-__name(defaultMemoize, "defaultMemoize");
-function getDependencies(funcs) {
-  var dependencies2 = Array.isArray(funcs[0]) ? funcs[0] : funcs;
-  if (!dependencies2.every(function(dep) {
-    return typeof dep === "function";
-  })) {
-    var dependencyTypes = dependencies2.map(function(dep) {
-      return typeof dep === "function" ? "function " + (dep.name || "unnamed") + "()" : typeof dep;
-    }).join(", ");
-    throw new Error("createSelector expects all input-selectors to be functions, but received the following types: [" + dependencyTypes + "]");
-  }
-  return dependencies2;
-}
-__name(getDependencies, "getDependencies");
-function createSelectorCreator(memoize2) {
-  for (var _len = arguments.length, memoizeOptionsFromArgs = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-    memoizeOptionsFromArgs[_key - 1] = arguments[_key];
-  }
-  var createSelector2 = /* @__PURE__ */ __name(function createSelector3() {
-    for (var _len2 = arguments.length, funcs = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-      funcs[_key2] = arguments[_key2];
-    }
-    var _recomputations = 0;
-    var _lastResult;
-    var directlyPassedOptions = {
-      memoizeOptions: void 0
-    };
-    var resultFunc = funcs.pop();
-    if (typeof resultFunc === "object") {
-      directlyPassedOptions = resultFunc;
-      resultFunc = funcs.pop();
-    }
-    if (typeof resultFunc !== "function") {
-      throw new Error("createSelector expects an output function after the inputs, but received: [" + typeof resultFunc + "]");
-    }
-    var _directlyPassedOption = directlyPassedOptions, _directlyPassedOption2 = _directlyPassedOption.memoizeOptions, memoizeOptions = _directlyPassedOption2 === void 0 ? memoizeOptionsFromArgs : _directlyPassedOption2;
-    var finalMemoizeOptions = Array.isArray(memoizeOptions) ? memoizeOptions : [memoizeOptions];
-    var dependencies2 = getDependencies(funcs);
-    var memoizedResultFunc = memoize2.apply(void 0, [/* @__PURE__ */ __name(function recomputationWrapper() {
-      _recomputations++;
-      return resultFunc.apply(null, arguments);
-    }, "recomputationWrapper")].concat(finalMemoizeOptions));
-    var selector = memoize2(/* @__PURE__ */ __name(function dependenciesChecker() {
-      var params = [];
-      var length = dependencies2.length;
-      for (var i2 = 0; i2 < length; i2++) {
-        params.push(dependencies2[i2].apply(null, arguments));
-      }
-      _lastResult = memoizedResultFunc.apply(null, params);
-      return _lastResult;
-    }, "dependenciesChecker"));
-    Object.assign(selector, {
-      resultFunc,
-      memoizedResultFunc,
-      dependencies: dependencies2,
-      lastResult: /* @__PURE__ */ __name(function lastResult() {
-        return _lastResult;
-      }, "lastResult"),
-      recomputations: /* @__PURE__ */ __name(function recomputations() {
-        return _recomputations;
-      }, "recomputations"),
-      resetRecomputations: /* @__PURE__ */ __name(function resetRecomputations() {
-        return _recomputations = 0;
-      }, "resetRecomputations")
-    });
-    return selector;
-  }, "createSelector");
-  return createSelector2;
-}
-__name(createSelectorCreator, "createSelectorCreator");
-var createSelector = /* @__PURE__ */ createSelectorCreator(defaultMemoize);
 const restrictionEnzymesSelector = createSelector(
   () => defaultEnzymesByName,
   (state2, additionalEnzymes) => {
@@ -126282,7 +126723,34 @@ const restrictionEnzymesSelector = createSelector(
 const cutsiteLabelColorSelector = createSelector(sequenceDataSelector, function(sequenceData2) {
   return sequenceData2.cutsiteLabelColors;
 });
-function cutsitesSelector(sequence2, circular2, enzymeList, cutsiteLabelColors) {
+const cutsitesCache = [];
+function getCachedResult(argsObj) {
+  const idx = cutsitesCache.findIndex(
+    (entry) => entry && isEqual$3(entry.args, argsObj)
+  );
+  if (idx === -1) return;
+  const hit = cutsitesCache[idx];
+  return hit.result;
+}
+__name(getCachedResult, "getCachedResult");
+function setCachedResult(argsObj, result, cacheSize = 1) {
+  cutsitesCache.push({
+    args: argsObj,
+    result
+  });
+  if (cutsitesCache.length > cacheSize) cutsitesCache.shift();
+}
+__name(setCachedResult, "setCachedResult");
+function cutsitesSelector(sequence2, circular2, enzymeList, cutsiteLabelColors, editorSize = 1) {
+  const cachedResult = getCachedResult({
+    sequence: sequence2,
+    circular: circular2,
+    enzymeList,
+    cutsiteLabelColors
+  });
+  if (cachedResult) {
+    return cachedResult;
+  }
   const cutsitesByName = getLowerCaseObj(
     getCutsitesFromSequence(sequence2, circular2, map$3(enzymeList))
   );
@@ -126315,11 +126783,22 @@ function cutsitesSelector(sequence2, circular2, enzymeList, cutsiteLabelColors) 
   const cutsitesArray = flatMap(cutsitesByName, function(cutsitesForEnzyme) {
     return cutsitesForEnzyme;
   });
-  return {
+  const result = {
     cutsitesByName,
     cutsitesById,
     cutsitesArray
   };
+  setCachedResult(
+    {
+      sequence: sequence2,
+      circular: circular2,
+      enzymeList,
+      cutsiteLabelColors
+    },
+    result,
+    editorSize
+  );
+  return result;
 }
 __name(cutsitesSelector, "cutsitesSelector");
 const cutsitesSelector$1 = createSelector(
@@ -126327,6 +126806,7 @@ const cutsitesSelector$1 = createSelector(
   circularSelector,
   restrictionEnzymesSelector,
   cutsiteLabelColorSelector,
+  (editorState) => editorState.editorSize,
   cutsitesSelector
 );
 function divideBy3(num, shouldDivideBy3) {
@@ -126433,13 +126913,13 @@ function addCustomEnzyme(newEnz) {
   );
 }
 __name(addCustomEnzyme, "addCustomEnzyme");
-function pareDownAnnotations(annotations, max2) {
+function pareDownAnnotations(annotations, max2, sequenceLength) {
   let annotationsToPass = annotations;
   let paredDown = false;
   if (Object.keys(annotations).length > max2) {
     paredDown = true;
     const sortedAnnotations = sortBy$1(annotations, function(annotation) {
-      return -getRangeLength(annotation);
+      return -getRangeLength(annotation, sequenceLength);
     });
     annotationsToPass = sortedAnnotations.slice(0, max2).reduce(function(obj, item) {
       obj[item.id] = item;
@@ -126564,42 +127044,21 @@ const orfsSelector = createSelector(
   circularSelector,
   minimumOrfSizeSelector,
   (state2) => state2.useAdditionalOrfStartCodons,
+  (state2) => {
+    var _a2, _b2;
+    return ((_a2 = state2.sequenceData) == null ? void 0 : _a2.isProtein) || ((_b2 = state2.sequenceData) == null ? void 0 : _b2.isOligo);
+  },
   findOrfsInPlasmid
 );
-var forEach_1;
-var hasRequiredForEach;
-function requireForEach() {
-  if (hasRequiredForEach) return forEach_1;
-  hasRequiredForEach = 1;
-  var arrayEach2 = require_arrayEach(), baseEach2 = require_baseEach(), castFunction2 = require_castFunction(), isArray2 = requireIsArray();
-  function forEach4(collection, iteratee) {
-    var func = isArray2(collection) ? arrayEach2 : baseEach2;
-    return func(collection, castFunction2(iteratee));
-  }
-  __name(forEach4, "forEach");
-  forEach_1 = forEach4;
-  return forEach_1;
-}
-__name(requireForEach, "requireForEach");
-var each$1;
-var hasRequiredEach;
-function requireEach() {
-  if (hasRequiredEach) return each$1;
-  hasRequiredEach = 1;
-  each$1 = requireForEach();
-  return each$1;
-}
-__name(requireEach, "requireEach");
-var eachExports = requireEach();
-const each = /* @__PURE__ */ getDefaultExportFromCjs(eachExports);
 function translationsRawSelector(sequenceData2) {
   return sequenceData2.translations;
 }
 __name(translationsRawSelector, "translationsRawSelector");
 const translationsRawSelector$1 = createSelector(sequenceDataSelector, translationsRawSelector);
-function searchLayersSelector(sequence2, isCircular, isOpen2, searchString, ambiguousOrLiteral, dnaOrAA, isProtein2, proteinSequence, mismatchesAllowed) {
+function searchLayersSelector(sequence2, isCircular, isOpen2, searchString, ambiguousOrLiteral, dnaOrAA, isProtein2, proteinSequence, mismatchesAllowed, tempSearchLayers = []) {
+  const toReturn = [...tempSearchLayers];
   if (!searchString || !isOpen2) {
-    return [];
+    return toReturn;
   }
   if (isProtein2) {
     const searchingDna = dnaOrAA === "DNA";
@@ -126616,7 +127075,7 @@ function searchLayersSelector(sequence2, isCircular, isOpen2, searchString, ambi
     ).sort(({ start: start2 }, { start: start22 }) => {
       return start2 - start22;
     });
-    return searchingDna ? matches2 : matches2.map((_a2) => {
+    const r2 = searchingDna ? matches2 : matches2.map((_a2) => {
       var _b2 = _a2, { start: start2, end: end2 } = _b2, rest = __objRest(_b2, ["start", "end"]);
       return __spreadProps(__spreadValues({}, rest), {
         isSearchLayer: true,
@@ -126624,6 +127083,7 @@ function searchLayersSelector(sequence2, isCircular, isOpen2, searchString, ambi
         end: end2 * 3 + 2
       });
     });
+    return [...toReturn, ...r2];
   }
   if (dnaOrAA === "DNA" && ambiguousOrLiteral === "LITERAL" && mismatchesAllowed > 0) {
     const approxMatches = findApproxMatches(
@@ -126641,9 +127101,12 @@ function searchLayersSelector(sequence2, isCircular, isOpen2, searchString, ambi
       isSearchLayer: true,
       forward: true
     })).sort((a2, b3) => a2.start - b3.start);
-    return matches2.map((match) => __spreadProps(__spreadValues({}, match), {
-      className: "veSearchLayer"
-    }));
+    return [
+      ...toReturn,
+      ...matches2.map((match) => __spreadProps(__spreadValues({}, match), {
+        className: "veSearchLayer"
+      }))
+    ];
   }
   const matches = findSequenceMatches(sequence2, searchString, {
     isCircular,
@@ -126653,11 +127116,14 @@ function searchLayersSelector(sequence2, isCircular, isOpen2, searchString, ambi
   }).sort(({ start: start2 }, { start: start22 }) => {
     return start2 - start22;
   });
-  return matches.map((match) => __spreadProps(__spreadValues({}, match), {
-    forward: !match.bottomStrand,
-    className: "veSearchLayer " + (match.bottomStrand ? " veSearchLayerBottomStrand" : ""),
-    isSearchLayer: true
-  }));
+  return [
+    ...toReturn,
+    ...matches.map((match) => __spreadProps(__spreadValues({}, match), {
+      forward: !match.bottomStrand,
+      className: "veSearchLayer " + (match.bottomStrand ? " veSearchLayerBottomStrand" : ""),
+      isSearchLayer: true
+    }))
+  ];
 }
 __name(searchLayersSelector, "searchLayersSelector");
 const searchLayersSelector$1 = createSelector(
@@ -126670,6 +127136,10 @@ const searchLayersSelector$1 = createSelector(
   (state2) => state2.sequenceData.isProtein,
   (state2) => state2.sequenceData.proteinSequence,
   (state2) => state2.findTool && state2.findTool.mismatchesAllowed,
+  (state2) => {
+    var _a2;
+    return (_a2 = state2.temporaryAnnotations) == null ? void 0 : _a2.searchLayers;
+  },
   searchLayersSelector
 );
 const translationSearchMatchesSelector = createSelector(
@@ -126683,11 +127153,16 @@ const translationSearchMatchesSelector = createSelector(
     return searchLayers;
   }
 );
-function featuresRawSelector(sequenceData2) {
-  return sequenceData2.features;
+const temporaryAnnotationsSelector = /* @__PURE__ */ __name((editor) => editor.temporaryAnnotations, "temporaryAnnotationsSelector");
+function featuresRawSelector(sequenceData2, temporaryAnnotations2) {
+  return __spreadValues(__spreadValues({}, sequenceData2.features), temporaryAnnotations2 == null ? void 0 : temporaryAnnotations2.features);
 }
 __name(featuresRawSelector, "featuresRawSelector");
-const featuresSelector = createSelector(sequenceDataSelector, featuresRawSelector);
+const featuresSelector = createSelector(
+  sequenceDataSelector,
+  temporaryAnnotationsSelector,
+  featuresRawSelector
+);
 function cdsFeaturesRawSelector(features2) {
   return filter(features2, ({ type: type2 }) => type2 && type2.toUpperCase() === "CDS");
 }
@@ -126758,14 +127233,22 @@ function translationsSelector(isCircular, translationSearchMatches, sequence2, o
     },
     {}
   ));
-  each(translationsToPass, function(translation) {
-    translation.aminoAcids = getAminoAcidDataForEachBaseOfDna(
-      sequence2,
-      translation.forward,
-      translation
+  return mapValues$1(translationsToPass, (translation) => {
+    var _a2, _b2;
+    const codonStart = ((_b2 = (_a2 = translation == null ? void 0 : translation.notes) == null ? void 0 : _a2.codon_start) == null ? void 0 : _b2[0]) - 1 || 0;
+    const expandedRange = expandOrContractRangeByLength(
+      translation,
+      -codonStart,
+      true,
+      sequence2.length
     );
+    expandedRange.aminoAcids = getAminoAcidDataForEachBaseOfDna(
+      sequence2,
+      expandedRange.forward,
+      expandedRange
+    );
+    return expandedRange;
   });
-  return translationsToPass;
 }
 __name(translationsSelector, "translationsSelector");
 const translationsSelector$1 = createSelector(
@@ -126959,11 +127442,15 @@ const filteredFeaturesSelector$1 = createSelector(
   (state2) => state2.featureLengthsToHide,
   filteredFeaturesSelector
 );
-function primersRawSelector(sequenceData2) {
-  return sequenceData2.primers;
+function primersRawSelector(sequenceData2, temporaryAnnotations2) {
+  return __spreadValues(__spreadValues({}, sequenceData2.primers), temporaryAnnotations2 == null ? void 0 : temporaryAnnotations2.primers);
 }
 __name(primersRawSelector, "primersRawSelector");
-const primersSelector = createSelector(sequenceDataSelector, primersRawSelector);
+const primersSelector = createSelector(
+  sequenceDataSelector,
+  temporaryAnnotationsSelector,
+  primersRawSelector
+);
 function filteredPrimersSelector(primers2, seqLen, primerIndividualToHide, lengthsToHide) {
   return omitBy(primers2, (ann) => {
     const hideIndividually = primerIndividualToHide[ann.id];
@@ -126978,11 +127465,15 @@ const filteredPrimersSelector$1 = createSelector(
   (state2) => state2.primerLengthsToHide,
   filteredPrimersSelector
 );
-function partsRawSelector(sequenceData2) {
-  return sequenceData2.parts;
+function partsRawSelector(sequenceData2, temporaryAnnotations2) {
+  return __spreadValues(__spreadValues({}, sequenceData2.parts), temporaryAnnotations2 == null ? void 0 : temporaryAnnotations2.parts);
 }
 __name(partsRawSelector, "partsRawSelector");
-const partsSelector = createSelector(sequenceDataSelector, partsRawSelector);
+const partsSelector = createSelector(
+  sequenceDataSelector,
+  temporaryAnnotationsSelector,
+  partsRawSelector
+);
 const tagsToBoldSelector = /* @__PURE__ */ __name((state2) => state2.selectedPartTags.parts, "tagsToBoldSelector");
 function addWrappedAddons(anns, seqLen) {
   return flatMap(anns, (ann) => {
@@ -127731,11 +128222,12 @@ function showDialog({
   props,
   overrideName
 }) {
-  var _a2;
+  var _a2, _b2, _c2, _d2;
   dialogHolder.dialogType = dialogType;
   if (!dialogHolder.dialogType && ModalComponent) {
     dialogHolder.dialogType = "TGCustomModal";
   }
+  dialogHolder.editorName = props == null ? void 0 : props.editorName;
   if (document.activeElement && document.activeElement.closest(".veEditor")) {
     let editorName;
     (_a2 = document.activeElement.closest(".veEditor")) == null ? void 0 : _a2.className.split(" ").forEach((c2) => {
@@ -127749,16 +128241,28 @@ function showDialog({
   dialogHolder.CustomModalComponent = ModalComponent;
   dialogHolder.props = props;
   dialogHolder.overrideName = overrideName;
-  dialogHolder.setUniqKeyToForceRerender(shortid());
+  if (dialogHolder.editorName && (dialogHolder == null ? void 0 : dialogHolder[dialogHolder.editorName])) {
+    (_c2 = (_b2 = dialogHolder == null ? void 0 : dialogHolder[dialogHolder.editorName]) == null ? void 0 : _b2.setUniqKeyToForceRerender) == null ? void 0 : _c2.call(
+      _b2,
+      shortid()
+    );
+  } else {
+    (_d2 = dialogHolder == null ? void 0 : dialogHolder.setUniqKeyToForceRerender) == null ? void 0 : _d2.call(dialogHolder, shortid());
+  }
 }
 __name(showDialog, "showDialog");
 function hideDialog() {
+  var _a2, _b2, _c2;
   delete dialogHolder.dialogType;
   delete dialogHolder.CustomModalComponent;
   delete dialogHolder.props;
   delete dialogHolder.overrideName;
+  if (dialogHolder.editorName && (dialogHolder == null ? void 0 : dialogHolder[dialogHolder.editorName])) {
+    (_b2 = (_a2 = dialogHolder == null ? void 0 : dialogHolder[dialogHolder.editorName]) == null ? void 0 : _a2.setUniqKeyToForceRerender) == null ? void 0 : _b2.call(_a2);
+  } else {
+    (_c2 = dialogHolder == null ? void 0 : dialogHolder.setUniqKeyToForceRerender) == null ? void 0 : _c2.call(dialogHolder);
+  }
   delete dialogHolder.editorName;
-  dialogHolder.setUniqKeyToForceRerender();
 }
 __name(hideDialog, "hideDialog");
 const typeToDialogType = {
@@ -127809,7 +128313,8 @@ function updateEditor(store2, editorName, initialValues2 = {}, extraMeta = {}, {
     annotationVisibility: annotationVisibility2,
     annotationsToSupport: annotationsToSupport2,
     findTool: findTool2,
-    justPassingPartialSeqData
+    justPassingPartialSeqData,
+    temporaryAnnotations: temporaryAnnotations2
   } = initialValues2;
   const currentEditor = store2.getState().VectorEditor[editorName] || {};
   const isAlreadyProteinEditor = currentEditor.sequenceData && currentEditor.sequenceData.isProtein;
@@ -127931,12 +128436,14 @@ function updateEditor(store2, editorName, initialValues2 = {}, extraMeta = {}, {
         };
       }
     }
-    payload = __spreadValues(__spreadValues(__spreadValues({}, initialValues2), toSpread), sequenceData2 && {
+    payload = __spreadValues(__spreadValues(__spreadValues(__spreadValues({}, initialValues2), toSpread), sequenceData2 && {
       sequenceData: tidyUpSequenceData(sequenceData2, {
         convertAnnotationsFromAAIndices,
         //if we have sequence data coming in make sure to tidy it up for the user :)
         annotationsAsObjects: true
       })
+    }), temporaryAnnotations2 && {
+      temporaryAnnotations: temporaryAnnotations2
     });
   }
   annotationTypes.forEach((t2) => {
@@ -128030,7 +128537,8 @@ const handleSave = /* @__PURE__ */ __name((props) => (..._0) => __async(void 0, 
     readOnly: readOnly2,
     alwaysAllowSave,
     sequenceData: sequenceData2,
-    lastSavedIdUpdate: lastSavedIdUpdate2
+    lastSavedIdUpdate: lastSavedIdUpdate2,
+    getAcceptedInsertChars
   } = props;
   const saveHandler = opts2.isSaveAs ? onSaveAs || onSave : onSave;
   const updateLastSavedIdToCurrent = /* @__PURE__ */ __name(() => {
@@ -128043,7 +128551,8 @@ const handleSave = /* @__PURE__ */ __name((props) => (..._0) => __async(void 0, 
     opts2,
     tidyUpSequenceData(sequenceData2, {
       doNotRemoveInvalidChars: true,
-      annotationsAsObjects: true
+      annotationsAsObjects: true,
+      getAcceptedInsertChars
     }),
     props,
     updateLastSavedIdToCurrent
@@ -128225,8 +128734,8 @@ const withEditorProps = compose(
           caretPositionOrRange,
           options
         } = props.beforeSequenceInsertOrDelete ? (yield props.beforeSequenceInsertOrDelete(
-          tidyUpSequenceData(_sequenceDataToInsert),
-          tidyUpSequenceData(_existingSequenceData),
+          tidyUpSequenceData(_sequenceDataToInsert, { getAcceptedInsertChars: props.getAcceptedInsertChars }),
+          tidyUpSequenceData(_existingSequenceData, { getAcceptedInsertChars: props.getAcceptedInsertChars }),
           _caretPositionOrRange,
           _options
         )) || {} : {};
@@ -128389,7 +128898,11 @@ const getEditorState = createSelector(
   (state2) => state2.VectorEditor,
   (state2, editorName) => editorName,
   (VectorEditor, editorName) => {
-    return VectorEditor[editorName];
+    const editorState = VectorEditor[editorName];
+    editorState && (editorState.editorSize = Object.values(VectorEditor).filter(
+      (editorItem) => editorItem == null ? void 0 : editorItem.sequenceData
+    ).length);
+    return editorState;
   }
 );
 function mapStateToProps(state2, ownProps) {
@@ -128426,6 +128939,9 @@ function mapStateToProps(state2, ownProps) {
         annotationTypePlural,
         sequenceLength
       );
+      if (dialogHolder.editorName) {
+        annotationToAdd = dialogHolder.editorName === editorName ? annotationToAdd : void 0;
+      }
     }
   });
   const toReturn = __spreadProps(__spreadValues({}, editorState), {
@@ -128653,13 +129169,15 @@ function getShowGCContent(state2, ownProps) {
   return toRet;
 }
 __name(getShowGCContent, "getShowGCContent");
-function jsonToJson(incomingJson) {
+function jsonToJson(incomingJson, options) {
+  const { getAcceptedInsertChars } = options || {};
   return JSON.stringify(
     omit$1(
       cleanUpTeselagenJsonForExport(
         tidyUpSequenceData(incomingJson, {
           doNotRemoveInvalidChars: true,
-          annotationsAsObjects: false
+          annotationsAsObjects: false,
+          getAcceptedInsertChars
         })
       ),
       [
@@ -129266,6 +129784,16 @@ var rafSchd = /* @__PURE__ */ __name(function rafSchd2(fn4) {
   };
   return wrapperFn;
 }, "rafSchd");
+function _extends() {
+  return _extends = Object.assign ? Object.assign.bind() : function(n2) {
+    for (var e2 = 1; e2 < arguments.length; e2++) {
+      var t2 = arguments[e2];
+      for (var r2 in t2) ({}).hasOwnProperty.call(t2, r2) && (n2[r2] = t2[r2]);
+    }
+    return n2;
+  }, _extends.apply(null, arguments);
+}
+__name(_extends, "_extends");
 function log(type2, message) {
   {
     return;
@@ -133797,7 +134325,7 @@ function useAnnouncer(contextId) {
     el.id = id2;
     el.setAttribute("aria-live", "assertive");
     el.setAttribute("aria-atomic", "true");
-    _extends$j(el.style, visuallyHidden$1);
+    _extends(el.style, visuallyHidden$1);
     getBodyElement().appendChild(el);
     return /* @__PURE__ */ __name(function cleanup() {
       setTimeout(/* @__PURE__ */ __name(function remove3() {
@@ -135673,7 +136201,7 @@ function PublicDraggable(props) {
   const isEnabled = typeof props.isDragDisabled === "boolean" ? !props.isDragDisabled : true;
   const canDragInteractiveElements = Boolean(props.disableInteractiveElementBlocking);
   const shouldRespectForcePress = Boolean(props.shouldRespectForcePress);
-  return React$1.createElement(PrivateDraggable, _extends$j({}, props, {
+  return React$1.createElement(PrivateDraggable, _extends({}, props, {
     isClone: false,
     isEnabled,
     canDragInteractiveElements,
@@ -137943,85 +138471,105 @@ const HoveredIdContext = React$1.createContext({
   hoveredId: ""
   // default value
 });
-function withHoveredIdFromContext(Component) {
-  return /* @__PURE__ */ __name(function HoveredIdComponent(props) {
-    return /* @__PURE__ */ React$1.createElement(HoveredIdContext.Consumer, null, (contexts) => /* @__PURE__ */ React$1.createElement(Component, __spreadValues(__spreadValues({}, props), contexts)));
-  }, "HoveredIdComponent");
-}
-__name(withHoveredIdFromContext, "withHoveredIdFromContext");
 const hoveredAnnEasyStore = store$2({
   hoveredAnn: void 0,
-  selectedAnn: void 0
+  selectedAnn: void 0,
+  // Per-editor hovered annotation IDs
+  hoveredIds: {}
 });
-const withHover = compose$1(
-  withHoveredIdFromContext,
-  branch(
-    ({ noRedux }) => !noRedux,
-    connect(function(state2, {
-      id: id2,
-      editorName = "StandaloneEditor",
-      className,
-      hoveredId: hoveredIdFromContext,
-      passHoveredId
-    }) {
-      if (!editorName) {
-        console.warn(
-          "please pass an editorName to the withHover() wrapped component"
-        );
+function hoveredAnnotationUpdate(id2, { editorName = "StandaloneEditor" } = {}) {
+  hoveredAnnEasyStore.hoveredIds[editorName] = id2;
+}
+__name(hoveredAnnotationUpdate, "hoveredAnnotationUpdate");
+function hoveredAnnotationClear(clear3, { editorName = "StandaloneEditor" } = {}) {
+  hoveredAnnEasyStore.hoveredIds[editorName] = "";
+}
+__name(hoveredAnnotationClear, "hoveredAnnotationClear");
+function withHover(WrappedComponent) {
+  var _a2;
+  const HoverComponent = view(
+    (_a2 = class extends React$1.Component {
+      constructor() {
+        super(...arguments);
+        __publicField(this, "handleMouseOver", /* @__PURE__ */ __name((e2) => {
+          const target = e2.target;
+          let alreadyHandled = false;
+          let currentElement = target;
+          while (currentElement) {
+            if (currentElement === e2.currentTarget) {
+              break;
+            }
+            if (currentElement.classList.contains("hoverHelper")) {
+              alreadyHandled = true;
+              break;
+            }
+            currentElement = currentElement.parentElement;
+          }
+          if (alreadyHandled) return;
+          const {
+            editorName = "StandaloneEditor",
+            id: id2,
+            annotation,
+            label
+          } = this.props;
+          const isIdHashmap = typeof id2 === "object";
+          const idToPass = isIdHashmap ? Object.keys(id2)[0] : id2;
+          const annot = annotation || (label == null ? void 0 : label.annotation);
+          if (modifiableTypes.includes(annot == null ? void 0 : annot.annotationTypePlural)) {
+            hoveredAnnEasyStore.hoveredAnn = annot;
+          }
+          if (window.__veDragging || window.__veScrolling) return;
+          hoveredAnnotationUpdate(idToPass, { editorName });
+        }, "handleMouseOver"));
+        __publicField(this, "handleMouseLeave", /* @__PURE__ */ __name((e2) => {
+          hoveredAnnEasyStore.hoveredAnn = void 0;
+          const { editorName = "StandaloneEditor" } = this.props;
+          e2.stopPropagation();
+          if (window.__veDragging || window.__veScrolling) return;
+          hoveredAnnotationClear(true, { editorName });
+        }, "handleMouseLeave"));
       }
-      const editorState = state2.VectorEditor[editorName] || {};
-      const hoveredId = editorState.hoveredAnnotation || hoveredIdFromContext;
-      const isIdHashmap = typeof id2 === "object";
-      const hovered = !!(isIdHashmap ? id2[hoveredId] : hoveredId === id2);
-      const newClassName = classNames$1(className, "hoverHelper", {
-        veAnnotationHovered: hovered
-      });
-      const toReturn = {
-        hovered,
-        className: newClassName
-      };
-      if (hovered && passHoveredId) {
-        toReturn.hoveredId = hoveredId;
-      }
-      return toReturn;
-    }, hoveredAnnotationActions)
-  ),
-  withHandlers({
-    onMouseOver: /* @__PURE__ */ __name((props) => function(e2) {
-      var _a2;
-      const target = e2.target;
-      let alreadyHandled = false;
-      let currentElement = target;
-      while (currentElement) {
-        if (currentElement === e2.currentTarget) {
-          break;
+      render() {
+        var _b2;
+        const _a3 = this.props, {
+          id: id2,
+          editorName = "StandaloneEditor",
+          className,
+          passHoveredId,
+          noRedux
+        } = _a3, restProps = __objRest(_a3, [
+          "id",
+          "editorName",
+          "className",
+          "passHoveredId",
+          "noRedux"
+        ]);
+        const hoveredIdFromContext = (_b2 = this.context) == null ? void 0 : _b2.hoveredId;
+        const hoveredId = hoveredAnnEasyStore.hoveredIds[editorName] || hoveredIdFromContext || "";
+        const isIdHashmap = typeof id2 === "object";
+        const hovered = !!(isIdHashmap ? id2[hoveredId] : hoveredId === id2);
+        const newClassName = classNames$1(className, "hoverHelper", {
+          veAnnotationHovered: hovered
+        });
+        const passedProps = __spreadProps(__spreadValues({}, restProps), {
+          id: id2,
+          editorName,
+          hovered,
+          className: newClassName,
+          onMouseOver: this.handleMouseOver,
+          onMouseLeave: this.handleMouseLeave
+        });
+        if (hovered && passHoveredId) {
+          passedProps.hoveredId = hoveredId;
         }
-        if (currentElement.classList.contains("hoverHelper")) {
-          alreadyHandled = true;
-          break;
-        }
-        currentElement = currentElement.parentElement;
+        return /* @__PURE__ */ React$1.createElement(WrappedComponent, __spreadValues({}, passedProps));
       }
-      if (alreadyHandled) return;
-      const { editorName, id: id2, hoveredAnnotationUpdate: hoveredAnnotationUpdate2 } = props;
-      const isIdHashmap = typeof id2 === "object";
-      const idToPass = isIdHashmap ? Object.keys(id2)[0] : id2;
-      const annot = (props == null ? void 0 : props.annotation) || ((_a2 = props == null ? void 0 : props.label) == null ? void 0 : _a2.annotation);
-      if (modifiableTypes.includes(annot == null ? void 0 : annot.annotationTypePlural)) {
-        hoveredAnnEasyStore.hoveredAnn = annot;
-      }
-      if (window.__veDragging || window.__veScrolling) return;
-      hoveredAnnotationUpdate2 && hoveredAnnotationUpdate2(idToPass, { editorName });
-    }, "onMouseOver"),
-    onMouseLeave: /* @__PURE__ */ __name((props) => (e2) => {
-      hoveredAnnEasyStore.hoveredAnn = void 0;
-      const { editorName, hoveredAnnotationClear: hoveredAnnotationClear2 } = props;
-      e2.stopPropagation();
-      if (window.__veDragging || window.__veScrolling) return;
-      hoveredAnnotationClear2 && hoveredAnnotationClear2(true, { editorName });
-    }, "onMouseLeave")
-  })
-);
+    }, __publicField(_a2, "contextType", HoveredIdContext), _a2)
+  );
+  HoverComponent.displayName = `withHover(${WrappedComponent.displayName || WrappedComponent.name || "Component"})`;
+  return HoverComponent;
+}
+__name(withHover, "withHover");
 const partOverhangs = [
   "fivePrimeOverhang",
   "fivePrimeUnderhang",
@@ -138539,7 +139087,8 @@ function getAnnotationNameAndStartStopString({
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
    click → top cut position
    alt/option+click → bottom cut position
-   cmd/ctrl+click → recognition range` : `
+   cmd/ctrl+click → recognition range
+   double click → show info` : `
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
   INTERACTIONS:
@@ -138641,6 +139190,21 @@ function Orf(props) {
   );
 }
 __name(Orf, "Orf");
+var forEach_1;
+var hasRequiredForEach;
+function requireForEach() {
+  if (hasRequiredForEach) return forEach_1;
+  hasRequiredForEach = 1;
+  var arrayEach2 = require_arrayEach(), baseEach2 = require_baseEach(), castFunction2 = require_castFunction(), isArray2 = requireIsArray();
+  function forEach4(collection, iteratee) {
+    var func = isArray2(collection) ? arrayEach2 : baseEach2;
+    return func(collection, castFunction2(iteratee));
+  }
+  __name(forEach4, "forEach");
+  forEach_1 = forEach4;
+  return forEach_1;
+}
+__name(requireForEach, "requireForEach");
 var forEachExports = requireForEach();
 const forEach3 = /* @__PURE__ */ getDefaultExportFromCjs(forEachExports);
 var lib = {};
@@ -139310,9 +139874,49 @@ const _AnnotationPositioner = class _AnnotationPositioner extends React$1.PureCo
 };
 __name(_AnnotationPositioner, "AnnotationPositioner");
 let AnnotationPositioner = _AnnotationPositioner;
+let measureCanvas;
+let cachedFontSize = null;
+function getVeMonospaceFontSize() {
+  if (cachedFontSize !== null) {
+    return cachedFontSize;
+  }
+  const tempElement = document.createElement("div");
+  tempElement.className = "ve-monospace-font";
+  tempElement.style.position = "absolute";
+  tempElement.style.visibility = "hidden";
+  tempElement.style.pointerEvents = "none";
+  document.body.appendChild(tempElement);
+  try {
+    const computedStyle = window.getComputedStyle(tempElement);
+    const fontSize = parseFloat(computedStyle.fontSize);
+    cachedFontSize = fontSize || ANNOTATION_LABEL_FONT_WIDTH;
+    return cachedFontSize;
+  } catch (error) {
+    console.warn(
+      "Failed to compute ve-monospace-font size, using fallback",
+      error
+    );
+    cachedFontSize = ANNOTATION_LABEL_FONT_WIDTH;
+    return cachedFontSize;
+  } finally {
+    document.body.removeChild(tempElement);
+  }
+}
+__name(getVeMonospaceFontSize, "getVeMonospaceFontSize");
+function getAnnotationTextWidth(text2, fontFamily = "monospace") {
+  if (!measureCanvas) {
+    measureCanvas = document.createElement("canvas");
+  }
+  const fontSize = getVeMonospaceFontSize();
+  const ctx = measureCanvas.getContext("2d");
+  ctx.font = `${fontSize}px ${fontFamily}`;
+  return ctx.measureText(text2).width;
+}
+__name(getAnnotationTextWidth, "getAnnotationTextWidth");
 const doesLabelFitInAnnotation = /* @__PURE__ */ __name((text2 = "", { range: range2, width }, charWidth2) => {
-  const textLength = text2.length * ANNOTATION_LABEL_FONT_WIDTH;
-  const widthMinusOne = (range2 ? getWidth(range2, charWidth2, 0) : width) - charWidth2;
+  const textLength = getAnnotationTextWidth(text2);
+  const fontSize = getVeMonospaceFontSize();
+  const widthMinusOne = range2 ? getWidth(range2, charWidth2, 0) - fontSize * 2 : width - fontSize * 2;
   return widthMinusOne > textLength;
 }, "doesLabelFitInAnnotation");
 function getAnnotationClassnames({ overlapsSelf }, { viewName, type: type2 }) {
@@ -139322,6 +139926,78 @@ function getAnnotationClassnames({ overlapsSelf }, { viewName, type: type2 }) {
   });
 }
 __name(getAnnotationClassnames, "getAnnotationClassnames");
+function getAnnotationTextOffset({
+  width,
+  nameToDisplay,
+  hasAPoint,
+  pointiness,
+  forward
+}) {
+  return width / 2 - getAnnotationTextWidth(nameToDisplay) / 2 - (hasAPoint ? (pointiness / 2 + ANNOTATION_LABEL_FONT_WIDTH / 2) * (forward ? 1 : -1) : 0);
+}
+__name(getAnnotationTextOffset, "getAnnotationTextOffset");
+function getAnnotationNameInfo({
+  name: name2,
+  width,
+  hasAPoint,
+  pointiness,
+  forward,
+  charWidth: charWidth2,
+  truncateLabelsThatDoNotFit,
+  onlyShowLabelsThatDoNotFit,
+  annotation
+}) {
+  let nameToDisplay = name2;
+  let textOffset = getAnnotationTextOffset({
+    width,
+    nameToDisplay,
+    hasAPoint,
+    pointiness,
+    forward
+  });
+  const widthAvailableForText = width - ANNOTATION_LABEL_FONT_WIDTH * 2;
+  if (!doesLabelFitInAnnotation(name2, { width }, charWidth2) || !onlyShowLabelsThatDoNotFit && ["parts", "features"].includes(annotation.annotationTypePlural)) {
+    if (truncateLabelsThatDoNotFit) {
+      let left2 = 0;
+      let right2 = name2.length;
+      let bestFit = "";
+      while (left2 <= right2) {
+        const mid = Math.floor((left2 + right2) / 2);
+        const candidate = name2.slice(0, mid);
+        const candidateWidth = getAnnotationTextWidth(candidate);
+        if (candidateWidth <= widthAvailableForText) {
+          if (candidate.length > bestFit.length) {
+            bestFit = candidate;
+          }
+          left2 = mid + 1;
+        } else {
+          right2 = mid - 1;
+        }
+      }
+      if (bestFit.length < name2.length) {
+        bestFit = bestFit.slice(0, -2) + "..";
+      }
+      nameToDisplay = bestFit;
+      if (nameToDisplay.length <= 3) {
+        textOffset = 0;
+        nameToDisplay = "";
+      } else {
+        textOffset = getAnnotationTextOffset({
+          width,
+          nameToDisplay,
+          hasAPoint,
+          pointiness,
+          forward
+        });
+      }
+    } else {
+      textOffset = 0;
+      nameToDisplay = "";
+    }
+  }
+  return { textOffset, nameToDisplay };
+}
+__name(getAnnotationNameInfo, "getAnnotationNameInfo");
 function PointedAnnotation(props) {
   const {
     className,
@@ -139457,27 +140133,17 @@ function PointedAnnotation(props) {
       Q ${pointiness},${height / 2} ${0},${0}
       z`;
   }
-  let nameToDisplay = name2;
-  let textOffset = width / 2 - name2.length * 5 / 2 - (hasAPoint ? pointiness / 2 * (forward ? 1 : -1) : 0);
-  if (!doesLabelFitInAnnotation(name2, { width }, charWidth2) || !onlyShowLabelsThatDoNotFit && ["parts", "features"].includes(annotation.annotationTypePlural)) {
-    if (truncateLabelsThatDoNotFit) {
-      const fractionToDisplay = width / (name2.length * ANNOTATION_LABEL_FONT_WIDTH);
-      const numLetters = Math.floor(fractionToDisplay * name2.length);
-      nameToDisplay = name2.slice(0, numLetters);
-      if (nameToDisplay.length > 3) {
-        if (nameToDisplay.length !== name2.length) {
-          nameToDisplay += "..";
-        }
-        textOffset = width / 2 - nameToDisplay.length * 5 / 2 - (hasAPoint ? pointiness / 2 * (forward ? 1 : -1) : 0);
-      } else {
-        textOffset = 0;
-        nameToDisplay = "";
-      }
-    } else {
-      textOffset = 0;
-      nameToDisplay = "";
-    }
-  }
+  const { textOffset, nameToDisplay } = getAnnotationNameInfo({
+    name: name2,
+    width,
+    hasAPoint,
+    pointiness,
+    forward,
+    charWidth: charWidth2,
+    truncateLabelsThatDoNotFit,
+    onlyShowLabelsThatDoNotFit,
+    annotation
+  });
   let _textColor = textColor;
   if (!textColor) {
     try {
@@ -140337,9 +141003,9 @@ function AASliver(props) {
       "text",
       {
         fontSize: 25,
-        stroke: "black",
+        className: "aminoAcidNumber",
         strokeWidth: 2,
-        transform: `scale(${3 / width * 10},3) translate(${(forward ? 45 : 55) * width / 10},51)`,
+        transform: `scale(${3 / width * 10},${37.5 / height}) translate(${(forward ? 45 : 55) * width / 10},${4.4 * height - 4})`,
         x: "0",
         y: "4",
         style: { textAnchor: "middle" }
@@ -142687,12 +143353,12 @@ function Cutsites(props) {
     row,
     sequenceLength,
     topStrand,
-    hoveredAnnotation: hoveredAnnotation2
+    hoveredAnnotation
   } = props;
   const snips = [];
   const snipConnectors = [];
   Object.keys(annotationRanges).sort(
-    (a2) => annotationRanges[a2].annotation.id === hoveredAnnotation2 ? 1 : -1
+    (a2) => annotationRanges[a2].annotation.id === hoveredAnnotation ? 1 : -1
   ).forEach(function(key) {
     const annotationRange = annotationRanges[key];
     let { annotation } = annotationRange;
@@ -142711,7 +143377,7 @@ function Cutsites(props) {
     bottomSnipPosition = bottomSnipPosition && Number(bottomSnipPosition);
     upstreamTopSnip = upstreamTopSnip && Number(upstreamTopSnip);
     upstreamBottomSnip = upstreamBottomSnip && Number(upstreamBottomSnip);
-    const isHovered = annotation.id === hoveredAnnotation2;
+    const isHovered = annotation.id === hoveredAnnotation;
     snipStyle = __spreadProps(__spreadValues({}, snipStyle), {
       background: annotation.restrictionEnzyme.color
     });
@@ -142828,8 +143494,8 @@ function Cutsites(props) {
 }
 __name(Cutsites, "Cutsites");
 const Cutsites$1 = pure(
-  connectToEditor(({ hoveredAnnotation: hoveredAnnotation2 }) => ({
-    hoveredAnnotation: hoveredAnnotation2
+  connectToEditor(({ hoveredAnnotation }) => ({
+    hoveredAnnotation
   }))(Cutsites)
 );
 const useShowChromQualScores = /* @__PURE__ */ __name(() => {
@@ -143228,11 +143894,11 @@ const defaultCharWidth = 9;
 const defaultContainerWidth = 400;
 const defaultMarginWidth$1 = 50;
 const CutsiteSelectionLayers = connectToEditor(
-  ({ hoveredAnnotation: hoveredAnnotation2 }) => ({
-    hoveredAnnotation: hoveredAnnotation2
+  ({ hoveredAnnotation }) => ({
+    hoveredAnnotation
   })
 )(/* @__PURE__ */ __name(function CutsiteSelectionLayersInner({
-  hoveredAnnotation: hoveredAnnotation2,
+  hoveredAnnotation,
   cutsites,
   annotationCommonProps,
   showReverseSequence,
@@ -143240,9 +143906,9 @@ const CutsiteSelectionLayers = connectToEditor(
   alignmentData,
   row
 }) {
-  return Object.keys(cutsites).sort((a2) => cutsites[a2].id === hoveredAnnotation2 ? 1 : -1).map(function(id2, index2) {
+  return Object.keys(cutsites).sort((a2) => cutsites[a2].id === hoveredAnnotation ? 1 : -1).map(function(id2, index2) {
     const cutsite = cutsites[id2];
-    const isHovered = hoveredAnnotation2 === cutsite.id;
+    const isHovered = hoveredAnnotation === cutsite.id;
     const layer = cutsite.annotation.recognitionSiteRange;
     return layer.start > -1 && /* @__PURE__ */ React$1.createElement(
       SelectionLayer$3,
@@ -143400,7 +144066,7 @@ function RowItem$1(props) {
   ) : "";
   const getGaps = reactExports.useMemo(() => {
     if (alignmentData) {
-      const gapMap = getGapMap(alignmentData.sequence);
+      const gapMap = getGapMap$1(alignmentData.sequence);
       return (rangeOrCaretPosition) => {
         if (typeof rangeOrCaretPosition !== "object") {
           return {
@@ -143830,7 +144496,7 @@ function RowItem$1(props) {
   );
 }
 __name(RowItem$1, "RowItem$1");
-function getGapMap(sequence2) {
+function getGapMap$1(sequence2) {
   const gapMap = [0];
   sequence2.split("").forEach((char) => {
     if (char === "-") {
@@ -143841,7 +144507,7 @@ function getGapMap(sequence2) {
   });
   return gapMap;
 }
-__name(getGapMap, "getGapMap");
+__name(getGapMap$1, "getGapMap$1");
 function getGapsDefault() {
   return {
     gapsBefore: 0,
@@ -145347,26 +146013,32 @@ function showFileDialog({ multiple = false, onSelect }) {
 }
 __name(showFileDialog, "showFileDialog");
 const name = "@teselagen/ove";
-const version = "0.8.18";
+const version = "0.8.42";
 const main = "./src/index.js";
 const type = "module";
+const repository = "https://github.com/TeselaGen/tg-oss";
 const exports$1 = { ".": { "import": "./index.es.js", "require": "./index.cjs.js" }, "./*": "./*" };
-const dependencies = { "@blueprintjs/core": "3.54.0", "@hello-pangea/dnd": "16.2.0", "@risingstack/react-easy-state": "^6.3.0", "@teselagen/bio-parsers": "file:../bio-parsers", "@teselagen/file-utils": "file:../file-utils", "@teselagen/range-utils": "file:../range-utils", "@teselagen/react-list": "0.8.18", "@teselagen/sequence-utils": "file:../sequence-utils", "@teselagen/ui": "file:../ui", "@use-gesture/react": "10.3.0", "biomsa": "^0.2.4", "classnames": "^2.3.2", "clipboard": "^2.0.11", "color": "^3.2.1", "combokeys": "^3.0.1", "copy-to-clipboard": "^3.3.1", "deep-equal": "^1.1.1", "dom-to-image": "^2.6.0", "downloadjs": "^1.4.7", "file-saver": "^2.0.5", "html2canvas": "^1.4.1", "immer": "^9.0.15", "is-mobile": "^3.0.0", "lodash": "4.17.21", "lodash-es": "^4.17.21", "node-interval-tree": "^1.3.3", "papaparse": "5.3.2", "paths-js": "^0.4.11", "pluralize": "^7.0.0", "popper.js": "^1.16.1", "prop-types": "^15.6.2", "react": "^18.3.1", "react-dom": "^18.3.1", "react-draggable": "4.4.5", "react-dropzone": "^11.4.2", "react-markdown": "9.0.1", "react-measure": "^2.5.2", "react-redux": "^8.0.5", "react-sizeme": "^2.6.12", "recompose": "npm:react-recompose@0.31.1", "redux": "^4.1.2", "redux-act": "^1.8.0", "redux-form": "^8.3.10", "redux-thunk": "2.4.1", "remark-gfm": "^4.0.0", "reselect": "^4.1.7", "shortid": "2.2.16", "tg-use-local-storage-state": "^16.0.3", "to-regex-range": "5.0.1", "use-debounce": "^8.0.4", "validate.io-nonnegative-integer-array": "^1.0.1" };
+const dependencies = { "@blueprintjs/core": "3.54.0", "@hello-pangea/dnd": "16.2.0", "@risingstack/react-easy-state": "^6.3.0", "@teselagen/bio-parsers": "file:../bio-parsers", "@teselagen/file-utils": "file:../file-utils", "@teselagen/range-utils": "file:../range-utils", "@teselagen/react-list": "0.8.18", "@teselagen/sequence-utils": "file:../sequence-utils", "@teselagen/ui": "file:../ui", "@use-gesture/react": "10.3.0", "classnames": "^2.3.2", "clipboard": "^2.0.11", "color": "^3.2.1", "combokeys": "^3.0.1", "copy-to-clipboard": "^3.3.1", "deep-equal": "^1.1.1", "dom-to-image": "^2.6.0", "downloadjs": "^1.4.7", "file-saver": "^2.0.5", "html2canvas": "^1.4.1", "immer": "^9.0.15", "is-mobile": "^3.0.0", "lodash": "4.17.21", "lodash-es": "^4.17.21", "node-interval-tree": "^1.3.3", "papaparse": "5.3.2", "paths-js": "^0.4.11", "pluralize": "^7.0.0", "popper.js": "^1.16.1", "prop-types": "^15.6.2", "react": "^18.3.1", "react-dom": "^18.3.1", "react-draggable": "4.4.5", "react-dropzone": "^11.4.2", "react-measure": "^2.5.2", "react-redux": "^8.0.5", "react-sizeme": "^2.6.12", "recompose": "npm:react-recompose@0.31.1", "redux": "^4.1.2", "redux-act": "^1.8.0", "redux-form": "^8.3.10", "redux-thunk": "2.4.1", "reselect": "^4.1.7", "shortid": "2.2.16", "tg-use-local-storage-state": "^16.0.3", "use-debounce": "^8.0.4", "validate.io-nonnegative-integer-array": "^1.0.1" };
+const devDependencies = { "biomsa": "^0.2.4", "react-markdown": "9.0.1", "remark-gfm": "^4.0.0", "to-regex-range": "5.0.1" };
 const packageJson = {
   name,
   version,
   main,
   type,
+  repository,
   exports: exports$1,
-  dependencies
+  dependencies,
+  devDependencies
 };
 const _package = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: packageJson,
   dependencies,
+  devDependencies,
   exports: exports$1,
   main,
   name,
+  repository,
   type,
   version
 }, Symbol.toStringTag, { value: "Module" }));
@@ -146284,7 +146956,7 @@ const fileCommandDefs = __spreadValues(__spreadProps(__spreadValues({
   },
   exportSequenceAsTeselagenJson: {
     name: "Download Teselagen JSON File",
-    handler: /* @__PURE__ */ __name((props) => props.exportSequenceToFile("teselagenJson"), "handler")
+    handler: /* @__PURE__ */ __name((props) => props.exportSequenceToFile("teselagenJson", { getAcceptedInsertChars: props.getAcceptedInsertChars }), "handler")
   },
   viewProperties: {
     handler: /* @__PURE__ */ __name((props) => props.propertiesViewOpen(), "handler")
@@ -147493,6 +148165,7 @@ const _SequenceInputNoHotkeys = class _SequenceInputNoHotkeys extends React$1.Co
       caretPosition: caretPosition2,
       sequenceData: sequenceData2,
       maxInsertSize,
+      getAcceptedInsertChars,
       showAminoAcidUnitAsCodon
     } = this.props;
     const { charsToInsert, hasTempError } = this.state;
@@ -147528,7 +148201,8 @@ const _SequenceInputNoHotkeys = class _SequenceInputNoHotkeys extends React$1.Co
           const [sanitizedVal, warnings] = filterSequenceString(
             e2.target.value,
             __spreadProps(__spreadValues({}, sequenceData2), {
-              name: void 0
+              name: void 0,
+              getAcceptedInsertChars
             })
           );
           if (warnings.length) {
@@ -148407,7 +149081,8 @@ function VectorInteractionHOC(Component) {
           onPaste,
           disableBpEditing,
           sequenceData: sequenceData2,
-          maxInsertSize
+          maxInsertSize,
+          getAcceptedInsertChars
         } = this.props;
         if (disableBpEditing) {
           return this.createDisableBpEditingMsg();
@@ -148446,7 +149121,8 @@ function VectorInteractionHOC(Component) {
           topLevelSeqData: sequenceData2,
           provideNewIdsForAnnotations: true,
           annotationsAsObjects: true,
-          noCdsTranslations: true
+          noCdsTranslations: true,
+          getAcceptedInsertChars
         });
         if (!seqDataToInsert.sequence.length)
           return window.toastr.warning("Sorry no valid base pairs to paste");
@@ -148466,7 +149142,8 @@ function VectorInteractionHOC(Component) {
           selectionLayer: selectionLayer2,
           copyOptions: copyOptions2,
           disableBpEditing,
-          readOnly: readOnly2
+          readOnly: readOnly2,
+          getAcceptedInsertChars
         } = this.props;
         const onCut = this.props.onCut || this.props.onCopy || noop$8;
         const seqData = tidyUpSequenceData(
@@ -148490,7 +149167,8 @@ function VectorInteractionHOC(Component) {
           {
             doNotRemoveInvalidChars: true,
             annotationsAsObjects: true,
-            includeProteinSequence: true
+            includeProteinSequence: true,
+            getAcceptedInsertChars
           }
         );
         if (!(this.sequenceDataToCopy || {}).textToCopy && !seqData.sequence.length)
@@ -148508,7 +149186,8 @@ function VectorInteractionHOC(Component) {
             e2,
             tidyUpSequenceData(seqData, {
               doNotRemoveInvalidChars: true,
-              annotationsAsObjects: true
+              annotationsAsObjects: true,
+              getAcceptedInsertChars
             }),
             this.props
           );
@@ -148558,6 +149237,7 @@ function VectorInteractionHOC(Component) {
           readOnly: readOnly2,
           disableBpEditing,
           maxInsertSize,
+          getAcceptedInsertChars,
           showAminoAcidUnitAsCodon
         } = this.props;
         const sequenceLength = sequenceData2.sequence.length;
@@ -148577,6 +149257,7 @@ function VectorInteractionHOC(Component) {
             sequenceLength,
             caretPosition: caretPosition2,
             maxInsertSize,
+            getAcceptedInsertChars,
             showAminoAcidUnitAsCodon,
             handleInsert: /* @__PURE__ */ __name((seqDataToInsert) => __async(this, null, function* () {
               yield insertAndSelectHelper({
@@ -151143,28 +151824,31 @@ const __LinearView = class __LinearView extends React$1.Component {
         maxAnnotationsToDisplay
       } = this.props;
       this.paredDownMessages = [];
-      const paredDownSeqData = ["parts", "features", "cutsites"].reduce(
-        (acc, type2) => {
-          const nameUpper = startCase(type2);
-          const maxToShow = (maxAnnotationsToDisplay ? maxAnnotationsToDisplay[type2] : limits[type2]) || 50;
-          const [annotations, paredDown] = pareDownAnnotations(
-            sequenceData2["filtered" + nameUpper] || sequenceData2[type2] || {},
-            maxToShow
+      const paredDownSeqData = [
+        "parts",
+        "features",
+        "cutsites",
+        "primers"
+      ].reduce((acc, type2) => {
+        const nameUpper = startCase(type2);
+        const maxToShow = (maxAnnotationsToDisplay ? maxAnnotationsToDisplay[type2] : limits[type2]) || 50;
+        const [annotations, paredDown] = pareDownAnnotations(
+          sequenceData2["filtered" + nameUpper] || sequenceData2[type2] || {},
+          maxToShow,
+          sequenceData2.sequence ? sequenceData2.sequence.length : sequenceData2.size || 0
+        );
+        if (paredDown) {
+          this.paredDownMessages.push(
+            getParedDownWarning({
+              nameUpper,
+              isAdjustable: !maxAnnotationsToDisplay,
+              maxToShow
+            })
           );
-          if (paredDown) {
-            this.paredDownMessages.push(
-              getParedDownWarning({
-                nameUpper,
-                isAdjustable: !maxAnnotationsToDisplay,
-                maxToShow
-              })
-            );
-          }
-          acc[type2] = annotations;
-          return acc;
-        },
-        {}
-      );
+        }
+        acc[type2] = annotations;
+        return acc;
+      }, {});
       this.rowData = prepareRowData(
         __spreadValues(__spreadValues({}, sequenceData2), paredDownSeqData),
         sequenceData2.sequence ? sequenceData2.sequence.length : 0
@@ -151181,6 +151865,8 @@ const __LinearView = class __LinearView extends React$1.Component {
     }));
   }
   getNearestCursorPositionToMouseEvent(rowData, event, callback2) {
+    var _a2;
+    const isProtein2 = (_a2 = this.props.sequenceData) == null ? void 0 : _a2.isProtein;
     let nearestCaretPos = 0;
     let rowDomNode = this.linearView;
     rowDomNode = rowDomNode.querySelector(".veRowItem");
@@ -151194,11 +151880,11 @@ const __LinearView = class __LinearView extends React$1.Component {
         (clickXPositionRelativeToRowContainer + this.charWidth / 2) / this.charWidth
       );
       nearestCaretPos = numberOfBPsInFromRowStart + 0;
-      if (nearestCaretPos > maxEnd + 1) {
-        nearestCaretPos = maxEnd + 1;
+      if (nearestCaretPos > maxEnd) {
+        nearestCaretPos = isProtein2 ? maxEnd + 1 : maxEnd;
       }
     }
-    if (this.props.sequenceData && this.props.sequenceData.isProtein) {
+    if (isProtein2) {
       nearestCaretPos = Math.round(nearestCaretPos / 3) * 3;
     }
     if (maxEnd === 0) nearestCaretPos = 0;
@@ -151416,6 +152102,7 @@ const __LinearView = class __LinearView extends React$1.Component {
           RowItem$1,
           __spreadProps(__spreadValues({}, __spreadValues(__spreadProps(__spreadValues({}, rest), {
             editorName,
+            showAminoAcidUnitAsCodon,
             onScroll: /* @__PURE__ */ __name(() => {
               this.easyStore.viewportWidth = width;
               const row = this.linearView.querySelector(".veRowItemWrapper");
@@ -151438,7 +152125,7 @@ const __LinearView = class __LinearView extends React$1.Component {
             fullSequence: sequenceData2.sequence,
             emptyText: getEmptyText({ sequenceData: sequenceData2, caretPosition: caretPosition2 }),
             tickSpacing: tickSpacingToUse,
-            annotationVisibility: __spreadValues(__spreadValues(__spreadValues({}, rest.annotationVisibility), (!isLinViewZoomed || this.charWidth < 5) && {
+            annotationVisibility: __spreadValues(__spreadValues(__spreadValues({}, rest.annotationVisibility), (!isLinViewZoomed || this.charWidth < 5) && bpsPerRow >= 50 && {
               translations: false,
               primaryProteinSequence: false,
               reverseSequence: false,
@@ -151618,11 +152305,13 @@ const _Minimap = class _Minimap extends React$1.Component {
         dimensions: { width = 200 },
         laneHeight,
         laneSpacing = 1,
-        isTrackSelected = []
+        isTrackSelected = [],
+        activeFilterType = "all"
       } = this.props;
       const charWidth2 = this.getCharWidth();
       const {
         matchHighlightRanges: _matchHighlightRanges,
+        gapRanges = [],
         alignmentData: { trimmedRange } = {}
       } = alignmentTracks2[i2];
       const matchHighlightRanges = !trimmedRange ? _matchHighlightRanges : flatMap(_matchHighlightRanges, (r2) => {
@@ -151649,10 +152338,19 @@ const _Minimap = class _Minimap extends React$1.Component {
           charWidth2
         );
         const toAdd = `M${xStart},${y2} L${xStart + width2},${y2} L${xStart + width2},${y2 + height} L${xStart},${y2 + height}`;
-        if (!range2.isMatch) {
+        if (!range2.isMatch && (activeFilterType === "all" || range2.differenceType === activeFilterType)) {
           redPath += toAdd;
         }
       });
+      if (activeFilterType === "gap") {
+        gapRanges.forEach((range2) => {
+          const { xStart, width: width2 } = getXStartAndWidthFromNonCircularRange(
+            range2,
+            charWidth2
+          );
+          redPath += `M${xStart},${y2} L${xStart + width2},${y2} L${xStart + width2},${y2 + height} L${xStart},${y2 + height}`;
+        });
+      }
       return /* @__PURE__ */ React$1.createElement(
         "div",
         {
@@ -151669,7 +152367,7 @@ const _Minimap = class _Minimap extends React$1.Component {
             shapeRendering: "geometricPrecision"
           },
           /* @__PURE__ */ React$1.createElement("path", { className: "miniBluePath", d: bluePath, fill: "#9abeff" }),
-          /* @__PURE__ */ React$1.createElement("path", { className: "miniRedPath", d: redPath, fill: "red" })
+          /* @__PURE__ */ React$1.createElement("path", { className: "miniRedPath", d: redPath, fill: "#FF4444" })
         )
       );
     }, "renderItem"));
@@ -151682,7 +152380,8 @@ const _Minimap = class _Minimap extends React$1.Component {
       "scrollAlignmentView",
       "laneHeight",
       "laneSpacing",
-      "isTrackSelected"
+      "isTrackSelected",
+      "activeFilterType"
     ].some((key) => props[key] !== newProps[key]))
       return true;
     return false;
@@ -151960,6 +152659,899 @@ function getTrimmedRangesToDisplay({ trimmedRange, seqLen }) {
   return splitRangeIntoTwoPartsIfItIsCircular(inverted, seqLen);
 }
 __name(getTrimmedRangesToDisplay, "getTrimmedRangesToDisplay");
+function groupConsecutiveDifferences(differences) {
+  const grouped = [];
+  for (const diff of differences) {
+    if (diff.type === "mismatch") {
+      grouped.push(__spreadProps(__spreadValues({}, diff), { start: diff.position, end: diff.position }));
+      continue;
+    }
+    const last2 = grouped[grouped.length - 1];
+    if (last2 && last2.type === diff.type && last2.end === diff.position - 1) {
+      grouped[grouped.length - 1] = __spreadProps(__spreadValues({}, last2), { end: diff.position });
+    } else {
+      grouped.push(__spreadProps(__spreadValues({}, diff), { start: diff.position, end: diff.position }));
+    }
+  }
+  return grouped;
+}
+__name(groupConsecutiveDifferences, "groupConsecutiveDifferences");
+function findAlignmentDifferences(alignedSeqs) {
+  var _a2;
+  if (alignedSeqs.length < 2 || !((_a2 = alignedSeqs[0]) == null ? void 0 : _a2.length)) return [];
+  const template = alignedSeqs[0].toLowerCase();
+  const nonTemplates = alignedSeqs.slice(1).map((s2) => s2.toLowerCase());
+  const trackBounds = nonTemplates.map((seq) => {
+    const withoutLeading = seq.replace(/^-+/, "");
+    const withoutTrailing = seq.replace(/-+$/, "");
+    const start2 = seq.length - withoutLeading.length;
+    const end2 = seq.length - (seq.length - withoutTrailing.length);
+    return { start: start2, end: end2 };
+  });
+  const differences = [];
+  for (let i2 = 0; i2 < template.length; i2++) {
+    const templateBase = template[i2];
+    const allNonTemplateBases = nonTemplates.map((seq) => seq[i2]);
+    const bases = [templateBase, ...allNonTemplateBases];
+    const alignedIndices = trackBounds.reduce((acc, { start: start2, end: end2 }, idx) => {
+      if (i2 >= start2 && i2 < end2) acc.push(idx);
+      return acc;
+    }, []);
+    if (alignedIndices.length === 0) {
+      differences.push({ position: i2, type: "gap", bases });
+      continue;
+    }
+    const alignedBases = alignedIndices.map((idx) => allNonTemplateBases[idx]);
+    const templateIsGap = templateBase === "-";
+    const nonTemplateHasBase = alignedBases.some((b3) => b3 !== "-");
+    const nonTemplateHasGap = alignedBases.some((b3) => b3 === "-");
+    if (templateIsGap && nonTemplateHasBase) {
+      differences.push({ position: i2, type: "insertion", bases });
+    } else if (!templateIsGap && nonTemplateHasGap) {
+      differences.push({ position: i2, type: "deletion", bases });
+    } else if (!templateIsGap) {
+      const uniqueBases = /* @__PURE__ */ new Set([templateBase, ...alignedBases]);
+      if (uniqueBases.size > 1) {
+        differences.push({ position: i2, type: "mismatch", bases });
+      }
+    }
+  }
+  return differences;
+}
+__name(findAlignmentDifferences, "findAlignmentDifferences");
+function scrollToAlignmentSelection() {
+  const el = document.querySelector(".veCaret");
+  if (el) {
+    el.scrollIntoView({ inline: "center", block: "nearest" });
+  }
+}
+__name(scrollToAlignmentSelection, "scrollToAlignmentSelection");
+function updateCaretPosition({ start: start2, end: end2 }) {
+  if (window.updateAlignmentSelection) {
+    window.updateAlignmentSelection({ start: start2, end: end2 });
+  }
+}
+__name(updateCaretPosition, "updateCaretPosition");
+const FILTER_OPTIONS = [
+  { value: "all", label: "All" },
+  { value: "mismatch", label: "Mismatches" },
+  { value: "insertion", label: "Insertions" },
+  { value: "deletion", label: "Deletions" },
+  { value: "gap", label: "Gaps" }
+];
+function FindMismatches(props) {
+  var _a2;
+  const { alignmentJson, id: id2, onFilterChange } = props;
+  const alignedSeqs = reactExports.useMemo(
+    () => alignmentJson.map((t2) => {
+      var _a3;
+      return ((_a3 = t2.alignmentData) == null ? void 0 : _a3.sequence) || "";
+    }),
+    [alignmentJson]
+  );
+  const [activeFilter, setActiveFilter] = React$1.useState("all");
+  const allDifferences = reactExports.useMemo(
+    () => groupConsecutiveDifferences(findAlignmentDifferences(alignedSeqs)),
+    [alignedSeqs]
+  );
+  const countsByType = reactExports.useMemo(() => {
+    const counts = { all: 0, mismatch: 0, insertion: 0, deletion: 0, gap: 0 };
+    allDifferences.forEach((d2) => {
+      counts[d2.type] = (counts[d2.type] || 0) + 1;
+      counts.all++;
+    });
+    return counts;
+  }, [allDifferences]);
+  const differences = reactExports.useMemo(() => {
+    const filtered = activeFilter === "all" ? allDifferences : allDifferences.filter((d2) => d2.type === activeFilter);
+    return [{ position: -1, start: -1, end: -1, bases: [""] }, ...filtered];
+  }, [allDifferences, activeFilter]);
+  const currentCaretPosition = useSelector(
+    (state2) => {
+      var _a3;
+      return (_a3 = state2.VectorEditor.__allEditorsOptions.alignments[id2]) == null ? void 0 : _a3.caretPosition;
+    }
+  );
+  const [currentIdx, setCurrentIdx] = React$1.useState(0);
+  const currentDiff = differences[currentIdx];
+  const disablePrev = currentIdx <= 1;
+  const disableNext = currentIdx >= differences.length - 1;
+  reactExports.useEffect(() => {
+    setCurrentIdx(0);
+  }, [activeFilter]);
+  reactExports.useEffect(() => {
+    onFilterChange == null ? void 0 : onFilterChange({ activeFilter });
+  }, [activeFilter, onFilterChange]);
+  reactExports.useEffect(() => {
+    if (currentCaretPosition !== -1) {
+      const diffIdx = differences.findIndex(
+        (d2, i2) => i2 > 0 && currentCaretPosition >= d2.start && currentCaretPosition <= d2.end + 1
+      );
+      if (diffIdx !== -1 && diffIdx !== currentIdx) {
+        setCurrentIdx(diffIdx);
+      }
+    }
+  }, [currentCaretPosition, differences, currentIdx]);
+  const updateView = /* @__PURE__ */ __name((diff) => {
+    const idx = differences.indexOf(diff);
+    const { start: start2, end: end2 } = diff;
+    setCurrentIdx(idx);
+    updateCaretPosition({ start: start2, end: end2 });
+    setTimeout(() => {
+      scrollToAlignmentSelection();
+    }, 0);
+  }, "updateView");
+  const prevDifference = /* @__PURE__ */ __name(() => {
+    var _a3, _b2;
+    const pivot = currentCaretPosition >= 0 ? currentCaretPosition : (_b2 = (_a3 = differences[currentIdx]) == null ? void 0 : _a3.start) != null ? _b2 : 0;
+    const prev = [...differences].reverse().find((d2) => d2.start >= 0 && d2.start < pivot);
+    if (prev) updateView(prev);
+  }, "prevDifference");
+  const nextDifference = /* @__PURE__ */ __name(() => {
+    var _a3, _b2;
+    const pivot = currentCaretPosition >= 0 ? currentCaretPosition : (_b2 = (_a3 = differences[currentIdx]) == null ? void 0 : _a3.start) != null ? _b2 : -1;
+    const next = differences.find((d2) => d2.start > pivot && d2.start >= 0);
+    if (next) updateView(next);
+  }, "nextDifference");
+  const noDifferences = differences.length <= 1;
+  const activeOption = FILTER_OPTIONS.find((o2) => o2.value === activeFilter);
+  const activeLabel = (_a2 = activeOption == null ? void 0 : activeOption.label) != null ? _a2 : "Differences";
+  const filterMenu = /* @__PURE__ */ React$1.createElement(Menu, null, FILTER_OPTIONS.map(({ value, label }) => {
+    var _a3;
+    const count2 = (_a3 = countsByType[value]) != null ? _a3 : 0;
+    const isActive2 = activeFilter === value;
+    return /* @__PURE__ */ React$1.createElement(
+      MenuItem,
+      {
+        key: value,
+        active: isActive2,
+        onClick: /* @__PURE__ */ __name(() => setActiveFilter(value), "onClick"),
+        text: /* @__PURE__ */ React$1.createElement("span", { className: "veDiffMenuItem-inner" }, label, /* @__PURE__ */ React$1.createElement(Tag, { round: true, minimal: true, style: { marginLeft: 6 } }, count2))
+      }
+    );
+  }));
+  return /* @__PURE__ */ React$1.createElement("div", { className: "veDiffNavigator" }, /* @__PURE__ */ React$1.createElement(
+    Popover,
+    {
+      minimal: true,
+      position: Position.BOTTOM_LEFT,
+      content: filterMenu,
+      target: /* @__PURE__ */ React$1.createElement(
+        Button,
+        {
+          minimal: true,
+          "data-tip": "Filter Difference Type",
+          small: true,
+          rightIcon: "caret-down",
+          className: "veDiffFilter-trigger"
+        },
+        activeLabel
+      )
+    }
+  ), noDifferences ? /* @__PURE__ */ React$1.createElement("span", { className: "veDiffNav-empty" }, "no", " ", activeFilter === "all" ? "differences" : activeLabel.toLowerCase()) : /* @__PURE__ */ React$1.createElement("div", { className: "veDiffNav" }, /* @__PURE__ */ React$1.createElement(
+    Button,
+    {
+      minimal: true,
+      small: true,
+      "data-tip": "Previous Difference",
+      icon: "arrow-left",
+      intent: Intent.PRIMARY,
+      onClick: prevDifference,
+      disabled: disablePrev
+    }
+  ), /* @__PURE__ */ React$1.createElement("div", { className: "veDiffNav-center" }, /* @__PURE__ */ React$1.createElement("span", { className: "veDiffNav-fraction" }, currentIdx, /* @__PURE__ */ React$1.createElement("span", { className: "veDiffNav-sep" }, "/"), differences.length - 1), (currentDiff == null ? void 0 : currentDiff.start) > -1 && /* @__PURE__ */ React$1.createElement("span", { className: "veDiffNav-pos" }, ":", currentDiff.start + 1)), /* @__PURE__ */ React$1.createElement(
+    Button,
+    {
+      minimal: true,
+      small: true,
+      "data-tip": "Next Difference",
+      icon: "arrow-right",
+      intent: Intent.PRIMARY,
+      onClick: nextDifference,
+      disabled: disableNext
+    }
+  )));
+}
+__name(FindMismatches, "FindMismatches");
+function getGapMap(sequence2) {
+  const gapMap = [0];
+  sequence2.split("").forEach((char) => {
+    if (char === "-") {
+      gapMap[Math.max(0, gapMap.length - 1)] = (gapMap[Math.max(0, gapMap.length - 1)] || 0) + 1;
+    } else {
+      gapMap.push(gapMap[gapMap.length - 1] || 0);
+    }
+  });
+  return gapMap;
+}
+__name(getGapMap, "getGapMap");
+const MATCH_COLOR = "gold";
+const CURRENT_MATCH_COLOR = "green";
+const MISMATCH_COLOR = "red";
+const ANNOTATION_TYPES = ["features", "parts", "primers"];
+const initialSearchState = {
+  searchText: "",
+  matches: [],
+  currentMatchIndex: 0,
+  searched: false,
+  featureMatches: [],
+  dnaOrAA: "DNA",
+  ambiguousOrLiteral: "LITERAL",
+  mismatchesAllowed: 0
+};
+function searchReducer(state2, action2) {
+  switch (action2.type) {
+    case "SET_SEARCH_TEXT":
+      return __spreadProps(__spreadValues({}, state2), { searchText: action2.payload });
+    case "SET_MATCHES":
+      return __spreadProps(__spreadValues({}, state2), {
+        matches: action2.payload.matches,
+        currentMatchIndex: action2.payload.currentMatchIndex
+      });
+    case "SET_CURRENT_MATCH_INDEX":
+      return __spreadProps(__spreadValues({}, state2), { currentMatchIndex: action2.payload });
+    case "SET_SEARCHED":
+      return __spreadProps(__spreadValues({}, state2), { searched: action2.payload });
+    case "SEARCH_COMPLETE":
+      return __spreadProps(__spreadValues({}, state2), {
+        matches: action2.payload.matches,
+        currentMatchIndex: action2.payload.currentMatchIndex,
+        searched: action2.payload.searched
+      });
+    case "SET_FEATURE_MATCHES":
+      return __spreadProps(__spreadValues({}, state2), { featureMatches: action2.payload });
+    case "SET_DNA_OR_AA":
+      return __spreadProps(__spreadValues({}, state2), { dnaOrAA: action2.payload });
+    case "SET_AMBIGUOUS_OR_LITERAL":
+      return __spreadProps(__spreadValues({}, state2), { ambiguousOrLiteral: action2.payload });
+    case "SET_MISMATCHES_ALLOWED":
+      return __spreadProps(__spreadValues({}, state2), { mismatchesAllowed: Math.max(0, action2.payload) });
+    case "RESET":
+      return __spreadValues({}, initialSearchState);
+    default:
+      return state2;
+  }
+}
+__name(searchReducer, "searchReducer");
+function AlignmentSearchBar(props) {
+  const { alignmentTracks: alignmentTracks2 = [], setSearchMatchLayers } = props;
+  const [searchState, dispatch] = reactExports.useReducer(searchReducer, initialSearchState);
+  const {
+    searchText,
+    matches,
+    currentMatchIndex,
+    searched,
+    featureMatches,
+    dnaOrAA,
+    ambiguousOrLiteral,
+    mismatchesAllowed
+  } = searchState;
+  const debouncedSearch = reactExports.useRef(
+    debounce((text2, search2, featureSearch) => {
+      search2(text2);
+      featureSearch(text2);
+    }, 50)
+  ).current;
+  reactExports.useEffect(() => {
+    return () => {
+      debouncedSearch.cancel();
+    };
+  }, [debouncedSearch]);
+  const [highlightAll, setHighlightAll] = reactExports.useState(false);
+  const [isExpanded, setIsExpanded] = reactExports.useState(false);
+  const [isOpen2, setIsOpen] = reactExports.useState(false);
+  const [isPopoverOpen, setIsPopoverOpen] = reactExports.useState(false);
+  const handleToggleExpanded = reactExports.useCallback(() => {
+    setIsExpanded((prev) => {
+      const next = !prev;
+      if (!next) setIsPopoverOpen(true);
+      return next;
+    });
+  }, [setIsPopoverOpen]);
+  reactExports.useEffect(() => {
+    dispatch({ type: "RESET" });
+    if (setSearchMatchLayers) setSearchMatchLayers([]);
+  }, [setSearchMatchLayers]);
+  const buildMatchLayers = reactExports.useCallback(
+    (allMatches, activeIndex) => {
+      if (!setSearchMatchLayers) return;
+      if (!allMatches.length) {
+        setSearchMatchLayers([]);
+        return;
+      }
+      const makeMismatchLayers = /* @__PURE__ */ __name((match) => (match.mismatchAlignmentPositions || []).map((pos) => ({
+        start: pos,
+        end: pos,
+        color: MISMATCH_COLOR,
+        className: "veSearchMismatch",
+        ignoreGaps: true,
+        hideCarets: true
+      })), "makeMismatchLayers");
+      const layers = highlightAll ? allMatches.flatMap((match, i2) => [
+        {
+          start: match.alignmentStart,
+          end: match.alignmentEnd,
+          color: i2 === activeIndex ? CURRENT_MATCH_COLOR : MATCH_COLOR,
+          className: i2 === activeIndex ? "veSearchLayerActive" : "veSearchLayer",
+          ignoreGaps: true
+        },
+        ...makeMismatchLayers(match)
+      ]) : [
+        {
+          start: allMatches[activeIndex].alignmentStart,
+          end: allMatches[activeIndex].alignmentEnd,
+          color: CURRENT_MATCH_COLOR,
+          className: "veSearchLayerActive",
+          ignoreGaps: true
+        },
+        ...makeMismatchLayers(allMatches[activeIndex])
+      ];
+      setSearchMatchLayers(layers);
+    },
+    [setSearchMatchLayers, highlightAll]
+  );
+  const navigateTo = reactExports.useCallback(
+    (allMatches, index2) => {
+      const match = allMatches[index2];
+      if (!match) return;
+      updateCaretPosition({
+        start: match.alignmentStart,
+        end: match.alignmentEnd
+      });
+      setTimeout(() => {
+        scrollToAlignmentSelection();
+      }, 0);
+      buildMatchLayers(allMatches, index2);
+    },
+    [buildMatchLayers]
+  );
+  const runSearch = reactExports.useCallback(
+    (text2) => {
+      const query = text2.trim();
+      if (!query) {
+        dispatch({
+          type: "SEARCH_COMPLETE",
+          payload: { matches: [], currentMatchIndex: 0, searched: false }
+        });
+        if (setSearchMatchLayers) setSearchMatchLayers([]);
+        return;
+      }
+      const allMatches = [];
+      alignmentTracks2.slice(0, 1).forEach((track, trackIndex) => {
+        var _a2, _b2;
+        const rawSeq = ((_a2 = track.sequenceData) == null ? void 0 : _a2.sequence) || "";
+        const alignedSeq = ((_b2 = track.alignmentData) == null ? void 0 : _b2.sequence) || "";
+        const gapMap = getGapMap(alignedSeq);
+        const gapOffset = /* @__PURE__ */ __name((n2) => {
+          var _a3, _b3;
+          return (_b3 = (_a3 = gapMap[n2]) != null ? _a3 : gapMap[gapMap.length - 1]) != null ? _b3 : 0;
+        }, "gapOffset");
+        let seqMatches = [];
+        if (dnaOrAA === "DNA" && ambiguousOrLiteral === "LITERAL" && mismatchesAllowed > 0) {
+          const approxMatches = findApproxMatches(
+            query.toLowerCase(),
+            rawSeq.toLowerCase(),
+            mismatchesAllowed,
+            false
+          );
+          seqMatches = approxMatches.map((m2) => ({
+            start: m2.index,
+            end: m2.index + m2.match.length - 1,
+            mismatchPositions: m2.mismatchPositions
+          }));
+        } else {
+          seqMatches = findSequenceMatches(rawSeq, query, {
+            isCircular: false,
+            isAmbiguous: ambiguousOrLiteral === "AMBIGUOUS",
+            isProteinSearch: dnaOrAA !== "DNA",
+            searchReverseStrand: dnaOrAA === "DNA"
+          });
+        }
+        const hitsToProcess = query.length < 2 ? seqMatches.slice(0, 1) : seqMatches;
+        hitsToProcess.forEach(({ start: start2, end: end2, mismatchPositions }) => {
+          const alignmentStart = start2 + gapOffset(start2);
+          const alignmentEnd = end2 + gapOffset(end2);
+          const mismatchAlignmentPositions = (mismatchPositions || []).map(
+            (p2) => {
+              const absPos = start2 + p2;
+              return absPos + gapOffset(absPos);
+            }
+          );
+          allMatches.push({
+            trackIndex,
+            alignmentStart,
+            alignmentEnd,
+            mismatchAlignmentPositions
+          });
+        });
+      });
+      const results = query.length < 2 ? allMatches.slice(0, 1) : allMatches;
+      dispatch({
+        type: "SEARCH_COMPLETE",
+        payload: { matches: results, currentMatchIndex: 0, searched: true }
+      });
+      if (results.length) {
+        navigateTo(results, 0);
+      } else {
+        if (setSearchMatchLayers) setSearchMatchLayers([]);
+      }
+    },
+    [
+      alignmentTracks2,
+      navigateTo,
+      dnaOrAA,
+      ambiguousOrLiteral,
+      mismatchesAllowed,
+      setSearchMatchLayers
+    ]
+  );
+  const runFeatureSearch = reactExports.useCallback(
+    (text2) => {
+      const query = text2.trim().toLowerCase();
+      if (!query) {
+        dispatch({ type: "SET_FEATURE_MATCHES", payload: [] });
+        return;
+      }
+      const allMatches = [];
+      alignmentTracks2.slice(0, 1).forEach((track, trackIndex) => {
+        const { sequenceData: sequenceData2, alignmentData } = track;
+        const alignedSeq = (alignmentData == null ? void 0 : alignmentData.sequence) || "";
+        const gapMap = getGapMap(alignedSeq);
+        const gapOffset = /* @__PURE__ */ __name((n2) => {
+          var _a2, _b2;
+          return (_b2 = (_a2 = gapMap[n2]) != null ? _a2 : gapMap[gapMap.length - 1]) != null ? _b2 : 0;
+        }, "gapOffset");
+        const trackName = (alignmentData == null ? void 0 : alignmentData.name) || (sequenceData2 == null ? void 0 : sequenceData2.name) || (sequenceData2 == null ? void 0 : sequenceData2.id) || "";
+        ANNOTATION_TYPES.forEach((type2) => {
+          const anns = sequenceData2 == null ? void 0 : sequenceData2[type2];
+          if (!anns) return;
+          const annsArray = Array.isArray(anns) ? anns : Object.values(anns);
+          annsArray.forEach((ann) => {
+            if (!ann.name) return;
+            if (ann.name.toLowerCase().includes(query)) {
+              const alignmentStart = ann.start + gapOffset(ann.start);
+              const alignmentEnd = ann.end + gapOffset(ann.end);
+              allMatches.push({
+                trackIndex,
+                trackName,
+                type: type2,
+                annotation: ann,
+                alignmentStart,
+                alignmentEnd
+              });
+            }
+          });
+        });
+      });
+      dispatch({ type: "SET_FEATURE_MATCHES", payload: allMatches });
+    },
+    [alignmentTracks2]
+  );
+  const goToPrev = reactExports.useCallback(() => {
+    if (!matches.length) return;
+    const newIndex = currentMatchIndex === 0 ? matches.length - 1 : currentMatchIndex - 1;
+    dispatch({ type: "SET_CURRENT_MATCH_INDEX", payload: newIndex });
+    navigateTo(matches, newIndex);
+  }, [matches, currentMatchIndex, navigateTo]);
+  const goToNext = reactExports.useCallback(() => {
+    if (!matches.length) return;
+    const newIndex = currentMatchIndex === matches.length - 1 ? 0 : currentMatchIndex + 1;
+    dispatch({ type: "SET_CURRENT_MATCH_INDEX", payload: newIndex });
+    navigateTo(matches, newIndex);
+  }, [matches, currentMatchIndex, navigateTo]);
+  const handleKeyDown = reactExports.useCallback(
+    (e2) => {
+      if (e2.key === "Escape") {
+        setIsOpen(false);
+      }
+      if (e2.key === "Enter") {
+        if (e2.shiftKey) {
+          goToPrev();
+        } else {
+          goToNext();
+        }
+        e2.preventDefault();
+        e2.stopPropagation();
+      }
+    },
+    [goToPrev, goToNext]
+  );
+  reactExports.useEffect(() => {
+    if (!searched || !searchText.trim()) return;
+    runSearch(searchText);
+    runFeatureSearch(searchText);
+  }, [
+    dnaOrAA,
+    ambiguousOrLiteral,
+    mismatchesAllowed,
+    runSearch,
+    runFeatureSearch,
+    searched,
+    searchText
+  ]);
+  reactExports.useEffect(() => {
+    if (searchText.trim().length < 1) setHighlightAll(false);
+  }, [searchText]);
+  const prevHighlightAll = reactExports.useRef(highlightAll);
+  reactExports.useEffect(() => {
+    if (prevHighlightAll.current !== highlightAll) {
+      prevHighlightAll.current = highlightAll;
+      if (matches.length) buildMatchLayers(matches, currentMatchIndex);
+    }
+  }, [highlightAll, matches, currentMatchIndex, buildMatchLayers]);
+  const hasMatches = matches.length > 0;
+  const handleChange = reactExports.useCallback(
+    (e2) => {
+      const value = e2.target.value;
+      dispatch({ type: "SET_SEARCH_TEXT", payload: value });
+      debouncedSearch(value, runSearch, runFeatureSearch);
+    },
+    [debouncedSearch, runSearch, runFeatureSearch]
+  );
+  const handleFeatureClick = reactExports.useCallback((featureMatch) => {
+    updateCaretPosition({
+      start: featureMatch.alignmentStart,
+      end: featureMatch.alignmentEnd
+    });
+    setTimeout(() => {
+      scrollToAlignmentSelection();
+    }, 0);
+  }, []);
+  const matchCounter = /* @__PURE__ */ React$1.createElement(
+    "span",
+    {
+      style: {
+        marginRight: 3,
+        color: "lightgrey",
+        fontSize: "0.9em",
+        whiteSpace: "nowrap"
+      }
+    },
+    hasMatches ? currentMatchIndex + 1 : 0,
+    "/",
+    matches.length
+  );
+  const inlineNavEl = /* @__PURE__ */ React$1.createElement("span", { style: { display: "flex", alignItems: "center" } }, !isExpanded && /* @__PURE__ */ React$1.createElement(
+    Popover,
+    {
+      autoFocus: false,
+      enforceFocus: false,
+      isOpen: isPopoverOpen,
+      onInteraction: setIsPopoverOpen,
+      position: Position.TOP,
+      content: /* @__PURE__ */ React$1.createElement(
+        "div",
+        {
+          className: "ve-find-options-popover",
+          style: {
+            display: "flex",
+            flexDirection: "column",
+            paddingLeft: 20,
+            paddingBottom: 10,
+            paddingTop: 10,
+            paddingRight: 20,
+            gap: 6
+          }
+        },
+        /* @__PURE__ */ React$1.createElement(
+          FindOptionsPanel,
+          {
+            dnaOrAA,
+            ambiguousOrLiteral,
+            mismatchesAllowed,
+            searchText,
+            matches,
+            dispatch,
+            highlightAll,
+            setHighlightAll,
+            isExpanded,
+            onToggleExpanded: handleToggleExpanded
+          }
+        )
+      ),
+      target: /* @__PURE__ */ React$1.createElement(Button, { minimal: true, icon: "wrench", "data-tip": "Options" })
+    }
+  ), matchCounter, /* @__PURE__ */ React$1.createElement(
+    Button,
+    {
+      minimal: true,
+      small: true,
+      icon: "caret-left",
+      "data-tip": "Previous",
+      disabled: !hasMatches,
+      onClick: goToPrev
+    }
+  ), /* @__PURE__ */ React$1.createElement(
+    Button,
+    {
+      minimal: true,
+      small: true,
+      icon: "caret-right",
+      "data-tip": "Next",
+      disabled: !hasMatches,
+      onClick: goToNext
+    }
+  ), /* @__PURE__ */ React$1.createElement(
+    Button,
+    {
+      minimal: true,
+      small: true,
+      "data-tip": "Close (Esc)",
+      icon: "small-cross",
+      onClick: /* @__PURE__ */ __name(() => setIsOpen(false), "onClick")
+    }
+  ));
+  const expandedNavEl = /* @__PURE__ */ React$1.createElement("span", { style: { display: "flex", alignItems: "center" } }, matchCounter, /* @__PURE__ */ React$1.createElement(
+    Button,
+    {
+      minimal: true,
+      small: true,
+      icon: "caret-up",
+      disabled: !hasMatches,
+      onClick: goToPrev
+    }
+  ), /* @__PURE__ */ React$1.createElement(
+    Button,
+    {
+      minimal: true,
+      small: true,
+      icon: "caret-down",
+      disabled: !hasMatches,
+      onClick: goToNext
+    }
+  ));
+  if (!isOpen2) {
+    return /* @__PURE__ */ React$1.createElement("div", null, /* @__PURE__ */ React$1.createElement(
+      Button,
+      {
+        minimal: true,
+        small: true,
+        intent: "primary",
+        icon: "search",
+        rightIcon: "caret-right",
+        "data-tip": "Search",
+        onClick: /* @__PURE__ */ __name(() => setIsOpen(true), "onClick")
+      }
+    ));
+  }
+  const annotationPopoverOpen = searched && featureMatches.length > 0;
+  const inputEl = /* @__PURE__ */ React$1.createElement(
+    InputGroup,
+    {
+      className: "tg-find-tool-input alignment-search-bar",
+      leftIcon: "search",
+      placeholder: "Search...",
+      autoFocus: true,
+      value: searchText,
+      onChange: handleChange,
+      onKeyDown: handleKeyDown,
+      rightElement: inlineNavEl
+    }
+  );
+  return /* @__PURE__ */ React$1.createElement("div", { style: { position: "relative" } }, !isExpanded && /* @__PURE__ */ React$1.createElement(
+    Popover,
+    {
+      autoFocus: false,
+      enforceFocus: false,
+      modifiers: {
+        arrow: false
+      },
+      position: Position.BOTTOM,
+      isOpen: annotationPopoverOpen,
+      content: /* @__PURE__ */ React$1.createElement(
+        AnnotationResultsComp,
+        {
+          featureMatches,
+          onClickMatch: handleFeatureClick
+        }
+      ),
+      target: inputEl
+    }
+  ), isExpanded && /* @__PURE__ */ React$1.createElement(
+    "div",
+    {
+      style: {
+        position: "absolute",
+        top: 0,
+        left: 0,
+        padding: 10,
+        paddingBottom: 25,
+        display: "flex",
+        alignItems: "flex-start",
+        gap: 10,
+        zIndex: 5e4,
+        background: "white",
+        boxShadow: "0 2px 8px rgba(0,0,0,0.2)",
+        borderRadius: 3
+      }
+    },
+    /* @__PURE__ */ React$1.createElement("div", { style: { display: "flex", flexDirection: "column", gap: 6 } }, /* @__PURE__ */ React$1.createElement(
+      TextArea,
+      {
+        autoFocus: true,
+        placeholder: "Search sequences and annotations...",
+        value: searchText,
+        onChange: handleChange,
+        onKeyDown: handleKeyDown,
+        style: { resize: "vertical", width: 350, height: 190 }
+      }
+    ), annotationPopoverOpen && /* @__PURE__ */ React$1.createElement(
+      AnnotationResultsComp,
+      {
+        featureMatches,
+        onClickMatch: handleFeatureClick
+      }
+    )),
+    /* @__PURE__ */ React$1.createElement("div", { style: { display: "flex", flexDirection: "column", gap: 5 } }, expandedNavEl, /* @__PURE__ */ React$1.createElement(
+      FindOptionsPanel,
+      {
+        dnaOrAA,
+        ambiguousOrLiteral,
+        mismatchesAllowed,
+        searchText,
+        matches,
+        dispatch,
+        highlightAll,
+        setHighlightAll,
+        isExpanded,
+        onToggleExpanded: handleToggleExpanded
+      }
+    )),
+    /* @__PURE__ */ React$1.createElement(
+      Button,
+      {
+        minimal: true,
+        style: { position: "absolute", bottom: 0, right: 0 },
+        onClick: /* @__PURE__ */ __name(() => setIsOpen(false), "onClick"),
+        icon: "cross"
+      }
+    )
+  ));
+}
+__name(AlignmentSearchBar, "AlignmentSearchBar");
+function AnnotationResultsComp({ featureMatches, onClickMatch }) {
+  const byType = {};
+  ANNOTATION_TYPES.forEach((type2) => {
+    byType[type2] = [];
+  });
+  featureMatches.forEach((match) => {
+    if (byType[match.type]) {
+      byType[match.type].push(match);
+    }
+  });
+  const featureColorMap = getFeatureToColorMap({ includeHidden: true });
+  return /* @__PURE__ */ React$1.createElement("div", { className: "veAnnotationFindMatches" }, ANNOTATION_TYPES.map((type2) => {
+    const anns = byType[type2];
+    if (!anns.length) return null;
+    const showing = anns.slice(0, 10);
+    return /* @__PURE__ */ React$1.createElement("div", { key: type2 }, /* @__PURE__ */ React$1.createElement("div", { className: "veAnnotationFoundType" }, anns.length, " ", getSingular(type2), " match", anns.length > 1 ? "es" : null, anns.length > 10 ? ` (only showing 10)` : null, ":"), /* @__PURE__ */ React$1.createElement("div", null, showing.map((match, i2) => {
+      const { annotation } = match;
+      const annotationColor = type2 === "parts" ? "#ac68cc" : annotation.color || featureColorMap[annotation.type];
+      return /* @__PURE__ */ React$1.createElement(
+        "div",
+        {
+          key: i2,
+          onClick: /* @__PURE__ */ __name(() => onClickMatch(match), "onClick"),
+          className: "veAnnotationFoundResult"
+        },
+        /* @__PURE__ */ React$1.createElement("div", { style: { display: "flex", alignItems: "center" } }, /* @__PURE__ */ React$1.createElement(
+          "div",
+          {
+            style: {
+              background: annotationColor,
+              height: 15,
+              width: 15,
+              marginRight: 3
+            }
+          }
+        ), annotation.name),
+        /* @__PURE__ */ React$1.createElement("div", { className: "veAnnotationFoundResultRange" }, annotation.start + 1, "-", annotation.end + 1)
+      );
+    })));
+  }));
+}
+__name(AnnotationResultsComp, "AnnotationResultsComp");
+function FindOptionsPanel({
+  dnaOrAA,
+  ambiguousOrLiteral,
+  mismatchesAllowed,
+  searchText,
+  matches,
+  dispatch,
+  highlightAll,
+  setHighlightAll,
+  isExpanded,
+  onToggleExpanded
+}) {
+  return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(
+    TgHTMLSelect,
+    {
+      options: [
+        { label: "DNA", value: "DNA" },
+        { label: "Amino Acids", value: "AA" }
+      ],
+      value: dnaOrAA,
+      onChange: /* @__PURE__ */ __name((e2) => dispatch({ type: "SET_DNA_OR_AA", payload: e2.target.value }), "onChange")
+    }
+  ), /* @__PURE__ */ React$1.createElement("div", { style: { display: "flex" } }, /* @__PURE__ */ React$1.createElement(
+    TgHTMLSelect,
+    {
+      options: [
+        { label: "Literal", value: "LITERAL" },
+        { label: "Ambiguous", value: "AMBIGUOUS" }
+      ],
+      value: ambiguousOrLiteral,
+      onChange: /* @__PURE__ */ __name((e2) => dispatch({
+        type: "SET_AMBIGUOUS_OR_LITERAL",
+        payload: e2.target.value
+      }), "onChange")
+    }
+  ), /* @__PURE__ */ React$1.createElement(InfoHelper, { style: { marginLeft: 10 } }, /* @__PURE__ */ React$1.createElement("div", null, "Ambiguous substitutions:", /* @__PURE__ */ React$1.createElement("div", { style: { display: "flex", fontSize: 12 } }, /* @__PURE__ */ React$1.createElement("div", { style: { marginRight: 20 } }, /* @__PURE__ */ React$1.createElement("div", { style: { fontSize: 14, marginBottom: 4, marginTop: 5 } }, "DNA:"), /* @__PURE__ */ React$1.createElement("div", null, "M: AC"), /* @__PURE__ */ React$1.createElement("div", null, "R: AG"), /* @__PURE__ */ React$1.createElement("div", null, "W: AT"), /* @__PURE__ */ React$1.createElement("div", null, "S: CG"), /* @__PURE__ */ React$1.createElement("div", null, "Y: CT"), /* @__PURE__ */ React$1.createElement("div", null, "K: GT"), /* @__PURE__ */ React$1.createElement("div", null, "V: ACG"), /* @__PURE__ */ React$1.createElement("div", null, "H: ACT"), /* @__PURE__ */ React$1.createElement("div", null, "D: AGT"), /* @__PURE__ */ React$1.createElement("div", null, "B: CGT"), /* @__PURE__ */ React$1.createElement("div", null, "X: GATC"), /* @__PURE__ */ React$1.createElement("div", null, "N: GATC"), /* @__PURE__ */ React$1.createElement("div", null, "*: any")), /* @__PURE__ */ React$1.createElement("div", null, /* @__PURE__ */ React$1.createElement("div", { style: { fontSize: 14, marginBottom: 4, marginTop: 5 } }, "AA:"), /* @__PURE__ */ React$1.createElement("div", null, "B: ND"), /* @__PURE__ */ React$1.createElement("div", null, "J: IL"), /* @__PURE__ */ React$1.createElement("div", null, "X: ACDEFGHIKLMNPQRSTVWY"), /* @__PURE__ */ React$1.createElement("div", null, "Z: QE"), /* @__PURE__ */ React$1.createElement("div", null, "*: any")))))), /* @__PURE__ */ React$1.createElement(
+    "div",
+    {
+      style: {
+        marginTop: "8px",
+        display: "flex",
+        flexDirection: "row",
+        gap: "3px",
+        alignItems: "center"
+      }
+    },
+    /* @__PURE__ */ React$1.createElement("label", null, "Mismatches Allowed:"),
+    /* @__PURE__ */ React$1.createElement(
+      NumericInput,
+      {
+        min: 0,
+        max: 10,
+        className: "tg-mismatches-allowed-input",
+        style: { width: "60px" },
+        value: mismatchesAllowed,
+        disabled: dnaOrAA !== "DNA" || ambiguousOrLiteral !== "LITERAL",
+        onValueChange: /* @__PURE__ */ __name((value) => dispatch({
+          type: "SET_MISMATCHES_ALLOWED",
+          payload: Number.parseInt(value, 10) || 0
+        }), "onValueChange")
+      }
+    ),
+    /* @__PURE__ */ React$1.createElement(InfoHelper, { style: { marginLeft: 10 } }, /* @__PURE__ */ React$1.createElement("div", null, "Number of mismatches allowed when searching DNA sequences with literal matching.", /* @__PURE__ */ React$1.createElement("br", null), /* @__PURE__ */ React$1.createElement("br", null), "Higher values may slow down search performance."))
+  ), /* @__PURE__ */ React$1.createElement(
+    Switch,
+    {
+      checked: highlightAll,
+      onChange: /* @__PURE__ */ __name(() => setHighlightAll((v2) => !v2), "onChange"),
+      disabled: searchText.trim().length < 2 || matches.length > MAX_MATCHES_DISPLAYED
+    },
+    /* @__PURE__ */ React$1.createElement(
+      Tooltip,
+      {
+        disabled: matches.length <= MAX_MATCHES_DISPLAYED,
+        content: `Disabled because there are >${MAX_MATCHES_DISPLAYED} matches`
+      },
+      "Highlight All"
+    )
+  ), /* @__PURE__ */ React$1.createElement(Switch, { checked: isExpanded, onChange: onToggleExpanded }, "Expanded"));
+}
+__name(FindOptionsPanel, "FindOptionsPanel");
 const AlignmentVisibilityTool = pure(/* @__PURE__ */ __name(function AlignmentVisibilityTool2(props) {
   return /* @__PURE__ */ React$1.createElement(
     Popover,
@@ -151967,17 +153559,18 @@ const AlignmentVisibilityTool = pure(/* @__PURE__ */ __name(function AlignmentVi
       minimal: true,
       position: "bottom",
       content: /* @__PURE__ */ React$1.createElement(VisibilityOptions$2, __spreadValues({}, props)),
-      target: /* @__PURE__ */ React$1.createElement(Tooltip, { content: "Visibility Options" }, /* @__PURE__ */ React$1.createElement(
+      target: /* @__PURE__ */ React$1.createElement(
         Button,
         {
           className: "tg-alignment-visibility-toggle",
           small: true,
+          "data-tip": "Visibility Options",
           rightIcon: "caret-down",
           intent: Intent.PRIMARY,
           minimal: true,
           icon: "eye-open"
         }
-      ))
+      )
     }
   );
 }, "AlignmentVisibilityTool"));
@@ -153339,7 +154932,7 @@ function CircularView(props) {
   }
   const innerRadius = radius - 10;
   const initialRadius = radius;
-  const showSeq = isZoomedIn && rangeToShowLength < 140;
+  const showSeq = rangeToShowLength < 140 && (isZoomedIn || sequenceLength < 50);
   const showSeqText = rangeToShowLength < 80;
   const layersToDraw = [
     { zIndex: 10, layerName: "sequenceChars" },
@@ -153592,7 +155185,7 @@ function CircularView(props) {
         }
       );
       const maxToShow = !isZoomedIn && ((maxAnnotationsToDisplay ? maxAnnotationsToDisplay[layerName] : limits[layerName]) || 50);
-      const [trimmedAndParedAnns, paredDown] = maxToShow ? pareDownAnnotations(trimmedAnnotations, maxToShow) : [trimmedAnnotations];
+      const [trimmedAndParedAnns, paredDown] = maxToShow ? pareDownAnnotations(trimmedAnnotations, maxToShow, sequenceLength) : [trimmedAnnotations];
       if (paredDown) {
         paredDownMessages.push(
           getParedDownWarning({
@@ -154251,19 +155844,38 @@ const _ComponentToPrint = class _ComponentToPrint extends React$1.Component {
 };
 __name(_ComponentToPrint, "ComponentToPrint");
 let ComponentToPrint = _ComponentToPrint;
-const sizeSchema = /* @__PURE__ */ __name((isProtein2) => ({
+const sizeSchema = /* @__PURE__ */ __name(() => ({
   path: "size",
   type: "number",
-  render: /* @__PURE__ */ __name((val2, _record) => {
-    const record = isProtein2 ? convertDnaCaretPositionOrRangeToAA(_record) : _record;
+  render: /* @__PURE__ */ __name((val2, record) => {
     const base1Range = convertRangeTo1Based(record);
     const hasJoinedLocations = record.locations && record.locations.length > 1;
-    return /* @__PURE__ */ React$1.createElement("span", null, isProtein2 ? Math.floor(val2 / 3) : val2, " ", /* @__PURE__ */ React$1.createElement("span", { style: { fontSize: 10 } }, hasJoinedLocations ? record.locations.map((loc, i2) => {
+    return /* @__PURE__ */ React$1.createElement("span", null, val2, " ", /* @__PURE__ */ React$1.createElement("span", { style: { fontSize: 10 } }, hasJoinedLocations ? record.locations.map((loc, i2) => {
       const base1Range2 = convertRangeTo1Based(loc);
       return /* @__PURE__ */ React$1.createElement("span", { key: i2 }, "(", base1Range2.start, "-", base1Range2.end, ")");
     }) : /* @__PURE__ */ React$1.createElement("span", null, "(", base1Range.start, "-", base1Range.end, ")")));
   }, "render")
 }), "sizeSchema");
+const getMemoOrfs = /* @__PURE__ */ (() => {
+  let lastDeps;
+  let lastResult;
+  return (editorState) => {
+    const { sequenceData: sequenceData2, minimumOrfSize: minimumOrfSize2, useAdditionalOrfStartCodons: useAdditionalOrfStartCodons2 } = editorState;
+    const { sequence: sequence2, circular: circular2 } = sequenceData2;
+    const deps = {
+      sequence: sequence2,
+      circular: circular2,
+      minimumOrfSize: minimumOrfSize2,
+      useAdditionalOrfStartCodons: useAdditionalOrfStartCodons2
+    };
+    if (lastResult && isEqual$3(deps, lastDeps)) {
+      return lastResult;
+    }
+    lastResult = selectors.orfsSelector(editorState);
+    lastDeps = deps;
+    return lastResult;
+  };
+})();
 var lodash$1 = { exports: {} };
 /**
  * @license
@@ -160265,6 +161877,7 @@ const RemoveDuplicatesDialog = /* @__PURE__ */ __name((props) => {
   const ignoreName = useFormValue(dialogFormName, "ignoreName");
   const ignoreStartAndEnd = useFormValue(dialogFormName, "ignoreStartAndEnd");
   const ignoreStrand = useFormValue(dialogFormName, "ignoreStrand");
+  const isProteinSeq = isProtein2 || sequenceData2.isProtein;
   const recomputeDups = reactExports.useCallback(
     (values3) => {
       const ignoreName2 = values3 == null ? void 0 : values3.ignoreName;
@@ -160273,17 +161886,20 @@ const RemoveDuplicatesDialog = /* @__PURE__ */ __name((props) => {
       const annotations = sequenceData2[type2];
       const newDups = [];
       const seqsHashByStartEndStrandName = {};
-      forEach$1(annotations, (a2) => {
-        const hash2 = `${ignoreStartAndEnd2 ? "" : a2.start}&${ignoreStartAndEnd2 ? "" : a2.end}&${ignoreStrand2 ? "" : a2.strand}&${ignoreName2 ? "" : a2.name}`;
+      forEach$1(annotations, (_annotation) => {
+        const annotation = isProteinSeq ? convertDnaCaretPositionOrRangeToAA(_annotation) : _annotation;
+        const hash2 = `${ignoreStartAndEnd2 ? "" : annotation.start}&${ignoreStartAndEnd2 ? "" : annotation.end}&${ignoreStrand2 ? "" : annotation.strand}&${ignoreName2 ? "" : annotation.name}`;
         if (seqsHashByStartEndStrandName[hash2]) {
-          newDups.push(__spreadProps(__spreadValues({}, a2), { size: getRangeLength(a2, sequenceLength) }));
+          newDups.push(__spreadProps(__spreadValues({}, annotation), {
+            size: getRangeLength(annotation, sequenceLength)
+          }));
         } else {
           seqsHashByStartEndStrandName[hash2] = true;
         }
       });
       return newDups;
     },
-    [sequenceData2, sequenceLength, type2]
+    [sequenceData2, sequenceLength, type2, isProteinSeq]
   );
   const [dups, setDups] = reactExports.useState(recomputeDups);
   const selectedIds = reactExports.useMemo(() => dups.map((d2) => d2.id), [dups]);
@@ -160305,11 +161921,11 @@ const RemoveDuplicatesDialog = /* @__PURE__ */ __name((props) => {
       fields: [
         { path: "name", type: "string" },
         // ...(noType ? [] : [{ path: "type", type: "string" }]),
-        sizeSchema(isProtein2),
+        sizeSchema(),
         { path: "strand", type: "string" }
       ]
     }),
-    [isProtein2]
+    []
   );
   return /* @__PURE__ */ React$1.createElement("div", { className: classNames$1(DIALOG_BODY, "tg-min-width-dialog") }, /* @__PURE__ */ React$1.createElement(
     WrappedDT,
@@ -164463,7 +166079,7 @@ function MeltingTemp({
     /* , setMonovalentCationConc */
   ] = React$1.useState(0.05);
   const [tmType, setTmType] = useTmType();
-  let tm = (tmType === "neb_tm" ? calculateNebTm : calculateTm)(sequence2, {
+  let tm = (tmType === "neb_tm" ? calculateNebTm : tmType === "default" ? calculateSantaLuciaTm : calculateTm)(sequence2, {
     monovalentCationConc,
     primerConc
   });
@@ -164488,8 +166104,9 @@ function MeltingTemp({
         {
           label: "Choose Tm Type:",
           options: [
-            { value: "default", label: "Default Tm (Breslauer)" },
-            { value: "neb_tm", label: "NEB Tm (SantaLucia)" }
+            { value: "default", label: "Santa Lucia (Default)" },
+            { value: "breslauer", label: "Breslauer" },
+            { value: "neb_tm", label: "NEB Tm" }
           ],
           onChange: /* @__PURE__ */ __name((e2) => setTmType(e2.target.value), "onChange"),
           selectedValue: tmType
@@ -164503,7 +166120,7 @@ function MeltingTemp({
         }
       ), hasWarning, /* @__PURE__ */ React$1.createElement("br", null), /* @__PURE__ */ React$1.createElement("br", null), "Try using the Default Tm"))
     },
-    /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(InnerWrapper, null, "Melting Temp: ", Number(tm) || 0, " "), hasWarning && /* @__PURE__ */ React$1.createElement(
+    /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(InnerWrapper, null, "Melting Temp: ", Number(tm) || 0, "°C"), hasWarning && /* @__PURE__ */ React$1.createElement(
       Icon,
       {
         style: { marginLeft: 5, marginRight: 5 },
@@ -164767,12 +166384,24 @@ const RenderBases = /* @__PURE__ */ __name((props) => {
     )), /* @__PURE__ */ React$1.createElement(
       MeltingTemp,
       {
-        InnerWrapper: InnerWrapperMeltingTemp,
+        InnerWrapper: TextInnerWrapper,
         sequence: bases
       }
-    ))
+    ), /* @__PURE__ */ React$1.createElement(TextInnerWrapper, null, "GC content: ", bases && calculatePercentGC(bases).toFixed(1), "%"), /* @__PURE__ */ React$1.createElement(TextInnerWrapper, null, "3' Stability: ", bases && calculateEndStability(bases), " kcal/mol"))
   );
 }, "RenderBases");
+const TextInnerWrapper = /* @__PURE__ */ __name((p2) => /* @__PURE__ */ React$1.createElement(
+  "div",
+  {
+    className: "bp3-text-muted bp3-text-small",
+    style: {
+      marginBottom: 15,
+      marginTop: -5,
+      fontStyle: "italic"
+    }
+  },
+  p2.children
+), "TextInnerWrapper");
 const AddOrEditPrimerDialog = AddOrEditAnnotationDialog$1({
   formName: "AddOrEditPrimerDialog",
   getProps: /* @__PURE__ */ __name((props) => ({
@@ -164781,14 +166410,6 @@ const AddOrEditPrimerDialog = AddOrEditAnnotationDialog$1({
     RenderBases
   }), "getProps")
 });
-const InnerWrapperMeltingTemp = /* @__PURE__ */ __name((p2) => /* @__PURE__ */ React$1.createElement(
-  "div",
-  {
-    className: "bp3-text-muted bp3-text-small",
-    style: { marginBottom: 15, marginTop: -5, fontStyle: "italic" }
-  },
-  p2.children
-), "InnerWrapperMeltingTemp");
 const Dialogs = {
   RenameSequenceDialog,
   PrintDialog: PrintDialog$1,
@@ -164814,10 +166435,16 @@ function GlobalDialog(props) {
       hideDialog();
     };
   }, []);
+  reactExports.useEffect(() => {
+    dialogHolder.setUniqKeyToForceRerender = setUniqKeyToForceRerender;
+    if (editorName) {
+      const slot = dialogHolder[editorName] = dialogHolder[editorName] || {};
+      slot.setUniqKeyToForceRerender = setUniqKeyToForceRerender;
+    }
+  }, [editorName]);
   if (dialogHolder.editorName && editorName && dialogHolder.editorName !== editorName) {
     return null;
   }
-  dialogHolder.setUniqKeyToForceRerender = setUniqKeyToForceRerender;
   const Comp = dialogHolder.CustomModalComponent || dialogOverrides[dialogHolder.overrideName] || Dialogs[dialogHolder.dialogType];
   if (!Comp) return null;
   return /* @__PURE__ */ React$1.createElement(
@@ -165110,7 +166737,6 @@ const aminoAcidShortNames = {
 const PropertySidePanel = /* @__PURE__ */ __name(({ properties: properties2, setProperties, style: style2 }) => {
   const sidebarRef = React$1.useRef(null);
   const [mismatchesCount, setMismatchesCount] = React$1.useState(0);
-  const [mismatchesInRange, setMismatchesInRange] = React$1.useState(0);
   const { track, isOpen: isOpen2, selection, isPairwise } = properties2;
   const getSequenceInRegion = reactExports.useCallback(() => {
     var _a2, _b2;
@@ -165129,6 +166755,30 @@ const PropertySidePanel = /* @__PURE__ */ __name(({ properties: properties2, set
     if (!Array.isArray(tr)) return [];
     return isPairwise ? tr.filter((m2) => (m2 == null ? void 0 : m2.color) === "red") : tr;
   }, [track, mismatchKey, isPairwise]);
+  const mismatchSchema = reactExports.useMemo(
+    () => ({
+      fields: [
+        {
+          path: "start",
+          type: "number",
+          displayName: "Start",
+          render: /* @__PURE__ */ __name((val2) => val2 + 1, "render")
+        },
+        {
+          path: "end",
+          type: "number",
+          displayName: "End",
+          render: /* @__PURE__ */ __name((val2) => val2 + 1, "render")
+        }
+      ]
+    }),
+    []
+  );
+  const mismatchEntities = reactExports.useMemo(() => {
+    return (trackMismatches || []).map((m2, i2) => __spreadProps(__spreadValues({}, m2), {
+      id: i2.toString()
+    }));
+  }, [trackMismatches]);
   reactExports.useEffect(() => {
     if (!isOpen2 || sidebarRef.current === null || !track) {
       return;
@@ -165146,21 +166796,6 @@ const PropertySidePanel = /* @__PURE__ */ __name(({ properties: properties2, set
       }
     });
     setMismatchesCount(mismatchCount);
-    setMismatchesInRange(mismatchCount);
-    if (selection && selection.start > -1 && selection.end > -1) {
-      let count2 = 0;
-      trackMismatches == null ? void 0 : trackMismatches.forEach((tm) => {
-        if (tm === null || tm.start === null || tm.end === null) {
-          return;
-        }
-        const overlapStart = Math.max(tm.start, selection.start);
-        const overlapEnd = Math.min(tm.end, selection.end);
-        if (overlapEnd >= overlapStart) {
-          count2 += overlapEnd - overlapStart + 1;
-        }
-      });
-      setMismatchesInRange(count2);
-    }
   }, [isOpen2, track, selection, trackMismatches]);
   const aminoFreq = reactExports.useMemo(() => {
     var _a2, _b2;
@@ -165196,7 +166831,7 @@ const PropertySidePanel = /* @__PURE__ */ __name(({ properties: properties2, set
           width: "100%"
         }
       }
-    ), /* @__PURE__ */ React$1.createElement("h5", null, "Track Properties"), /* @__PURE__ */ React$1.createElement("div", { className: "bp3-tab-panel" }, /* @__PURE__ */ React$1.createElement(RowItem, { item: name2, title: "Name" }), /* @__PURE__ */ React$1.createElement(RowItem, { item: isProtein2 ? proteinSize : size3, title: "Length" }), /* @__PURE__ */ React$1.createElement(
+    ), /* @__PURE__ */ React$1.createElement(HeaderItem, { title: "Track Properties" }), /* @__PURE__ */ React$1.createElement("div", { className: "bp3-tab-panel" }, /* @__PURE__ */ React$1.createElement(RowItem, { item: name2, title: "Name" }), /* @__PURE__ */ React$1.createElement(RowItem, { item: isProtein2 ? proteinSize : size3, title: "Length" }), /* @__PURE__ */ React$1.createElement(
       RowItem,
       {
         item: molecularWeight == null ? void 0 : molecularWeight.toFixed(2),
@@ -165212,16 +166847,43 @@ const PropertySidePanel = /* @__PURE__ */ __name(({ properties: properties2, set
     )), /* @__PURE__ */ React$1.createElement(
       RowItem,
       {
-        item: `${mismatchesInRange}/${mismatchesCount}`,
-        title: "Mismatches"
-      }
-    ), /* @__PURE__ */ React$1.createElement(
-      RowItem,
-      {
         item: selection && selection.start > -1 ? /* @__PURE__ */ React$1.createElement("span", null, selection.start + 1, " - ", selection.end + 1) : /* @__PURE__ */ React$1.createElement("span", null, "1 - ", isProtein2 ? proteinSize : size3),
         title: "Region"
       }
-    )), /* @__PURE__ */ React$1.createElement("h5", null, isProtein2 ? "Amino Acid" : "Base Pair", " Frequencies"), /* @__PURE__ */ React$1.createElement("div", { className: "sidebar-table" }, /* @__PURE__ */ React$1.createElement("div", { className: "sidebar-row" }, /* @__PURE__ */ React$1.createElement("div", { className: "sidebar-cell" }, "Amino Acid"), /* @__PURE__ */ React$1.createElement("div", { className: "sidebar-cell" }, "Count"), /* @__PURE__ */ React$1.createElement("div", { className: "sidebar-cell" }, "Percentage")), frequencyEntries.map(([aa, data], idx) => {
+    ), /* @__PURE__ */ React$1.createElement(HeaderItem, { title: `Mismatches (${mismatchesCount})` }), trackMismatches && trackMismatches.length > 0 && /* @__PURE__ */ React$1.createElement(
+      "div",
+      {
+        style: {
+          margin: "0px 10px"
+        }
+      },
+      /* @__PURE__ */ React$1.createElement(
+        WrappedDT,
+        {
+          formName: "mismatchesTable",
+          isSimple: true,
+          noHeader: true,
+          noFooter: true,
+          withSearch: false,
+          noPadding: true,
+          compact: true,
+          maxHeight: 150,
+          entities: mismatchEntities,
+          schema: mismatchSchema,
+          onRowClick: /* @__PURE__ */ __name((e2, row) => {
+            updateCaretPosition({ start: row.start, end: row.end });
+            setTimeout(() => {
+              scrollToAlignmentSelection();
+            }, 0);
+          }, "onRowClick")
+        }
+      )
+    )), /* @__PURE__ */ React$1.createElement(
+      HeaderItem,
+      {
+        title: `${isProtein2 ? "Amino Acid" : "Base Pair"} Frequencies`
+      }
+    ), /* @__PURE__ */ React$1.createElement("div", { className: "sidebar-table" }, /* @__PURE__ */ React$1.createElement("div", { className: "sidebar-row" }, /* @__PURE__ */ React$1.createElement("div", { className: "sidebar-cell" }, isProtein2 ? "Amino Acid" : "Base"), /* @__PURE__ */ React$1.createElement("div", { className: "sidebar-cell" }, "Count"), /* @__PURE__ */ React$1.createElement("div", { className: "sidebar-cell" }, "Percentage")), frequencyEntries.map(([aa, data], idx) => {
       return /* @__PURE__ */ React$1.createElement("div", { className: `sidebar-row property-amino-acid-${idx}` }, /* @__PURE__ */ React$1.createElement("div", { className: "sidebar-cell" }, aa, " ", isProtein2 ? `(${aminoAcidShortNames[aa]})` : ""), /* @__PURE__ */ React$1.createElement("div", { className: "sidebar-cell" }, data.count), /* @__PURE__ */ React$1.createElement("div", { className: "sidebar-cell" }, data.percentage.toFixed(1), "%"));
     })));
   } else {
@@ -165278,11 +166940,29 @@ const PropertySidePanel = /* @__PURE__ */ __name(({ properties: properties2, set
   );
 }, "PropertySidePanel");
 function RowItem({ item, title, units }) {
-  if (!item) return;
+  if (item == null) {
+    return null;
+  }
   const propertyClass = title.split(" ").join("-").toLowerCase();
-  return /* @__PURE__ */ React$1.createElement("div", { className: `ve-flex-row property-${propertyClass}` }, /* @__PURE__ */ React$1.createElement("div", { className: "ve-column-left" }, title), /* @__PURE__ */ React$1.createElement("div", { className: "ve-column-right" }, item, " ", units != null ? units : ""));
+  return /* @__PURE__ */ React$1.createElement("div", { className: `ve-flex-row property-${propertyClass}` }, /* @__PURE__ */ React$1.createElement("div", { style: { fontWeight: "bold" }, className: "ve-column-left" }, title), /* @__PURE__ */ React$1.createElement("div", { className: "ve-column-right" }, item, " ", units != null ? units : ""));
 }
 __name(RowItem, "RowItem");
+const HeaderItem = /* @__PURE__ */ __name(({ title }) => {
+  return /* @__PURE__ */ React$1.createElement(
+    "h5",
+    {
+      style: {
+        margin: 0,
+        fontSize: 15,
+        fontWeight: "bold",
+        textAlign: "center",
+        padding: "5px 0",
+        borderBottom: "1px solid #f1f1f1"
+      }
+    },
+    title
+  );
+}, "HeaderItem");
 function calculatePairwiseIdentity(seq1, seq2, excludeGaps = true) {
   if (seq1.length !== seq2.length) {
     throw new Error("Sequences must be aligned (same length)");
@@ -165678,6 +167358,11 @@ const AlignmentView = /* @__PURE__ */ __name((props) => {
   const [tempTrimBefore, setTempTrimBefore] = reactExports.useState({});
   const [tempTrimAfter, setTempTrimAfter] = reactExports.useState({});
   const [tempTrimmingCaret, setTempTrimmingCaret] = reactExports.useState({});
+  const [searchMatchLayers, setSearchMatchLayers] = React$1.useState([]);
+  const [activeFilterType, setActiveFilterType] = reactExports.useState("all");
+  const handleFilterChange = reactExports.useCallback(({ activeFilter }) => {
+    setActiveFilterType(activeFilter);
+  }, []);
   const bindOutsideChangeHelper = reactExports.useRef({});
   const alignmentHolder = reactExports.useRef(null);
   const alignmentHolderTop = reactExports.useRef(null);
@@ -165721,7 +167406,11 @@ ${seqDataToCopy}\r
   }, [alignmentTracks2, id2, store2]);
   reactExports.useEffect(() => {
     const handleAlignmentCopy = /* @__PURE__ */ __name((event) => {
+      var _a3, _b2, _c2;
       if (event.key === "c" && !event.shiftKey && (event.metaKey === true || event.ctrlKey === true)) {
+        if (!((_a3 = document.activeElement) == null ? void 0 : _a3.classList.contains("alignmentView"))) {
+          return;
+        }
         const input = document.createElement("textarea");
         document.body.appendChild(input);
         const seqDataToCopy = getAllAlignmentsFastaText();
@@ -165735,6 +167424,8 @@ ${seqDataToCopy}\r
         }
         document.body.removeChild(input);
         event.preventDefault();
+        (_b2 = document.activeElement) == null ? void 0 : _b2.blur();
+        (_c2 = document.querySelector(".alignmentView")) == null ? void 0 : _c2.focus();
       }
     }, "handleAlignmentCopy");
     document.addEventListener("keydown", handleAlignmentCopy);
@@ -166396,7 +168087,12 @@ ${seqDataToCopy}\r
             alignmentData,
             chromatogramData
           }) : linearViewOptions)), {
-            additionalSelectionLayers,
+            additionalSelectionLayers: [
+              ...i2 !== 0 ? (additionalSelectionLayers || []).filter(
+                (layer) => activeFilterType === "all" ? layer.differenceType !== "gap" : layer.differenceType === activeFilterType
+              ) : additionalSelectionLayers || [],
+              ...searchMatchLayers || []
+            ],
             dimensions: {
               width: linearViewWidth
             },
@@ -166893,6 +168589,7 @@ ${seqDataToCopy}\r
           position: "relative",
           overflowY: "auto"
         }, style2),
+        tabIndex: 0,
         className: "alignmentView"
       },
       /* @__PURE__ */ React$1.createElement(
@@ -166923,7 +168620,7 @@ ${seqDataToCopy}\r
                 display: "flex",
                 minHeight: "32px",
                 width: "100%",
-                flexWrap: "nowrap",
+                flexWrap: "wrap",
                 flexDirection: "row",
                 flex: "0 0 auto"
               },
@@ -167044,6 +168741,22 @@ ${seqDataToCopy}\r
                 currentPairwiseAlignmentIndex
               }, alignmentVisibilityToolOptions)
             ),
+            /* @__PURE__ */ React$1.createElement(
+              AlignmentSearchBar,
+              {
+                alignmentTracks: alignmentTracks2,
+                id: id2,
+                setSearchMatchLayers
+              }
+            ),
+            /* @__PURE__ */ React$1.createElement(
+              FindMismatches,
+              {
+                alignmentJson: alignmentTracks2,
+                id: id2,
+                onFilterChange: handleFilterChange
+              }
+            ),
             additionalTopEl,
             saveMessage && /* @__PURE__ */ React$1.createElement(
               "div",
@@ -167144,6 +168857,7 @@ ${seqDataToCopy}\r
               }
             )),
             alignmentTracks: alignmentTracks2,
+            activeFilterType,
             dimensions: {
               width: Math.max(width, 10) || 10
             },
@@ -168930,7 +170644,7 @@ function withContentRect(types2) {
         _this$props.innerRef;
         _this$props.onResize;
         var props = _objectWithoutPropertiesLoose$5(_this$props, ["innerRef", "onResize"]);
-        return reactExports.createElement(WrappedComponent, _extends$j({}, props, {
+        return reactExports.createElement(WrappedComponent, _extends$k({}, props, {
           measureRef: this._handleRef,
           measure: this.measure,
           contentRect: this.state.contentRect
@@ -169575,6 +171289,8 @@ const userDefinedHandlersAndOpts = [
   "enzymeManageOverride",
   "enzymeGroupsOverride",
   "additionalEnzymes",
+  "getAcceptedInsertChars",
+  "maxInsertSize",
   "onDelete",
   "onCopy",
   "autoAnnotateFeatures",
@@ -170715,12 +172431,29 @@ const genericAnnotationProperties = /* @__PURE__ */ __name(({
   additionalFooterEls
 }) => {
   const annotationTypeUpper = upperFirst(annotationType);
-  const _AnnotationProperties = class _AnnotationProperties extends React$1.Component {
-    constructor(props) {
-      super(props);
-      __publicField(this, "onRowSelect", /* @__PURE__ */ __name(([record]) => {
+  const AnnotationProperties = /* @__PURE__ */ __name((props) => {
+    var _a2, _b2, _c2;
+    const {
+      readOnly: readOnly2,
+      annotations = {},
+      annotationVisibility: annotationVisibility2,
+      sequenceLength,
+      selectionLayer: selectionLayer2,
+      sequence: sequence2,
+      isProtein: isProtein2,
+      allPartTags,
+      annotationPropertiesSelectedEntities: _annotationPropertiesSelectedEntities,
+      selectedAnnotationId,
+      PropertiesProps,
+      dispatch,
+      editorName
+    } = props;
+    const instanceRef = React$1.useRef({ props });
+    instanceRef.current.props = props;
+    const cmds = React$1.useMemo(() => getCommands(instanceRef.current), []);
+    const onRowSelect = React$1.useCallback(
+      ([record]) => {
         if (!record) return;
-        const { dispatch, editorName } = this.props;
         dispatch({
           type: "SELECTION_LAYER_UPDATE",
           payload: record,
@@ -170728,44 +172461,34 @@ const genericAnnotationProperties = /* @__PURE__ */ __name(({
             editorName
           }
         });
-      }, "onRowSelect"));
-      this.commands = getCommands(this);
-    }
-    render() {
-      var _a2, _b2, _c2;
-      const {
-        readOnly: readOnly2,
-        annotations = {},
-        annotationVisibility: annotationVisibility2,
-        sequenceLength,
-        selectionLayer: selectionLayer2,
-        sequence: sequence2,
-        isProtein: isProtein2,
-        allPartTags,
-        annotationPropertiesSelectedEntities: _annotationPropertiesSelectedEntities,
-        selectedAnnotationId,
-        PropertiesProps
-      } = this.props;
-      const annotationPropertiesSelectedEntities = _annotationPropertiesSelectedEntities.filter((a2) => annotations[a2.id]);
-      const deleteAnnotation = this.props[`delete${annotationTypeUpper}`];
-      const annotationsToUse = map$3(annotations, (annotation) => {
+      },
+      [dispatch, editorName]
+    );
+    const annotationPropertiesSelectedEntities = _annotationPropertiesSelectedEntities.filter((a2) => annotations[a2.id]);
+    const deleteAnnotation = props[`delete${annotationTypeUpper}`];
+    const annotationsToUse = React$1.useMemo(
+      () => map$3(annotations, (_annotation) => {
+        const annotation = isProtein2 ? convertDnaCaretPositionOrRangeToAA(_annotation) : _annotation;
         return __spreadProps(__spreadValues(__spreadValues({}, annotation), annotation.strand === void 0 && {
           strand: annotation.forward ? 1 : -1
         }), {
           size: getRangeLength(annotation, sequenceLength)
         });
-      });
-      const keyedPartTags = (_a2 = getKeyedTagsAndTagOptions(allPartTags)) != null ? _a2 : {};
-      const additionalColumns = ((_c2 = (_b2 = PropertiesProps == null ? void 0 : PropertiesProps.propertiesList) == null ? void 0 : _b2.find(
-        (p2) => (p2.name || p2) === (pluralize(annotationType) || "")
-      )) == null ? void 0 : _c2.additionalColumns) || [];
-      this.schema = {
+      }),
+      [annotations, sequenceLength, isProtein2]
+    );
+    const keyedPartTags = (_a2 = getKeyedTagsAndTagOptions(allPartTags)) != null ? _a2 : {};
+    const additionalColumns = ((_c2 = (_b2 = PropertiesProps == null ? void 0 : PropertiesProps.propertiesList) == null ? void 0 : _b2.find(
+      (p2) => (p2.name || p2) === (pluralize(annotationType) || "")
+    )) == null ? void 0 : _c2.additionalColumns) || [];
+    const schema2 = useMemoDeepEqual(
+      () => ({
         fields: [
           {
             path: "name",
             type: "string",
             render: /* @__PURE__ */ __name((name2, ann) => {
-              const checked = !this.props.annotationVisibility[`${annotationType}IndividualToHide`][ann.id];
+              const checked = !annotationVisibility2[`${annotationType}IndividualToHide`][ann.id];
               return /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, /* @__PURE__ */ React$1.createElement(
                 Icon,
                 {
@@ -170774,9 +172497,9 @@ const genericAnnotationProperties = /* @__PURE__ */ __name(({
                     e2.stopPropagation();
                     const upperType = startCase(annotationType);
                     if (checked) {
-                      this.props[`hide${upperType}Individual`]([ann.id]);
+                      props[`hide${upperType}Individual`]([ann.id]);
                     } else {
-                      this.props[`show${upperType}Individual`]([ann.id]);
+                      props[`show${upperType}Individual`]([ann.id]);
                     }
                   }, "onClick"),
                   style: {
@@ -170797,7 +172520,7 @@ const genericAnnotationProperties = /* @__PURE__ */ __name(({
               render: /* @__PURE__ */ __name((bases, primer) => {
                 let bps = bases;
                 if (!bases) {
-                  bps = getSequenceWithinRange(primer, this.props.sequence);
+                  bps = getSequenceWithinRange(primer, sequence2);
                   if (!primer.forward) {
                     bps = getReverseComplementSequenceString(bps);
                   }
@@ -170822,8 +172545,8 @@ const genericAnnotationProperties = /* @__PURE__ */ __name(({
               }, "render")
             }
           ],
-          sizeSchema(this.props.isProtein),
-          ...withTags && this.props.allPartTags ? [
+          sizeSchema(),
+          ...withTags && allPartTags ? [
             {
               path: "tags",
               type: "string",
@@ -170847,138 +172570,144 @@ const genericAnnotationProperties = /* @__PURE__ */ __name(({
           { path: "strand", type: "number" },
           ...additionalColumns
         ]
-      };
-      return /* @__PURE__ */ React$1.createElement(
-        WrappedDT,
-        {
-          topLeftItems: getVisFilter(
-            createCommandMenu(
-              isFunction$1(visSubmenu) ? visSubmenu(this.props) : visSubmenu,
-              this.commands,
-              {
-                useTicks: true
-              }
-            )
-          ),
-          annotationPropertiesSelectedEntities,
-          leftOfSearchBarItems: /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, !readOnly2 && /* @__PURE__ */ React$1.createElement(ButtonGroup, { style: { marginTop: 3, marginRight: 4 } }, /* @__PURE__ */ React$1.createElement(
-            Tooltip,
+      }),
+      [
+        additionalColumns,
+        allPartTags,
+        annotationVisibility2,
+        isProtein2,
+        keyedPartTags,
+        sequence2
+      ]
+    );
+    return /* @__PURE__ */ React$1.createElement(
+      WrappedDT,
+      {
+        topLeftItems: getVisFilter(
+          createCommandMenu(
+            isFunction$1(visSubmenu) ? visSubmenu(props) : visSubmenu,
+            cmds,
             {
-              position: "top",
-              modifiers: popoverOverflowModifiers,
-              content: "New"
-            },
-            /* @__PURE__ */ React$1.createElement(
-              AnchorButton,
-              {
-                disabled: !sequenceLength,
-                icon: "plus",
-                className: "tgNewAnnBtn",
-                onClick: /* @__PURE__ */ __name(() => {
-                  showAddOrEditAnnotationDialog({
-                    type: annotationType,
-                    annotation: pick$1(
-                      selectionLayer2,
-                      "start",
-                      "end",
-                      "forward"
-                    )
-                  });
-                }, "onClick")
-              }
-            )
-          ), /* @__PURE__ */ React$1.createElement(
-            Tooltip,
-            {
-              position: "top",
-              modifiers: popoverOverflowModifiers,
-              content: "Edit"
-            },
-            /* @__PURE__ */ React$1.createElement(
-              AnchorButton,
-              {
-                onClick: /* @__PURE__ */ __name(() => {
-                  showAddOrEditAnnotationDialog({
-                    type: annotationType,
-                    annotation: annotationPropertiesSelectedEntities[0]
-                  });
-                }, "onClick"),
-                disabled: annotationPropertiesSelectedEntities.length !== 1,
-                icon: "edit"
-              }
-            )
-          ), ["feature"].includes(annotationType) && /* @__PURE__ */ React$1.createElement(
-            CmdButton,
-            {
-              text: "",
-              icon: "cog",
-              "data-tip": "Configure Feature Types",
-              cmd: this.commands.onConfigureFeatureTypesClick
+              useTicks: true
             }
-          ), ["part", "primer", "feature"].includes(annotationType) && /* @__PURE__ */ React$1.createElement(
-            CmdButton,
+          )
+        ),
+        annotationPropertiesSelectedEntities,
+        leftOfSearchBarItems: /* @__PURE__ */ React$1.createElement(React$1.Fragment, null, !readOnly2 && /* @__PURE__ */ React$1.createElement(ButtonGroup, { style: { marginTop: 3, marginRight: 4 } }, /* @__PURE__ */ React$1.createElement(
+          Tooltip,
+          {
+            position: "top",
+            modifiers: popoverOverflowModifiers,
+            content: "New"
+          },
+          /* @__PURE__ */ React$1.createElement(
+            AnchorButton,
             {
-              text: "",
-              icon: removeDuplicatesIcon,
-              "data-tip": "Remove Duplicates",
-              cmd: this.commands[`showRemoveDuplicatesDialog${annotationTypeUpper + "s"}`]
+              disabled: !sequenceLength,
+              icon: "plus",
+              className: "tgNewAnnBtn",
+              onClick: /* @__PURE__ */ __name(() => {
+                showAddOrEditAnnotationDialog({
+                  type: annotationType,
+                  annotation: pick$1(
+                    selectionLayer2,
+                    "start",
+                    "end",
+                    "forward"
+                  )
+                });
+              }, "onClick")
             }
-          ), additionalFooterEls && additionalFooterEls(this.props), /* @__PURE__ */ React$1.createElement(
-            Tooltip,
+          )
+        ), /* @__PURE__ */ React$1.createElement(
+          Tooltip,
+          {
+            position: "top",
+            modifiers: popoverOverflowModifiers,
+            content: "Edit"
+          },
+          /* @__PURE__ */ React$1.createElement(
+            AnchorButton,
             {
-              position: "top",
-              modifiers: popoverOverflowModifiers,
-              content: "Delete"
-            },
-            /* @__PURE__ */ React$1.createElement(
-              AnchorButton,
-              {
-                onClick: /* @__PURE__ */ __name(() => {
-                  deleteAnnotation(annotationPropertiesSelectedEntities);
-                }, "onClick"),
-                className: "tgDeleteAnnsBtn",
-                intent: "danger",
-                disabled: !annotationPropertiesSelectedEntities.length,
-                icon: "trash"
-              }
-            )
-          ))),
-          onDoubleClick: /* @__PURE__ */ __name((annotation) => {
-            showAddOrEditAnnotationDialog({
-              type: annotationType,
-              annotation
-            });
-          }, "onDoubleClick"),
-          withCheckboxes: true,
-          showFeatureIndividual: this.props.showFeatureIndividual,
-          hideFeatureIndividual: this.props.hideFeatureIndividual,
-          showPartIndividual: this.props.showPartIndividual,
-          hidePartIndividual: this.props.hidePartIndividual,
-          showPrimerIndividual: this.props.showPrimerIndividual,
-          hidePrimerIndividual: this.props.hidePrimerIndividual,
-          annotationVisibility: annotationVisibility2,
-          featureLengthsToHide: this.props.featureLengthsToHide,
-          primerLengthsToHide: this.props.primerLengthsToHide,
-          partLengthsToHide: this.props.partLengthsToHide,
-          sequence: sequence2,
-          noPadding: true,
-          noFullscreenButton: true,
-          onRowSelect: this.onRowSelect,
-          selectedIds: selectedAnnotationId,
-          formName: "annotationProperties",
-          noRouter: true,
-          isProtein: isProtein2,
-          compact: true,
-          isInfinite: true,
-          withDisplayOptions: true,
-          schema: this.schema,
-          entities: annotationsToUse
-        }
-      );
-    }
-  };
-  __name(_AnnotationProperties, "AnnotationProperties");
-  let AnnotationProperties = _AnnotationProperties;
+              onClick: /* @__PURE__ */ __name(() => {
+                showAddOrEditAnnotationDialog({
+                  type: annotationType,
+                  annotation: annotationPropertiesSelectedEntities[0]
+                });
+              }, "onClick"),
+              disabled: annotationPropertiesSelectedEntities.length !== 1,
+              icon: "edit"
+            }
+          )
+        ), ["feature"].includes(annotationType) && /* @__PURE__ */ React$1.createElement(
+          CmdButton,
+          {
+            text: "",
+            icon: "cog",
+            "data-tip": "Configure Feature Types",
+            cmd: cmds.onConfigureFeatureTypesClick
+          }
+        ), ["part", "primer", "feature"].includes(annotationType) && /* @__PURE__ */ React$1.createElement(
+          CmdButton,
+          {
+            text: "",
+            icon: removeDuplicatesIcon,
+            "data-tip": "Remove Duplicates",
+            cmd: cmds[`showRemoveDuplicatesDialog${annotationTypeUpper + "s"}`]
+          }
+        ), additionalFooterEls && additionalFooterEls(props), /* @__PURE__ */ React$1.createElement(
+          Tooltip,
+          {
+            position: "top",
+            modifiers: popoverOverflowModifiers,
+            content: "Delete"
+          },
+          /* @__PURE__ */ React$1.createElement(
+            AnchorButton,
+            {
+              onClick: /* @__PURE__ */ __name(() => {
+                deleteAnnotation(annotationPropertiesSelectedEntities);
+              }, "onClick"),
+              className: "tgDeleteAnnsBtn",
+              intent: "danger",
+              disabled: !annotationPropertiesSelectedEntities.length,
+              icon: "trash"
+            }
+          )
+        ))),
+        onDoubleClick: /* @__PURE__ */ __name((annotation) => {
+          showAddOrEditAnnotationDialog({
+            type: annotationType,
+            annotation
+          });
+        }, "onDoubleClick"),
+        withCheckboxes: true,
+        showFeatureIndividual: props.showFeatureIndividual,
+        hideFeatureIndividual: props.hideFeatureIndividual,
+        showPartIndividual: props.showPartIndividual,
+        hidePartIndividual: props.hidePartIndividual,
+        showPrimerIndividual: props.showPrimerIndividual,
+        hidePrimerIndividual: props.hidePrimerIndividual,
+        annotationVisibility: annotationVisibility2,
+        featureLengthsToHide: props.featureLengthsToHide,
+        primerLengthsToHide: props.primerLengthsToHide,
+        partLengthsToHide: props.partLengthsToHide,
+        sequence: sequence2,
+        noPadding: true,
+        noFullscreenButton: true,
+        onRowSelect,
+        selectedIds: selectedAnnotationId,
+        formName: "annotationProperties",
+        noRouter: true,
+        isProtein: isProtein2,
+        compact: true,
+        isInfinite: true,
+        withDisplayOptions: true,
+        schema: schema2,
+        entities: annotationsToUse
+      }
+    );
+  }, "AnnotationProperties");
   return compose(
     connectToEditor(
       ({
@@ -171310,7 +173039,7 @@ const _OrfProperties = class _OrfProperties extends React$1.Component {
               displayName: "Size (aa)",
               type: "number"
             },
-            sizeSchema(this.props.isProtein),
+            sizeSchema(),
             { path: "frame", type: "number" },
             { path: "strand", type: "number" }
           ]
@@ -171336,7 +173065,7 @@ const OrfProperties$1 = compose(
       readOnly: readOnly2,
       annotationVisibility: annotationVisibility2,
       useAdditionalOrfStartCodons: useAdditionalOrfStartCodons2,
-      orfs: selectors.orfsSelector(editorState),
+      orfs: getMemoOrfs(editorState),
       sequenceLength: sequence2.length,
       sequenceData: sequenceData2,
       minimumOrfSize: minimumOrfSize2
@@ -171526,7 +173255,7 @@ const TranslationProperties$1 = compose(
     return {
       readOnly: readOnly2,
       translations: selectors.translationsSelector(editorState),
-      orfs: selectors.orfsSelector(editorState),
+      orfs: getMemoOrfs(editorState),
       annotationVisibility: annotationVisibility2,
       sequenceLength: (sequenceData2.sequence || "").length,
       sequenceData: sequenceData2
@@ -172391,108 +174120,6 @@ const schema$1 = {
   ]
 };
 const DigestTool$1 = withEditorInteractions(DigestTool);
-const _Mismatches = class _Mismatches extends React$1.Component {
-  constructor() {
-    super(...arguments);
-    __publicField(this, "getGapMap", /* @__PURE__ */ __name((sequence2) => {
-      const gapMap = [0];
-      sequence2.split("").forEach((char) => {
-        if (char === "-") {
-          gapMap[Math.max(0, gapMap.length - 1)] = (gapMap[Math.max(0, gapMap.length - 1)] || 0) + 1;
-        } else {
-          gapMap.push(gapMap[gapMap.length - 1] || 0);
-        }
-      });
-      return gapMap;
-    }, "getGapMap"));
-    __publicField(this, "getMismatchList", /* @__PURE__ */ __name((alignmentData, mismatches) => {
-      const mismatchList = [];
-      let getGaps = /* @__PURE__ */ __name(() => ({
-        gapsBefore: 0,
-        gapsInside: 0
-      }), "getGaps");
-      const gapMap = this.getGapMap(alignmentData.sequence);
-      getGaps = /* @__PURE__ */ __name((rangeOrCaretPosition) => {
-        if (typeof rangeOrCaretPosition !== "object") {
-          return {
-            gapsBefore: gapMap[Math.min(rangeOrCaretPosition, gapMap.length - 1)]
-          };
-        }
-        const { start: start2, end: end2 } = rangeOrCaretPosition;
-        const toReturn = {
-          gapsBefore: gapMap[start2],
-          gapsInside: gapMap[Math.min(end2, gapMap.length - 1)] - gapMap[Math.min(start2, gapMap.length - 1)]
-        };
-        return toReturn;
-      }, "getGaps");
-      const gapsBeforeSequence = getGaps(0).gapsBefore;
-      for (let mismatchI = 0; mismatchI < mismatches.length; mismatchI++) {
-        const mismatchEnd = mismatches[mismatchI].end;
-        const mismatchStart = mismatches[mismatchI].start;
-        const mismatchDifference = mismatchEnd - mismatchStart;
-        if (mismatchDifference === 0) {
-          mismatchList.push({
-            mismatches: mismatchStart + 1 - gapsBeforeSequence,
-            start: mismatchStart - gapsBeforeSequence,
-            end: mismatchStart - gapsBeforeSequence
-          });
-        } else {
-          for (let innerI = 0; innerI <= mismatchDifference; innerI++) {
-            mismatchList.push({
-              mismatches: mismatchStart + innerI + 1 - gapsBeforeSequence,
-              start: mismatchStart + innerI - gapsBeforeSequence,
-              end: mismatchStart + innerI - gapsBeforeSequence
-            });
-          }
-        }
-      }
-      return mismatchList;
-    }, "getMismatchList"));
-  }
-  UNSAFE_componentWillMount() {
-    const { alignmentData, mismatches } = this.props;
-    const mismatchList = this.getMismatchList(alignmentData, mismatches);
-    const schema2 = {
-      fields: [{ path: "mismatches", type: "number" }]
-    };
-    this.setState({ mismatchList, schema: schema2 });
-  }
-  render() {
-    const { mismatchList, schema: schema2 } = this.state;
-    let tableOfMismatches;
-    if (mismatchList.length === 0) {
-      tableOfMismatches = null;
-    } else {
-      tableOfMismatches = /* @__PURE__ */ React$1.createElement(
-        WrappedDT,
-        {
-          maxHeight: 168,
-          formName: "mismatchesTable",
-          isSimple: true,
-          compact: true,
-          noRouter: true,
-          schema: schema2,
-          entities: mismatchList
-        }
-      );
-    }
-    return /* @__PURE__ */ React$1.createElement("div", { style: { maxHeight: 180.8, overflowY: "scroll" } }, /* @__PURE__ */ React$1.createElement(
-      "div",
-      {
-        style: {
-          // margin: 10,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center"
-        }
-      },
-      /* @__PURE__ */ React$1.createElement("div", { style: { width: 100, margin: 4 } }, tableOfMismatches)
-    ));
-  }
-};
-__name(_Mismatches, "Mismatches");
-let Mismatches = _Mismatches;
-const Mismatches$1 = withSelectedEntities("mismatchesTable")(Mismatches);
 function PCRTool(props) {
   const {
     sequenceData: sequenceData2,
@@ -172664,7 +174291,7 @@ const _panelMap = {
     comp: PropertiesDialog$1,
     panelSpecificProps: ["PropertiesProps"]
   },
-  mismatches: Mismatches$1
+  mismatches: FindMismatches
 };
 const reorder = /* @__PURE__ */ __name((list2, startIndex, endIndex) => {
   const result = Array.from(list2);
@@ -172884,6 +174511,7 @@ const _Editor = class _Editor extends React$1.Component {
       hoveredId,
       isFullscreen,
       maxInsertSize,
+      getAcceptedInsertChars,
       showAminoAcidUnitAsCodon,
       maxAnnotationsToDisplay,
       minHeight = 400,
@@ -173073,6 +174701,7 @@ const _Editor = class _Editor extends React$1.Component {
         }), panelPropsToSpread), {
           editorName,
           maxInsertSize,
+          getAcceptedInsertChars,
           showAminoAcidUnitAsCodon,
           isProtein: sequenceData2.isProtein,
           onlyShowLabelsThatDoNotFit,
@@ -175465,7 +177094,7 @@ window.createVersionHistoryView = createVersionHistoryView;
 window.tgCreateMenu = showContextMenu;
 FocusStyleManager.onlyShowFocusOnTabs();
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-  actionsDenylist: ["HOVEREDANNOTATIONUPDATE", "HOVEREDANNOTATIONCLEAR"],
+  actionsDenylist: [],
   // actionSanitizer,
   latency: 1e3,
   name: "openVE"
@@ -179469,6 +181098,7 @@ const defaultState = {
   isProtein: false,
   forceHeightMode: false,
   addMaxInsertSize: false,
+  addAcceptedInsertChars: false,
   showAminoAcidUnitAsCodon: false,
   adjustCircularLabelSpacing: false,
   bpLimit: void 0,
@@ -179710,6 +181340,7 @@ const _EditorDemo = class _EditorDemo extends React$1.Component {
     const {
       forceHeightMode,
       addMaxInsertSize,
+      addAcceptedInsertChars,
       showAminoAcidUnitAsCodon,
       passAutoAnnotateHandlers,
       withAutoAnnotateAddon,
@@ -180142,6 +181773,89 @@ certain dna specific tools and annotations are automatically disabled when isPro
             });
           }, "hook")
         }),
+        /* @__PURE__ */ React$1.createElement(
+          "div",
+          {
+            style: {
+              marginTop: 10,
+              display: "flex",
+              flexDirection: "column",
+              gap: 5
+            }
+          },
+          /* @__PURE__ */ React$1.createElement("div", { style: { fontWeight: "bold" } }, "Temporary Annotations:"),
+          /* @__PURE__ */ React$1.createElement(
+            Button,
+            {
+              onClick: /* @__PURE__ */ __name(() => {
+                updateEditor(store, "DemoEditor", {
+                  temporaryAnnotations: {
+                    searchLayers: [
+                      {
+                        start: 10,
+                        end: 20,
+                        customTitle: "Temp Search Layer"
+                      }
+                    ],
+                    features: {
+                      temp1: {
+                        id: "temp1",
+                        start: 10,
+                        end: 30,
+                        name: "Temp Feature",
+                        color: "orange"
+                      },
+                      temp2: {
+                        id: "temp2",
+                        start: 100,
+                        end: 3e3,
+                        name: "Another Temp Feature",
+                        color: "orange"
+                      }
+                    }
+                  }
+                });
+              }, "onClick")
+            },
+            "Add Temp Features"
+          ),
+          /* @__PURE__ */ React$1.createElement(
+            Button,
+            {
+              onClick: /* @__PURE__ */ __name(() => {
+                updateEditor(store, "DemoEditor", {
+                  temporaryAnnotations: {
+                    primers: {
+                      tempPrimer1: {
+                        id: "tempPrimer1",
+                        start: 50,
+                        end: 70,
+                        name: "Temp Primer",
+                        color: "purple",
+                        forward: true
+                      }
+                    }
+                  }
+                });
+              }, "onClick")
+            },
+            "Add Temp Primer"
+          ),
+          /* @__PURE__ */ React$1.createElement(
+            Button,
+            {
+              onClick: /* @__PURE__ */ __name(() => {
+                updateEditor(store, "DemoEditor", {
+                  temporaryAnnotations: {
+                    features: {},
+                    primers: {}
+                  }
+                });
+              }, "onClick")
+            },
+            "Clear Temp Annotations"
+          )
+        ),
         renderToggle({
           that: this,
           label: "Truncate Internal Labels That Don't Fit",
@@ -180518,6 +182232,12 @@ rightClickOverrides: {
           type: "addMaxInsertSize",
           label: "Add Max Insert Size 50",
           info: "You can change the max size for insert/paste for the editor by passing `maxInsertSize:50`"
+        }),
+        renderToggle({
+          that: this,
+          type: "addAcceptedInsertChars",
+          label: "Set the accepted insert characters to agct only",
+          info: "You can change the allowed insert chars for the editor by passing `getAcceptedInsertChars: ({isOligo, isProtein, isRna, isMixedRnaAndDna}) => 'agct'`"
         }),
         renderToggle({
           that: this,
@@ -181494,7 +183214,7 @@ doubleClickOverrides: {
       ),
       /* @__PURE__ */ React$1.createElement(
         Editor$1,
-        __spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadProps(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadProps(__spreadValues(__spreadValues(__spreadValues(__spreadProps(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadProps(__spreadValues(__spreadValues(__spreadValues({
+        __spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadProps(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadProps(__spreadValues(__spreadValues(__spreadValues(__spreadProps(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadValues(__spreadProps(__spreadValues(__spreadValues(__spreadValues({
           ToolBarProps: {
             contentLeft: /* @__PURE__ */ React$1.createElement(
               Button,
@@ -181905,7 +183625,7 @@ doubleClickOverrides: {
           getCustomAutoAnnotateList: this.getCustomAutoAnnotateList
         }), {
           generatePng
-        }), forceHeightMode && { height: 500 }), addMaxInsertSize && { maxInsertSize: 50 }), showAminoAcidUnitAsCodon && {
+        }), forceHeightMode && { height: 500 }), addMaxInsertSize && { maxInsertSize: 50 }), addAcceptedInsertChars && { getAcceptedInsertChars: /* @__PURE__ */ __name(() => "acgtACGT", "getAcceptedInsertChars") }), showAminoAcidUnitAsCodon && {
           showAminoAcidUnitAsCodon: true
         }), adjustCircularLabelSpacing && { fontHeightMultiplier: 2 }), bpLimit && { bpLimit: 8e3 }), withVersionHistory && {
           getSequenceAtVersion: /* @__PURE__ */ __name((versionId) => {
@@ -182137,7 +183857,7 @@ function VersionSwitcher({
   reactExports.useEffect(() => {
     (/* @__PURE__ */ __name(function fetchData() {
       return __async(this, null, function* () {
-        const res = yield __variableDynamicImportRuntimeHelper(/* @__PURE__ */ Object.assign({ "../../bio-parsers/package.json": /* @__PURE__ */ __name(() => __vitePreload(() => import("./package-DmOTQ4Sx.js"), true ? [] : void 0, import.meta.url), "../../bio-parsers/package.json"), "../../bounce-loader/package.json": /* @__PURE__ */ __name(() => __vitePreload(() => import("./package-DxK1sA93.js"), true ? [] : void 0, import.meta.url), "../../bounce-loader/package.json"), "../../file-utils/package.json": /* @__PURE__ */ __name(() => __vitePreload(() => import("./package-BDls_Ay-.js"), true ? [] : void 0, import.meta.url), "../../file-utils/package.json"), "../../ove/package.json": /* @__PURE__ */ __name(() => __vitePreload(() => Promise.resolve().then(() => _package), true ? void 0 : void 0, import.meta.url), "../../ove/package.json"), "../../range-utils/package.json": /* @__PURE__ */ __name(() => __vitePreload(() => import("./package-Bm5c7mXJ.js"), true ? [] : void 0, import.meta.url), "../../range-utils/package.json"), "../../sequence-utils/package.json": /* @__PURE__ */ __name(() => __vitePreload(() => import("./package-Cm8tRgCe.js"), true ? [] : void 0, import.meta.url), "../../sequence-utils/package.json"), "../package.json": /* @__PURE__ */ __name(() => __vitePreload(() => import("./package-D8eyE4je.js"), true ? [] : void 0, import.meta.url), "../package.json"), "../../ui/package.json": /* @__PURE__ */ __name(() => __vitePreload(() => import("./package-C9tEZi7n.js"), true ? [] : void 0, import.meta.url), "../../ui/package.json"), "../../uploader/package.json": /* @__PURE__ */ __name(() => __vitePreload(() => import("./package-Ia2Rqbv8.js"), true ? [] : void 0, import.meta.url), "../../uploader/package.json") }), `../../${packageName}/package.json`, 4);
+        const res = yield __variableDynamicImportRuntimeHelper(/* @__PURE__ */ Object.assign({ "../../bio-parsers/package.json": /* @__PURE__ */ __name(() => __vitePreload(() => import("./package-Cy7Zi5qm.js"), true ? [] : void 0, import.meta.url), "../../bio-parsers/package.json"), "../../file-utils/package.json": /* @__PURE__ */ __name(() => __vitePreload(() => import("./package-08dWTk1g.js"), true ? [] : void 0, import.meta.url), "../../file-utils/package.json"), "../../ove/package.json": /* @__PURE__ */ __name(() => __vitePreload(() => Promise.resolve().then(() => _package), true ? void 0 : void 0, import.meta.url), "../../ove/package.json"), "../../range-utils/package.json": /* @__PURE__ */ __name(() => __vitePreload(() => import("./package-1cRi1FH2.js"), true ? [] : void 0, import.meta.url), "../../range-utils/package.json"), "../../sequence-utils/package.json": /* @__PURE__ */ __name(() => __vitePreload(() => import("./package-D6fPAr3T.js"), true ? [] : void 0, import.meta.url), "../../sequence-utils/package.json"), "../package.json": /* @__PURE__ */ __name(() => __vitePreload(() => import("./package-D8eyE4je.js"), true ? [] : void 0, import.meta.url), "../package.json"), "../../ui/package.json": /* @__PURE__ */ __name(() => __vitePreload(() => import("./package-CEwn0IMZ.js"), true ? [] : void 0, import.meta.url), "../../ui/package.json") }), `../../${packageName}/package.json`, 4);
         setVersion(res.version);
         try {
           if (window.Cypress) return;
