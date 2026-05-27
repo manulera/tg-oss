@@ -22000,6 +22000,13 @@ document.addEventListener("mouseup", () => {
   isDragging = false;
 });
 let tippys = [];
+function isInAllowedContainer(element2) {
+  if (window.onlyAllowTooltipsInVeEditor) {
+    return element2.closest(".veEditor") !== null;
+  }
+  return true;
+}
+__name(isInAllowedContainer, "isInAllowedContainer");
 let recentlyHidden = false;
 let clearMe;
 (function() {
@@ -22007,6 +22014,9 @@ let clearMe;
   document.addEventListener("mouseover", function(event) {
     var _a2, _b2;
     const element2 = event.target;
+    if (!isInAllowedContainer(element2)) {
+      return;
+    }
     if (element2 instanceof Element && element2 !== lastMouseOverElement) {
       let clearOldTippys = /* @__PURE__ */ __name(function(maybeInst) {
         tippys = tippys.filter((t2) => {
@@ -35153,6 +35163,195 @@ function DialogFooter({
   );
 }
 __name(DialogFooter, "DialogFooter");
+var NOT_FOUND = "NOT_FOUND";
+function createSingletonCache(equals2) {
+  var entry;
+  return {
+    get: /* @__PURE__ */ __name(function get5(key) {
+      if (entry && equals2(entry.key, key)) {
+        return entry.value;
+      }
+      return NOT_FOUND;
+    }, "get"),
+    put: /* @__PURE__ */ __name(function put(key, value) {
+      entry = {
+        key,
+        value
+      };
+    }, "put"),
+    getEntries: /* @__PURE__ */ __name(function getEntries() {
+      return entry ? [entry] : [];
+    }, "getEntries"),
+    clear: /* @__PURE__ */ __name(function clear2() {
+      entry = void 0;
+    }, "clear")
+  };
+}
+__name(createSingletonCache, "createSingletonCache");
+function createLruCache(maxSize, equals2) {
+  var entries = [];
+  function get5(key) {
+    var cacheIndex = entries.findIndex(function(entry2) {
+      return equals2(key, entry2.key);
+    });
+    if (cacheIndex > -1) {
+      var entry = entries[cacheIndex];
+      if (cacheIndex > 0) {
+        entries.splice(cacheIndex, 1);
+        entries.unshift(entry);
+      }
+      return entry.value;
+    }
+    return NOT_FOUND;
+  }
+  __name(get5, "get");
+  function put(key, value) {
+    if (get5(key) === NOT_FOUND) {
+      entries.unshift({
+        key,
+        value
+      });
+      if (entries.length > maxSize) {
+        entries.pop();
+      }
+    }
+  }
+  __name(put, "put");
+  function getEntries() {
+    return entries;
+  }
+  __name(getEntries, "getEntries");
+  function clear2() {
+    entries = [];
+  }
+  __name(clear2, "clear");
+  return {
+    get: get5,
+    put,
+    getEntries,
+    clear: clear2
+  };
+}
+__name(createLruCache, "createLruCache");
+var defaultEqualityCheck = /* @__PURE__ */ __name(function defaultEqualityCheck2(a2, b2) {
+  return a2 === b2;
+}, "defaultEqualityCheck");
+function createCacheKeyComparator(equalityCheck) {
+  return /* @__PURE__ */ __name(function areArgumentsShallowlyEqual(prev, next) {
+    if (prev === null || next === null || prev.length !== next.length) {
+      return false;
+    }
+    var length = prev.length;
+    for (var i2 = 0; i2 < length; i2++) {
+      if (!equalityCheck(prev[i2], next[i2])) {
+        return false;
+      }
+    }
+    return true;
+  }, "areArgumentsShallowlyEqual");
+}
+__name(createCacheKeyComparator, "createCacheKeyComparator");
+function defaultMemoize(func, equalityCheckOrOptions) {
+  var providedOptions = typeof equalityCheckOrOptions === "object" ? equalityCheckOrOptions : {
+    equalityCheck: equalityCheckOrOptions
+  };
+  var _providedOptions$equa = providedOptions.equalityCheck, equalityCheck = _providedOptions$equa === void 0 ? defaultEqualityCheck : _providedOptions$equa, _providedOptions$maxS = providedOptions.maxSize, maxSize = _providedOptions$maxS === void 0 ? 1 : _providedOptions$maxS, resultEqualityCheck = providedOptions.resultEqualityCheck;
+  var comparator = createCacheKeyComparator(equalityCheck);
+  var cache2 = maxSize === 1 ? createSingletonCache(comparator) : createLruCache(maxSize, comparator);
+  function memoized() {
+    var value = cache2.get(arguments);
+    if (value === NOT_FOUND) {
+      value = func.apply(null, arguments);
+      if (resultEqualityCheck) {
+        var entries = cache2.getEntries();
+        var matchingEntry = entries.find(function(entry) {
+          return resultEqualityCheck(entry.value, value);
+        });
+        if (matchingEntry) {
+          value = matchingEntry.value;
+        }
+      }
+      cache2.put(arguments, value);
+    }
+    return value;
+  }
+  __name(memoized, "memoized");
+  memoized.clearCache = function() {
+    return cache2.clear();
+  };
+  return memoized;
+}
+__name(defaultMemoize, "defaultMemoize");
+function getDependencies(funcs) {
+  var dependencies = Array.isArray(funcs[0]) ? funcs[0] : funcs;
+  if (!dependencies.every(function(dep) {
+    return typeof dep === "function";
+  })) {
+    var dependencyTypes = dependencies.map(function(dep) {
+      return typeof dep === "function" ? "function " + (dep.name || "unnamed") + "()" : typeof dep;
+    }).join(", ");
+    throw new Error("createSelector expects all input-selectors to be functions, but received the following types: [" + dependencyTypes + "]");
+  }
+  return dependencies;
+}
+__name(getDependencies, "getDependencies");
+function createSelectorCreator(memoize2) {
+  for (var _len = arguments.length, memoizeOptionsFromArgs = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+    memoizeOptionsFromArgs[_key - 1] = arguments[_key];
+  }
+  var createSelector2 = /* @__PURE__ */ __name(function createSelector3() {
+    for (var _len2 = arguments.length, funcs = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+      funcs[_key2] = arguments[_key2];
+    }
+    var _recomputations = 0;
+    var _lastResult;
+    var directlyPassedOptions = {
+      memoizeOptions: void 0
+    };
+    var resultFunc = funcs.pop();
+    if (typeof resultFunc === "object") {
+      directlyPassedOptions = resultFunc;
+      resultFunc = funcs.pop();
+    }
+    if (typeof resultFunc !== "function") {
+      throw new Error("createSelector expects an output function after the inputs, but received: [" + typeof resultFunc + "]");
+    }
+    var _directlyPassedOption = directlyPassedOptions, _directlyPassedOption2 = _directlyPassedOption.memoizeOptions, memoizeOptions = _directlyPassedOption2 === void 0 ? memoizeOptionsFromArgs : _directlyPassedOption2;
+    var finalMemoizeOptions = Array.isArray(memoizeOptions) ? memoizeOptions : [memoizeOptions];
+    var dependencies = getDependencies(funcs);
+    var memoizedResultFunc = memoize2.apply(void 0, [/* @__PURE__ */ __name(function recomputationWrapper() {
+      _recomputations++;
+      return resultFunc.apply(null, arguments);
+    }, "recomputationWrapper")].concat(finalMemoizeOptions));
+    var selector = memoize2(/* @__PURE__ */ __name(function dependenciesChecker() {
+      var params = [];
+      var length = dependencies.length;
+      for (var i2 = 0; i2 < length; i2++) {
+        params.push(dependencies[i2].apply(null, arguments));
+      }
+      _lastResult = memoizedResultFunc.apply(null, params);
+      return _lastResult;
+    }, "dependenciesChecker"));
+    Object.assign(selector, {
+      resultFunc,
+      memoizedResultFunc,
+      dependencies,
+      lastResult: /* @__PURE__ */ __name(function lastResult() {
+        return _lastResult;
+      }, "lastResult"),
+      recomputations: /* @__PURE__ */ __name(function recomputations() {
+        return _recomputations;
+      }, "recomputations"),
+      resetRecomputations: /* @__PURE__ */ __name(function resetRecomputations() {
+        return _recomputations = 0;
+      }, "resetRecomputations")
+    });
+    return selector;
+  }, "createSelector");
+  return createSelector2;
+}
+__name(createSelectorCreator, "createSelectorCreator");
+var createSelector = /* @__PURE__ */ createSelectorCreator(defaultMemoize);
 function useCombinedRefs() {
   for (var _len = arguments.length, refs = new Array(_len), _key = 0; _key < _len; _key++) {
     refs[_key] = arguments[_key];
@@ -43005,10 +43204,25 @@ function requireCopyToClipboard() {
 __name(requireCopyToClipboard, "requireCopyToClipboard");
 var copyToClipboardExports = requireCopyToClipboard();
 const copy = /* @__PURE__ */ getDefaultExportFromCjs(copyToClipboardExports);
+const HTML_ESCAPES = {
+  "&": "&amp;",
+  "<": "&lt;",
+  ">": "&gt;",
+  '"': "&quot;"
+};
+const escapeHtml = /* @__PURE__ */ __name((value) => String(value != null ? value : "").replace(/[&<>"]/g, (c2) => HTML_ESCAPES[c2]), "escapeHtml");
+const tsvToHtmlTable = /* @__PURE__ */ __name((tsv) => {
+  const rows = String(tsv != null ? tsv : "").split("\n").map((line) => {
+    const cells = line.split("	").map((v2) => `<td>${escapeHtml(v2)}</td>`).join("");
+    return `<tr>${cells}</tr>`;
+  }).join("");
+  return `<table>${rows}</table>`;
+}, "tsvToHtmlTable");
 const handleCopyHelper = /* @__PURE__ */ __name((stringToCopy, jsonToCopy, message) => {
   !window.Cypress && copy(stringToCopy, {
     onCopy: /* @__PURE__ */ __name((clipboardData) => {
       clipboardData.setData("application/json", JSON.stringify(jsonToCopy));
+      clipboardData.setData("text/html", tsvToHtmlTable(stringToCopy));
     }, "onCopy"),
     // keep this so that pasting into spreadsheets works.
     format: "text/plain"
@@ -43086,23 +43300,6 @@ const handleCopyTable = /* @__PURE__ */ __name((tableRef, opts) => {
   }
 }, "handleCopyTable");
 const PRIMARY_SELECTED_VAL = "main_cell";
-const isEqualIgnoreFunctions = /* @__PURE__ */ __name((o1, o2) => {
-  const isEq = isEqualWith(o1, o2, function(val1, val2) {
-    if (isFunction$1(val1) && isFunction$1(val2)) {
-      return val1 === val2 || val1.toString() === val2.toString();
-    }
-    if (val1 && val1.constructor && val1.constructor.name === "FiberNode")
-      return true;
-  });
-  return isEq;
-}, "isEqualIgnoreFunctions");
-const useDeepEqualMemo = /* @__PURE__ */ __name((value) => {
-  const ref2 = reactExports.useRef();
-  if (!isEqualIgnoreFunctions(value, ref2.current)) {
-    ref2.current = value;
-  }
-  return ref2.current;
-}, "useDeepEqualMemo");
 function rowClick(e, rowInfo, entities2, {
   reduxFormSelectedEntityIdMap,
   isSingleSelect,
@@ -43115,7 +43312,8 @@ function rowClick(e, rowInfo, entities2, {
   onMultiRowSelect,
   noDeselectAll,
   onRowSelect,
-  change: change3
+  change: change3,
+  getCheckboxGroupId
 }) {
   const entity = rowInfo.original;
   onRowClick(e, entity, rowInfo);
@@ -43185,6 +43383,38 @@ function rowClick(e, rowInfo, entities2, {
           newIdMap[rowId].time = Date.now() + 1;
         }
       }
+    }
+  }
+  if (getCheckboxGroupId) {
+    const clickedRowId = rowId;
+    const clickedEntity = entity;
+    const clickedGroupId = getCheckboxGroupId(clickedEntity, rowInfo.index);
+    if (!newIdMap[clickedRowId] && clickedGroupId) {
+      entities2.forEach((e2, i2) => {
+        if (getCheckboxGroupId(e2, i2) === clickedGroupId) {
+          const id = getIdOrCodeOrIndex(e2, i2);
+          delete newIdMap[id];
+        }
+      });
+    }
+    const selectedGroupIds = /* @__PURE__ */ new Set();
+    entities2.forEach((e2, i2) => {
+      const id = getIdOrCodeOrIndex(e2, i2);
+      if (newIdMap[id]) {
+        const gid = getCheckboxGroupId(e2, i2);
+        if (gid) selectedGroupIds.add(gid);
+      }
+    });
+    if (selectedGroupIds.size > 0) {
+      entities2.forEach((e2, i2) => {
+        const gid = getCheckboxGroupId(e2, i2);
+        if (gid && selectedGroupIds.has(gid)) {
+          const id = getIdOrCodeOrIndex(e2, i2);
+          if (!newIdMap[id]) {
+            newIdMap[id] = { entity: e2, time: Date.now() };
+          }
+        }
+      });
     }
   }
   finalizeSelection({
@@ -45081,6 +45311,23 @@ function applyWhereClause(records, where) {
               if (!isString$1(value) || !new RegExp(conditionValue.replace(/%/g, ".*")).test(value))
                 return false;
               break;
+            case "_in":
+              if (!some2(conditionValue, (item) => isEqual(value, item)))
+                return false;
+              break;
+            case "_nin":
+              if (some2(conditionValue, (item) => isEqual(value, item)))
+                return false;
+              break;
+            case "_regex": {
+              try {
+                if (!isString$1(value) || !new RegExp(conditionValue).test(value))
+                  return false;
+              } catch (e) {
+                return false;
+              }
+              break;
+            }
             default:
               if (operator.startsWith("_")) {
                 console.warn(`Unsupported operator: ${operator}`);
@@ -60526,7 +60773,7 @@ const _TgSelect = class _TgSelect extends React.Component {
     };
   }
   render() {
-    var _b2;
+    var _b2, _c2;
     let _a2 = this.props, {
       multi,
       asTag,
@@ -60626,6 +60873,7 @@ const _TgSelect = class _TgSelect extends React.Component {
         (opt) => opt && opt.value === (value2 && value2.value || value2)
       );
     });
+    const inputClassname = `${multi ? "tg-multiselect-input" : "tg-single-select-input"} ${tagInputProps && ((_c2 = tagInputProps.inputProps) == null ? void 0 : _c2.className) || ""}`;
     const toRet = /* @__PURE__ */ React.createElement(
       MultiSelect,
       __spreadValues(__spreadValues({
@@ -60702,12 +60950,14 @@ const _TgSelect = class _TgSelect extends React.Component {
               this.setOpenState(true);
             }
           }, "onKeyDown"),
-          inputProps: __spreadValues({
+          inputProps: __spreadProps(__spreadValues({
             autoComplete: "off",
             name: "tg-multiselect-input",
             autoFocus: autoFocus || autoOpen,
             onBlur
-          }, tagInputProps && tagInputProps.inputProps)
+          }, tagInputProps && tagInputProps.inputProps), {
+            className: inputClassname
+          })
         })
       }), rest)
     );
@@ -62873,6 +63123,7 @@ const DisplayOptions = /* @__PURE__ */ __name(({
 }, "DisplayOptions");
 const { LoadingComponent: LoadingComponent2 } = ReactTableDefaults;
 function DisabledLoadingComponent({ disabled, loading, loadingText }) {
+  if (!loading) return null;
   return /* @__PURE__ */ React.createElement(
     LoadingComponent2,
     {
@@ -78803,7 +79054,7 @@ const FilterAndSortMenu = /* @__PURE__ */ __name(({
       filterValToUse = false;
     } else if (ccSelectedFilter2 === "inList" || ccSelectedFilter2 === "notInList") {
       if (dataType === "number") {
-        filterValToUse = filterValue && filterValue.map((val) => parseFloat(val.replaceAll(",", "")));
+        filterValToUse = filterValue && filterValue.map((val) => parseFloat(`${val}`.replaceAll(",", "")));
       }
     }
     if (isInvalidFilterValue(filterValToUse)) {
@@ -78909,7 +79160,7 @@ const FilterInput = /* @__PURE__ */ __name(({
           multi: true,
           creatable: true,
           value: (filterValue || []).map((val) => ({
-            label: val,
+            label: `${val}`,
             value: val
           })),
           onChange: /* @__PURE__ */ __name((selectedOptions) => {
@@ -80065,6 +80316,7 @@ const useColumns = /* @__PURE__ */ __name(({
   resetDefaultVisibility,
   currentParams,
   compact,
+  hideExpandSubCompColumn,
   editingCell,
   editingCellSelectAll,
   entities: entities2,
@@ -80112,7 +80364,8 @@ const useColumns = /* @__PURE__ */ __name(({
   withSort = true,
   recordIdToIsVisibleMap,
   setRecordIdToIsVisibleMap,
-  withDisplayOptions
+  withDisplayOptions,
+  getCheckboxGroupId
 }) => {
   const dispatch = useDispatch();
   const change$12 = reactExports.useCallback(
@@ -80360,6 +80613,14 @@ const useColumns = /* @__PURE__ */ __name(({
         return /* @__PURE__ */ React.createElement("div", null);
       }
       const entity = entities2[rowIndex];
+      if (getCheckboxGroupId) {
+        const currentGroupId = getCheckboxGroupId(entity, rowIndex);
+        const previousEntity = entities2[rowIndex - 1];
+        const previousGroupId = previousEntity ? getCheckboxGroupId(previousEntity, rowIndex - 1) : void 0;
+        if (currentGroupId && currentGroupId === previousGroupId) {
+          return /* @__PURE__ */ React.createElement("div", null);
+        }
+      }
       return /* @__PURE__ */ React.createElement(
         Checkbox,
         {
@@ -80378,7 +80639,8 @@ const useColumns = /* @__PURE__ */ __name(({
               onMultiRowSelect,
               noDeselectAll,
               onRowSelect,
-              change: change$12
+              change: change$12,
+              getCheckboxGroupId
             });
           }, "onClick"),
           checked: isSelected
@@ -80399,7 +80661,8 @@ const useColumns = /* @__PURE__ */ __name(({
       onRowSelect,
       onSingleRowSelect,
       reduxFormSelectedEntityIdMap,
-      withCheckboxes
+      withCheckboxes,
+      getCheckboxGroupId
     ]
   );
   const finishCellEdit = reactExports.useCallback(
@@ -80474,13 +80737,14 @@ const useColumns = /* @__PURE__ */ __name(({
         );
       }, "Header")
     }), {
+      show: !hideExpandSubCompColumn,
       expander: true,
       Expander: /* @__PURE__ */ __name(({ isExpanded, original: record }) => {
         let shouldShow = true;
         if (shouldShowSubComponent) {
           shouldShow = shouldShowSubComponent(record);
         }
-        if (!shouldShow) return null;
+        if (!shouldShow || hideExpandSubCompColumn) return null;
         return /* @__PURE__ */ React.createElement(
           Button,
           {
@@ -84733,6 +84997,30 @@ if (typeof __MOBX_DEVTOOLS_GLOBAL_HOOK__ === "object") {
     $mobx
   });
 }
+const isEqualIgnoreFunctions = /* @__PURE__ */ __name((o1, o2) => {
+  const isEq = isEqualWith(o1, o2, function(val1, val2) {
+    if (isFunction$1(val1) && isFunction$1(val2)) {
+      return val1 === val2 || val1.toString() === val2.toString();
+    }
+    if (val1 && val1.constructor && val1.constructor.name === "FiberNode")
+      return true;
+  });
+  return isEq;
+}, "isEqualIgnoreFunctions");
+const useDeepEqualMemoIgnoreFns = /* @__PURE__ */ __name((value) => {
+  const ref2 = reactExports.useRef();
+  if (!isEqualIgnoreFunctions(value, ref2.current)) {
+    ref2.current = value;
+  }
+  return ref2.current;
+}, "useDeepEqualMemoIgnoreFns");
+const useDeepEqualMemo = /* @__PURE__ */ __name((value) => {
+  const ref2 = reactExports.useRef();
+  if (!isEqual(value, ref2.current)) {
+    ref2.current = value;
+  }
+  return ref2.current;
+}, "useDeepEqualMemo");
 T();
 const IS_LINUX = window.navigator.platform.toLowerCase().search("linux") > -1;
 const itemSizeEstimators = {
@@ -84804,24 +85092,32 @@ const DataTable = /* @__PURE__ */ __name((_I) => {
     }
     return false;
   });
+  const dtFormParamsSelector = reactExports.useMemo(
+    () => createSelector(
+      (state) => formValueSelector(formName)(
+        state,
+        "reduxFormCellValidation",
+        "reduxFormEntities",
+        "reduxFormQueryParams",
+        "reduxFormSelectedEntityIdMap"
+      ),
+      (result) => result
+      // identity, but memoized
+    ),
+    [formName]
+  );
   const {
     reduxFormCellValidation: _reduxFormCellValidation,
     reduxFormEditingCell,
     reduxFormEntities,
     reduxFormQueryParams: _reduxFormQueryParams = {},
     reduxFormSelectedEntityIdMap: _reduxFormSelectedEntityIdMap = {}
-  } = useSelector(/* @__PURE__ */ __name(function dtFormParamsSelector(state) {
-    return formValueSelector(formName)(
-      state,
-      "reduxFormCellValidation",
-      "reduxFormEntities",
-      "reduxFormQueryParams",
-      "reduxFormSelectedEntityIdMap"
-    );
-  }, "dtFormParamsSelector"));
-  const reduxFormCellValidation = useDeepEqualMemo(_reduxFormCellValidation);
-  const reduxFormQueryParams = useDeepEqualMemo(_reduxFormQueryParams);
-  const reduxFormSelectedEntityIdMap = useDeepEqualMemo(
+  } = useSelector(dtFormParamsSelector);
+  const reduxFormCellValidation = useDeepEqualMemoIgnoreFns(
+    _reduxFormCellValidation
+  );
+  const reduxFormQueryParams = useDeepEqualMemoIgnoreFns(_reduxFormQueryParams);
+  const reduxFormSelectedEntityIdMap = useDeepEqualMemoIgnoreFns(
     _reduxFormSelectedEntityIdMap
   );
   let props = ownProps;
@@ -84896,7 +85192,7 @@ const DataTable = /* @__PURE__ */ __name((_I) => {
     const tmp = (urlConnected ? getCurrentParamsFromUrl(history.location) : reduxFormQueryParams) || {};
     return tmp;
   }, [history, reduxFormQueryParams, urlConnected]);
-  const currentParams = useDeepEqualMemo(_currentParams);
+  const currentParams = useDeepEqualMemoIgnoreFns(_currentParams);
   const tableParams = reactExports.useMemo(() => {
     if (!isTableParamsConnected) {
       const setNewParams2 = /* @__PURE__ */ __name((newParams) => {
@@ -85022,6 +85318,7 @@ const DataTable = /* @__PURE__ */ __name((_I) => {
     minimalStyle,
     mustClickCheckboxToSelect,
     noDeselectAll,
+    hideExpandSubCompColumn,
     noFooter = isSimple ? !withPaging : false,
     noFullscreenButton = isSimple,
     noHeader = false,
@@ -85069,14 +85366,15 @@ const DataTable = /* @__PURE__ */ __name((_I) => {
     withSort,
     withTitle = !isSimple,
     noExcessiveCheck,
-    isEntityCountLoading
+    isEntityCountLoading,
+    getCheckboxGroupId
   } = props;
   const _entities = reactExports.useMemo(
     () => ((reduxFormEntities == null ? void 0 : reduxFormEntities.length) ? reduxFormEntities : _origEntities) || [],
     [_origEntities, reduxFormEntities]
   );
-  const entities2 = useDeepEqualMemo(_entities);
-  const entitiesAcrossPages = useDeepEqualMemo(_entitiesAcrossPages);
+  const entities2 = useDeepEqualMemoIgnoreFns(_entities);
+  const entitiesAcrossPages = useDeepEqualMemoIgnoreFns(_entitiesAcrossPages);
   reactExports.useEffect(() => {
     change$12("allOrderedEntities", entitiesAcrossPages);
     if (entities2.length === 0 || isEmpty$1(reduxFormSelectedEntityIdMap)) return;
@@ -85121,11 +85419,9 @@ const DataTable = /* @__PURE__ */ __name((_I) => {
           newTableConfig = {
             fieldOptions: []
           };
-          if (isEqual(prev, newTableConfig)) {
-            return prev;
-          } else {
-            return newTableConfig;
-          }
+        }
+        if (isEqual(prev, newTableConfig)) {
+          return prev;
         } else {
           return newTableConfig;
         }
@@ -86606,6 +86902,15 @@ const DataTable = /* @__PURE__ */ __name((_I) => {
       const isExpanded = expandedEntityIdMap[rowId];
       const rowDisabled = isEntityDisabled(entity);
       const dataId = entity.id || entity.code;
+      let noGroupBorder = false;
+      if (getCheckboxGroupId) {
+        const currentGroupId = getCheckboxGroupId(entity, rowInfo.index);
+        const nextEntity = entities2[rowInfo.index + 1];
+        const nextGroupId = nextEntity ? getCheckboxGroupId(nextEntity, rowInfo.index + 1) : void 0;
+        if (currentGroupId && currentGroupId === nextGroupId) {
+          noGroupBorder = true;
+        }
+      }
       return {
         onClick: /* @__PURE__ */ __name((e) => {
           if (isCellEditable) return;
@@ -86632,7 +86937,8 @@ const DataTable = /* @__PURE__ */ __name((_I) => {
             onMultiRowSelect,
             noDeselectAll,
             onRowSelect,
-            change: change$12
+            change: change$12,
+            getCheckboxGroupId
           });
         }, "onClick"),
         //row right click
@@ -86674,9 +86980,11 @@ const DataTable = /* @__PURE__ */ __name((_I) => {
           {
             disabled: rowDisabled,
             selected: rowSelected && !withCheckboxes,
-            "rt-tr-last-row": rowInfo.index === entities2.length - 1
+            "rt-tr-last-row": rowInfo.index === entities2.length - 1,
+            "no-group-border": noGroupBorder
           }
         ),
+        "data-test-selected": !!rowSelected,
         "data-test-id": dataId === void 0 ? rowInfo.index : dataId,
         "data-index": rowInfo.index,
         "data-tip": typeof rowDisabled === "string" ? rowDisabled : void 0,
@@ -86707,7 +87015,8 @@ const DataTable = /* @__PURE__ */ __name((_I) => {
       reduxFormSelectedEntityIdMap,
       selectedCells,
       showContextMenu2,
-      withCheckboxes
+      withCheckboxes,
+      getCheckboxGroupId
     ]
   );
   const getTableCellProps = reactExports.useCallback(
@@ -87020,6 +87329,7 @@ const DataTable = /* @__PURE__ */ __name((_I) => {
     isSingleSelect,
     isSelectionARectangle,
     noDeselectAll,
+    hideExpandSubCompColumn,
     noSelect,
     noUserSelect,
     onDeselect,
@@ -87051,6 +87361,7 @@ const DataTable = /* @__PURE__ */ __name((_I) => {
     withFilter,
     withSort,
     recordIdToIsVisibleMap,
+    getCheckboxGroupId,
     setRecordIdToIsVisibleMap
   });
   const scrollToTop = reactExports.useCallback(
@@ -89640,7 +89951,7 @@ const SimpleInsertDataDialog = compose(
       return (_b2 = (_a3 = state.form) == null ? void 0 : _a3[dataTableForm]) == null ? void 0 : _b2.values.reduxFormEntities;
     }
   );
-  const reduxFormEntities = useDeepEqualMemo(_reduxFormEntities);
+  const reduxFormEntities = useDeepEqualMemoIgnoreFns(_reduxFormEntities);
   reactExports.useEffect(() => {
     return () => dispatch(destroy2(dataTableForm));
   }, [dataTableForm, dispatch]);
@@ -89650,7 +89961,9 @@ const SimpleInsertDataDialog = compose(
       return (_b2 = (_a3 = state.form) == null ? void 0 : _a3[dataTableForm]) == null ? void 0 : _b2.values.reduxFormCellValidation;
     }, "_reduxFormCellValidationSelector")
   );
-  const reduxFormCellValidation = useDeepEqualMemo(_reduxFormCellValidation);
+  const reduxFormCellValidation = useDeepEqualMemoIgnoreFns(
+    _reduxFormCellValidation
+  );
   const { entsToUse, validationToUse } = reactExports.useMemo(
     () => removeCleanRows(reduxFormEntities, reduxFormCellValidation),
     [reduxFormEntities, reduxFormCellValidation]
@@ -89735,8 +90048,10 @@ const UploadCsvWizardDialogInner = reduxForm()(({
       "reduxFormCellValidation"
     );
   }, "dtFormNameSelector"));
-  const reduxFormEntities = useDeepEqualMemo(_reduxFormEntities);
-  const reduxFormCellValidation = useDeepEqualMemo(_reduxFormCellValidation);
+  const reduxFormEntities = useDeepEqualMemoIgnoreFns(_reduxFormEntities);
+  const reduxFormCellValidation = useDeepEqualMemoIgnoreFns(
+    _reduxFormCellValidation
+  );
   let inner2;
   if (hasSubmitted) {
     inner2 = /* @__PURE__ */ React.createElement(
@@ -90038,8 +90353,10 @@ const UploadCsvWizardDialog = compose(
       };
     }
   });
-  const reduxFormEntitiesArray = useDeepEqualMemo(_reduxFormEntitiesArray);
-  const finishedFiles = useDeepEqualMemo(_finishedFiles);
+  const reduxFormEntitiesArray = useDeepEqualMemoIgnoreFns(
+    _reduxFormEntitiesArray
+  );
+  const finishedFiles = useDeepEqualMemoIgnoreFns(_finishedFiles);
   const [hasSubmittedOuter, setSubmittedOuter] = reactExports.useState();
   const [steps, setSteps] = reactExports.useState(getInitialSteps(true));
   const [focusedTab, setFocusedTab] = reactExports.useState(0);
@@ -94604,6 +94921,7 @@ const Uploader = /* @__PURE__ */ __name(({
           style: { fontSize: 11, marginBottom: 5 }
         },
         advancedAccept && !acceptLoading ? /* @__PURE__ */ React.createElement("div", null, "Accepts  ", /* @__PURE__ */ React.createElement("span", null, advancedAccept.map((acc, i2) => {
+          var _a3;
           const disabled2 = !(acc.description || acc.exampleFile || acc.exampleFiles);
           const PopOrTooltip = acc.exampleFiles ? Popover : Tooltip;
           const hasDownload = acc.exampleFile || acc.exampleFiles;
@@ -94613,7 +94931,7 @@ const Uploader = /* @__PURE__ */ __name(({
             {
               key: i2,
               interactionKind: "hover",
-              disabled: disabled2,
+              disabled: disabled2 || !!((_a3 = window.Cypress) == null ? void 0 : _a3.tg_disableDownloadExampleHover),
               modifiers: popoverOverflowModifiers,
               content: acc.exampleFiles ? /* @__PURE__ */ React.createElement(Menu, null, acc.exampleFiles.map(
                 ({ description, subtext, exampleFile, icon }, i22) => /* @__PURE__ */ React.createElement(
@@ -95190,9 +95508,19 @@ function AdvancedOptions({
   content: content2,
   label,
   style,
-  isOpenByDefault
+  isOpenByDefault,
+  localStorageKey
 }) {
-  const [isOpen2, setOpen] = reactExports.useState(isOpenByDefault);
+  const [isOpen2, setOpen] = reactExports.useState(() => {
+    if (localStorageKey) {
+      if (window.localStorage.getItem(localStorageKey) === "true") {
+        return true;
+      } else if (window.localStorage.getItem(localStorageKey) === "false") {
+        return false;
+      }
+    }
+    return isOpenByDefault;
+  });
   if (!(content2 || children)) {
     return null;
   }
@@ -95200,20 +95528,28 @@ function AdvancedOptions({
     "div",
     {
       onClick: /* @__PURE__ */ __name(() => {
-        setOpen(!isOpen2);
+        const newIsOpen = !isOpen2;
+        setOpen(newIsOpen);
+        if (localStorageKey) {
+          window.localStorage.setItem(localStorageKey, newIsOpen);
+        }
       }, "onClick"),
-      style: { cursor: "pointer", display: "flex", alignItems: "flex-end" },
-      className: "tg-toggle-advanced-options"
+      style: {
+        cursor: "pointer",
+        display: "flex",
+        alignItems: "center",
+        userSelect: "none"
+      },
+      className: `tg-toggle-advanced-options`
     },
-    label || "Advanced",
-    " ",
     /* @__PURE__ */ React.createElement(
       Icon,
       {
         icon: isOpen2 ? "caret-down" : "caret-right",
-        style: { marginLeft: 5 }
+        style: { marginRight: 5 }
       }
-    )
+    ),
+    /* @__PURE__ */ React.createElement("strong", null, label || "Advanced")
   ), isOpen2 && /* @__PURE__ */ React.createElement("div", { style: { marginTop: 10 } }, content2 || children));
 }
 __name(AdvancedOptions, "AdvancedOptions");
@@ -95225,10 +95561,7 @@ const warnBeforeLeave = /* @__PURE__ */ __name((e) => {
   (e || window.event).returnValue = defaultMessagge;
   return defaultMessagge;
 }, "warnBeforeLeave");
-function PromptUnsavedChanges({
-  message = defaultMessagge,
-  when = false
-}) {
+function PromptUnsavedChanges({ message = defaultMessagge, when = false }) {
   reactExports.useEffect(() => {
     if (when) {
       window.addEventListener("beforeunload", warnBeforeLeave);
@@ -95342,8 +95675,8 @@ const useTableParams = /* @__PURE__ */ __name((props) => {
       );
     }
   }
-  const reduxFormQueryParams = useDeepEqualMemo(_reduxFormQueryParams);
-  const reduxFormSelectedEntityIdMap = useDeepEqualMemo(
+  const reduxFormQueryParams = useDeepEqualMemoIgnoreFns(_reduxFormQueryParams);
+  const reduxFormSelectedEntityIdMap = useDeepEqualMemoIgnoreFns(
     _reduxFormSelectedEntityIdMap
   );
   const _currentParams = reactExports.useMemo(() => {
@@ -95354,7 +95687,7 @@ const useTableParams = /* @__PURE__ */ __name((props) => {
     () => withSelectedEntities ? Object.values(reduxFormSelectedEntityIdMap).sort((a2, b2) => a2.rowIndex - b2.rowIndex).map((item) => item.entity) : void 0,
     [reduxFormSelectedEntityIdMap, withSelectedEntities]
   );
-  const currentParams = useDeepEqualMemo(_currentParams);
+  const currentParams = useDeepEqualMemoIgnoreFns(_currentParams);
   const defaultsToUse = reactExports.useMemo(() => {
     const _tableConfig = getTableConfigFromStorage(formName);
     const userSetPageSize = (_tableConfig == null ? void 0 : _tableConfig.userSetPageSize) && parseInt(_tableConfig.userSetPageSize, 10);
@@ -98708,6 +99041,7 @@ const _ResizableDraggableDialog = class _ResizableDraggableDialog extends React.
             topLeft: true,
             topRight: true
           },
+          resizeHandleWrapperClass: "tg-dialog-resize-handle",
           maxHeight: windowHeight,
           maxWidth: windowWidth,
           bounds: "window",
@@ -98726,12 +99060,21 @@ const _ResizableDraggableDialog = class _ResizableDraggableDialog extends React.
         }, RndProps),
         /* @__PURE__ */ React.createElement(
           Dialog,
-          __spreadValues({
+          __spreadProps(__spreadValues({
             enforceFocus: false,
             hasBackdrop: false,
             usePortal: false,
             canEscapeKeyClose: true
-          }, rest)
+          }, rest), {
+            title: /* @__PURE__ */ React.createElement("div", { style: { display: "flex", alignItems: "center", gap: 8 } }, /* @__PURE__ */ React.createElement(
+              Icon,
+              {
+                size: "14",
+                "data-tip": "I'm a resizable draggable dialog!",
+                icon: "move"
+              }
+            ), rest.title)
+          })
         )
       )
     );
@@ -108965,7 +109308,7 @@ const useToggle = /* @__PURE__ */ __name((_M) => {
   const setVal = /* @__PURE__ */ __name((newVal) => {
     const demoState = getDemoState();
     demoState[type2] = newVal;
-    setCurrentParamsOnUrl({ [type2]: newVal }, void 0, true);
+    setCurrentParamsOnUrl(demoState, void 0, true);
     if (setControlledValue) setControlledValue(newVal);
     _setVal(newVal);
   }, "setVal");
@@ -109362,9 +109705,16 @@ const DataTableDemo = /* @__PURE__ */ __name(() => {
   const [withSubComponent, withSubComponentSwitch] = useToggle({
     type: "withSubComponent"
   });
+  const [hideExpandSubCompColumn, hideExpandSubCompColumnSwitch] = useToggle({
+    type: "hideExpandSubCompColumn"
+  });
   const [withTitle, withTitleSwitch] = useToggle({
     type: "withTitle",
     defaultValue: true
+  });
+  const [groupRows, groupRowsSwitch] = useToggle({
+    type: "groupRows",
+    description: "Group every 2 rows together"
   });
   const [entities2, setEntities] = reactExports.useState(
     generateFakeRows(defaultNumOfEntities)
@@ -109463,6 +109813,7 @@ const DataTableDemo = /* @__PURE__ */ __name(() => {
       )), /* @__PURE__ */ React.createElement("div", { style: { marginTop: 30 } }), /* @__PURE__ */ React.createElement(DemoWrapper, null, /* @__PURE__ */ React.createElement("div", { className: "wrappingdiv" }, /* @__PURE__ */ React.createElement(
         WrappedDT,
         __spreadProps(__spreadValues(__spreadProps(__spreadValues(__spreadProps(__spreadValues(__spreadValues(__spreadProps(__spreadValues({}, tableParams), {
+          hideExpandSubCompColumn,
           additionalFilters,
           cellRenderer: {
             isShared: /* @__PURE__ */ __name((value) => {
@@ -109581,35 +109932,42 @@ const DataTableDemo = /* @__PURE__ */ __name(() => {
           withPaging,
           withSearch,
           withSort,
-          withTitle
+          withTitle,
+          getCheckboxGroupId: groupRows ? (row, index2) => {
+            const r2 = Math.floor(index2 / 2);
+            return `group-${r2}`;
+          } : void 0
         })
       ))), /* @__PURE__ */ React.createElement("br", null), /* @__PURE__ */ React.createElement("br", null));
     },
     [
+      isInfinite,
       _additionalFilters,
-      compact,
-      controlledPaging,
+      entities2,
       disableSetPageSize,
+      hideSetPageSize,
+      hideTotalPages,
+      forceNoNextPage,
+      hideExpandSubCompColumn,
+      compact,
       disabled,
       doNotShowEmptyRows,
-      entities2,
       expandAllByDefault,
       extraCompact,
-      forceNoNextPage,
       getRowClassName,
+      controlledPaging,
       hideDisplayOptionsIcon,
       hidePageSizeWhenPossible,
       hideSelectedCount,
-      hideSetPageSize,
-      hideTotalPages,
       isCopyable,
-      isInfinite,
       isLoading,
+      isEntityDisabled,
       isOpenable,
       isSimple,
       isSingleSelect,
       isViewable,
       isMultiViewable,
+      recordIdToIsVisibleMap,
       keepSelectionOnPageChange,
       maxHeight,
       minimalStyle,
@@ -109625,6 +109983,7 @@ const DataTableDemo = /* @__PURE__ */ __name(() => {
       selectAllByDefault,
       selectedIds,
       showCount,
+      withSubComponent,
       withCheckboxes,
       withDisplayOptions,
       withExpandAndCollapseAllButton,
@@ -109632,10 +109991,8 @@ const DataTableDemo = /* @__PURE__ */ __name(() => {
       withPaging,
       withSearch,
       withSort,
-      withSubComponent,
       withTitle,
-      recordIdToIsVisibleMap,
-      isEntityDisabled
+      groupRows
     ]
   );
   const ConnectedTable = withTableParams({
@@ -109684,7 +110041,7 @@ withQuery(
       onValueChange: changeNumEntities,
       value: numOfEntities
     }
-  ), /* @__PURE__ */ React.createElement("br", null), 'Select records by ids (a single number or numbers separated by ","):', " ", /* @__PURE__ */ React.createElement("br", null), /* @__PURE__ */ React.createElement("input", { onChange: changeSelectedRecords, name: "selectedRecords" }), /* @__PURE__ */ React.createElement("br", null), /* @__PURE__ */ React.createElement("br", null), isSimpleSwitch, withTitleSwitch, noSelectSwitch, withSubComponentSwitch, withSearchSwitch, disableSetPageSizeSwitch, keepSelectionOnPageChangeSwitch, hideSetPageSizeSwitch, hideTotalPagesSwitch, forceNoNextPageSwitch, isViewableSwitch, isMultiViewableSwitch, onDoubleClickSwitch, isOpenableSwitch, minimalStyleSwitch, hideDisplayOptionsIconSwitch, withDisplayOptionsSwitch, withPagingSwitch, getRowClassNameSwitch, controlledPagingSwitch, noDeselectAllSwitch, withExpandAndCollapseAllButtonSwitch, expandAllByDefaultSwitch, selectAllByDefaultSwitch, withFilterSwitch, withSortSwitch, noHeaderSwitch, noFooterSwitch, noFullscreenButtonSwitch, noPaddingSwitch, isInfiniteSwitch, isLoadingSwitch, isEntityDisabledSwitch, disabledSwitch, hidePageSizeWhenPossibleSwitch, doNotShowEmptyRowsSwitch, withCheckboxesSwitch, isSingleSelectSwitch, noRowsFoundMessageSwitch, hideSelectedCountSwitch, showCountSwitch, compactSwitch, extraCompactSwitch, isCopyableSwitch, mustClickCheckboxToSelectSwitch, maxHeightSwitch, updateSelectedAndChangeNumEntsButton), /* @__PURE__ */ React.createElement("br", null), inDialog ? /* @__PURE__ */ React.createElement(
+  ), /* @__PURE__ */ React.createElement("br", null), 'Select records by ids (a single number or numbers separated by ","):', " ", /* @__PURE__ */ React.createElement("br", null), /* @__PURE__ */ React.createElement("input", { onChange: changeSelectedRecords, name: "selectedRecords" }), /* @__PURE__ */ React.createElement("br", null), /* @__PURE__ */ React.createElement("br", null), isSimpleSwitch, withTitleSwitch, noSelectSwitch, withSubComponentSwitch, hideExpandSubCompColumnSwitch, withSearchSwitch, disableSetPageSizeSwitch, keepSelectionOnPageChangeSwitch, hideSetPageSizeSwitch, hideTotalPagesSwitch, forceNoNextPageSwitch, isViewableSwitch, isMultiViewableSwitch, onDoubleClickSwitch, isOpenableSwitch, minimalStyleSwitch, hideDisplayOptionsIconSwitch, withDisplayOptionsSwitch, withPagingSwitch, getRowClassNameSwitch, controlledPagingSwitch, noDeselectAllSwitch, withExpandAndCollapseAllButtonSwitch, expandAllByDefaultSwitch, selectAllByDefaultSwitch, withFilterSwitch, withSortSwitch, noHeaderSwitch, noFooterSwitch, noFullscreenButtonSwitch, noPaddingSwitch, isInfiniteSwitch, isLoadingSwitch, isEntityDisabledSwitch, disabledSwitch, hidePageSizeWhenPossibleSwitch, doNotShowEmptyRowsSwitch, withCheckboxesSwitch, isSingleSelectSwitch, noRowsFoundMessageSwitch, hideSelectedCountSwitch, showCountSwitch, compactSwitch, extraCompactSwitch, isCopyableSwitch, mustClickCheckboxToSelectSwitch, maxHeightSwitch, maxHeightSwitch, groupRowsSwitch, updateSelectedAndChangeNumEntsButton), /* @__PURE__ */ React.createElement("br", null), inDialog ? /* @__PURE__ */ React.createElement(
     Dialog,
     {
       onClose: closeDialog,
@@ -109723,7 +110080,7 @@ __name(createThunkMiddleware, "createThunkMiddleware");
 var thunk = createThunkMiddleware();
 thunk.withExtraArgument = createThunkMiddleware;
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
-  actionsBlacklist: ["HOVEREDANNOTATIONUPDATE", "HOVEREDANNOTATIONCLEAR"]
+  actionsBlacklist: []
 }) || compose$1;
 const store = createStore(
   combineReducers({
@@ -110779,7 +111136,7 @@ function VersionSwitcher({
   reactExports.useEffect(() => {
     (/* @__PURE__ */ __name(function fetchData() {
       return __async(this, null, function* () {
-        const res = yield __variableDynamicImportRuntimeHelper(/* @__PURE__ */ Object.assign({ "../../bio-parsers/package.json": /* @__PURE__ */ __name(() => __vitePreload(() => import("./package-DmOTQ4Sx.js"), true ? [] : void 0, import.meta.url), "../../bio-parsers/package.json"), "../../bounce-loader/package.json": /* @__PURE__ */ __name(() => __vitePreload(() => import("./package-DxK1sA93.js"), true ? [] : void 0, import.meta.url), "../../bounce-loader/package.json"), "../../file-utils/package.json": /* @__PURE__ */ __name(() => __vitePreload(() => import("./package-BDls_Ay-.js"), true ? [] : void 0, import.meta.url), "../../file-utils/package.json"), "../../ove/package.json": /* @__PURE__ */ __name(() => __vitePreload(() => import("./package-BrDXnNVK.js"), true ? [] : void 0, import.meta.url), "../../ove/package.json"), "../../range-utils/package.json": /* @__PURE__ */ __name(() => __vitePreload(() => import("./package-Bm5c7mXJ.js"), true ? [] : void 0, import.meta.url), "../../range-utils/package.json"), "../../sequence-utils/package.json": /* @__PURE__ */ __name(() => __vitePreload(() => import("./package-Cm8tRgCe.js"), true ? [] : void 0, import.meta.url), "../../sequence-utils/package.json"), "../package.json": /* @__PURE__ */ __name(() => __vitePreload(() => import("./package-D8eyE4je.js"), true ? [] : void 0, import.meta.url), "../package.json"), "../../ui/package.json": /* @__PURE__ */ __name(() => __vitePreload(() => import("./package-C9tEZi7n.js"), true ? [] : void 0, import.meta.url), "../../ui/package.json"), "../../uploader/package.json": /* @__PURE__ */ __name(() => __vitePreload(() => import("./package-Ia2Rqbv8.js"), true ? [] : void 0, import.meta.url), "../../uploader/package.json") }), `../../${packageName}/package.json`, 4);
+        const res = yield __variableDynamicImportRuntimeHelper(/* @__PURE__ */ Object.assign({ "../../bio-parsers/package.json": /* @__PURE__ */ __name(() => __vitePreload(() => import("./package-Cy7Zi5qm.js"), true ? [] : void 0, import.meta.url), "../../bio-parsers/package.json"), "../../file-utils/package.json": /* @__PURE__ */ __name(() => __vitePreload(() => import("./package-08dWTk1g.js"), true ? [] : void 0, import.meta.url), "../../file-utils/package.json"), "../../ove/package.json": /* @__PURE__ */ __name(() => __vitePreload(() => import("./package-KJH51HMi.js"), true ? [] : void 0, import.meta.url), "../../ove/package.json"), "../../range-utils/package.json": /* @__PURE__ */ __name(() => __vitePreload(() => import("./package-1cRi1FH2.js"), true ? [] : void 0, import.meta.url), "../../range-utils/package.json"), "../../sequence-utils/package.json": /* @__PURE__ */ __name(() => __vitePreload(() => import("./package-D6fPAr3T.js"), true ? [] : void 0, import.meta.url), "../../sequence-utils/package.json"), "../package.json": /* @__PURE__ */ __name(() => __vitePreload(() => import("./package-D8eyE4je.js"), true ? [] : void 0, import.meta.url), "../package.json"), "../../ui/package.json": /* @__PURE__ */ __name(() => __vitePreload(() => import("./package-CEwn0IMZ.js"), true ? [] : void 0, import.meta.url), "../../ui/package.json") }), `../../${packageName}/package.json`, 4);
         setVersion(res.version);
         try {
           if (window.Cypress) return;
@@ -111522,7 +111879,7 @@ function EditableCellTable(props) {
 }
 __name(EditableCellTable, "EditableCellTable");
 function AdvancedOptionsDemo() {
-  return /* @__PURE__ */ React.createElement(DemoWrapper, null, "I'm some text lalala l", /* @__PURE__ */ React.createElement("br", null), /* @__PURE__ */ React.createElement("br", null), /* @__PURE__ */ React.createElement(AdvancedOptions, null, "I'm some more advanced options "), /* @__PURE__ */ React.createElement("br", null), /* @__PURE__ */ React.createElement("br", null), /* @__PURE__ */ React.createElement("br", null), /* @__PURE__ */ React.createElement(WrappedCode, null, "isOpenByDefault:"), /* @__PURE__ */ React.createElement(AdvancedOptions, { isOpenByDefault: true }, "I'm some more advanced options", " "), /* @__PURE__ */ React.createElement("br", null), /* @__PURE__ */ React.createElement("br", null), "custom label (", /* @__PURE__ */ React.createElement(WrappedCode, null, 'label="lalal"'), "):", /* @__PURE__ */ React.createElement(AdvancedOptions, { label: "lalal" }, "I'm some more advanced options", " "));
+  return /* @__PURE__ */ React.createElement(DemoWrapper, null, "I'm some text lalala l", /* @__PURE__ */ React.createElement("br", null), /* @__PURE__ */ React.createElement("br", null), /* @__PURE__ */ React.createElement(AdvancedOptions, null, "I'm some more advanced options "), /* @__PURE__ */ React.createElement("br", null), /* @__PURE__ */ React.createElement("br", null), /* @__PURE__ */ React.createElement("br", null), /* @__PURE__ */ React.createElement("div", null, /* @__PURE__ */ React.createElement(WrappedCode, null, "isOpenByDefault:"), /* @__PURE__ */ React.createElement(AdvancedOptions, { isOpenByDefault: true }, "I'm some more advanced options", " ")), /* @__PURE__ */ React.createElement("br", null), /* @__PURE__ */ React.createElement("br", null), /* @__PURE__ */ React.createElement("div", null, "custom label (", /* @__PURE__ */ React.createElement(WrappedCode, null, 'label="lalal"'), "):", /* @__PURE__ */ React.createElement(AdvancedOptions, { label: "lalal" }, "I'm some more advanced options", " ")), /* @__PURE__ */ React.createElement("br", null), /* @__PURE__ */ React.createElement("br", null), /* @__PURE__ */ React.createElement("div", null, "With localStorageKey (", /* @__PURE__ */ React.createElement(WrappedCode, null, 'localStorageKey="advanced-options-demo-key"'), "):", /* @__PURE__ */ React.createElement(AdvancedOptions, { localStorageKey: "advanced-options-demo-key" }, "I'm some more advanced options that should persist their open/closed state")));
 }
 __name(AdvancedOptionsDemo, "AdvancedOptionsDemo");
 const gbUploaderFileList = [

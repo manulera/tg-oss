@@ -8859,12 +8859,14 @@ span.bp3-popover-target{
 /*# sourceMappingURL=blueprint-icons.css.map */:root {
   --base1: #ffffff;
   --base2: #cdcdcd;
+  --base3: #a1a3a5;
   --reversed: #293742;
 }
 
 body.bp3-dark {
   --base1: #393a3a;
   --base2: #293742;
+  --base3: #959697;
   --reversed: #cdcdcd;
 }
 
@@ -9641,6 +9643,50 @@ button:not(:disabled):active {
 
 .ReactTable.ReactTable .rt-tbody .rt-tr {
   border: none;
+}
+
+.ReactTable.ReactTable .rt-tbody .rt-tr-group.no-group-border {
+  border-bottom: none;
+}
+
+.react-draggable .bp3-dialog {
+  /* add little chevrons in the bottom corners of the dialog to show its draggable */
+  position: relative;
+}
+
+.react-draggable .bp3-dialog::before,
+.react-draggable .bp3-dialog::after {
+  content: "";
+  position: absolute;
+  bottom: 3px;
+  width: 10px;
+  height: 10px;
+  border-style: double;
+  border-color: var(--base3);
+  border-width: 0;
+  border-bottom-width: 6px;
+  pointer-events: none;
+}
+
+.react-draggable .bp3-dialog::before {
+  left: 3px;
+  border-left-width: 6px;
+  border-bottom-left-radius: 2px;
+}
+
+.react-draggable .bp3-dialog::after {
+  right: 3px;
+  border-right-width: 6px;
+  border-bottom-right-radius: 2px;
+}
+
+.react-draggable .tg-dialog-resize-handle div:first-child {
+  bottom: 0px !important;
+  left: 0px !important;
+}
+.react-draggable .tg-dialog-resize-handle div:nth-child(2) {
+  bottom: 0px !important;
+  right: 0px !important;
 }
 
 .bp3-dark .ReactTable.ReactTable .rt-tbody .rt-tr-group {
